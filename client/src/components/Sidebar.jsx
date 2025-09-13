@@ -1,14 +1,14 @@
 import React from 'react';
 import './Sidebar.css';
 
-const Sidebar = ({ activeSection, onSectionChange }) => {
+const Sidebar = ({ activeSection, onSectionChange, isOpen, onClose }) => {
   const menuItems = [
     { id: 'dashboard', label: 'Dashboard', icon: '📊' },
     { id: 'add-task', label: 'Add Task', icon: '➕' }
   ];
 
   return (
-    <div className="sidebar">
+    <div className={`sidebar ${isOpen ? 'open' : ''}`}>
       <div className="sidebar-header">
         <div className="logo">
           <div className="logo-icon">📝</div>
@@ -25,7 +25,10 @@ const Sidebar = ({ activeSection, onSectionChange }) => {
             <li key={item.id} className="nav-item">
               <button
                 className={`nav-link ${activeSection === item.id ? 'active' : ''}`}
-                onClick={() => onSectionChange(item.id)}
+                onClick={() => {
+                  onSectionChange(item.id);
+                  if (onClose) onClose(); // Close sidebar on mobile after selection
+                }}
               >
                 <span className="nav-icon">{item.icon}</span>
                 <span className="nav-label">{item.label}</span>

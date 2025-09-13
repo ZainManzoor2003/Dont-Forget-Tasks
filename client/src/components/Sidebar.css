@@ -169,6 +169,17 @@
   }
 }
 
+/* Sidebar toggle functionality for all screen sizes */
+.sidebar {
+  transition: transform 0.3s ease;
+}
+
+@media (min-width: 769px) {
+  .sidebar {
+    transform: translateX(0);
+  }
+}
+
 /* Scrollbar Styling */
 .sidebar-nav::-webkit-scrollbar {
   width: 4px;

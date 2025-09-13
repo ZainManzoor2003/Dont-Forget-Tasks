@@ -24,6 +24,8 @@ const Layout = () => {
       <Sidebar 
         activeSection={activeSection} 
         onSectionChange={setActiveSection}
+        isOpen={sidebarOpen}
+        onClose={() => setSidebarOpen(false)}
       />
       <div className="main-content">
         <div className="mobile-header">
