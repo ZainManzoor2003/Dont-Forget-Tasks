@@ -4,7 +4,10 @@ import './Sidebar.css';
 const Sidebar = ({ activeSection, onSectionChange, isOpen, onClose }) => {
   const menuItems = [
     { id: 'dashboard', label: 'Dashboard', icon: '📊' },
-    { id: 'add-task', label: 'Add Task', icon: '➕' }
+    { id: 'add-task', label: 'Add Task', icon: '➕' },
+    { id: 'follow-up', label: "Don't Forget to Follow Up", icon: '🔁' },
+    { id: 'booking', label: 'Booking', icon: '📅' },
+    { id: 'settings', label: 'Settings', icon: '⚙️' }
   ];
 
   return (

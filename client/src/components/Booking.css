@@ -1,0 +1,31 @@
+.booking-page { padding: 24px; margin-left: 280px; }
+.booking-page .content-header { display:flex; flex-direction: column; align-items: flex-start; gap: 6px; margin-bottom: 12px; }
+.booking-page .section-title { display:flex; align-items:center; gap: 10px; }
+.booking-grid { display:flex; flex-direction: column; gap: 16px; }
+.calendar-card, .details-card, .confirmation-card { background:#fff; border:1px solid #e5e7eb; border-radius:12px; padding:16px; box-shadow:0 2px 8px rgba(0,0,0,0.06); }
+.card-title { font-weight:700; color:#111827; margin-bottom:8px; }
+.section-desc { color:#6b7280; margin-top: 4px; }
+.date-input { padding:10px; border:1px solid #e5e7eb; border-radius:8px; }
+.slots-grid { display:flex; flex-wrap:wrap; gap:8px; margin-top:8px; }
+.slot-btn { padding:8px 12px; border:1px solid #e5e7eb; border-radius:8px; background:#f9fafb; cursor:pointer; }
+.slot-btn.selected { background:#0e7a92; color:#fff; border-color:#0e7a92; }
+.form-row { display:grid; grid-template-columns: 1fr 1fr; gap:12px; }
+.form-field { display:flex; flex-direction:column; gap:8px; }
+.form-field.full { grid-column: 1 / -1; }
+.form-field input, .form-field textarea { padding:10px; border:1px solid #e5e7eb; border-radius:8px; }
+.actions-row { display:flex; gap:10px; margin-top:12px; }
+.payment-panel { margin-top: 12px; }
+.pay-methods { display:flex; gap:12px; margin: 8px 0; }
+.radio { color:#374151; }
+.confirm-list { list-style:none; padding:0; margin:8px 0 0 0; display:grid; gap:6px; }
+.mono { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; }
+.primary-btn { background:#0e7a92; color:#fff; border:none; padding:10px 14px; border-radius:8px; cursor:pointer; }
+.secondary-btn { background:#f3f4f6; color:#111827; border:none; padding:10px 14px; border-radius:8px; cursor:pointer; }
+
+/* Stacked layout is default; no breakpoint needed */
+
+@media (max-width: 769px) {
+    .booking-page {
+      margin-left: 0px;
+    }
+  }

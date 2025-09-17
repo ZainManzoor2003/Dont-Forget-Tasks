@@ -1,6 +1,6 @@
 .login-container {
   min-height: 100vh;
-  background-color: #FAFAFA;
+  background: linear-gradient(180deg, #0d5b75 0%, #093a49 100%);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -9,12 +9,12 @@
 
 .login-card {
   background-color: #FFFFFF;
-  border-radius: 12px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  border-radius: 16px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
   padding: 40px;
   width: 100%;
-  max-width: 400px;
-  border: 2px solid #A9B8FF;
+  max-width: 420px;
+  border: 1px solid #0e7a92;
 }
 
 .login-header {
@@ -23,9 +23,9 @@
 }
 
 .login-header h1 {
-  color: #000000;
+  color: #0e7a92;
   font-size: 2rem;
-  font-weight: 700;
+  font-weight: 800;
   margin-bottom: 8px;
 }
 
@@ -53,17 +53,17 @@
 
 .form-group input {
   padding: 12px 16px;
-  border: 2px solid #E0E0E0;
-  border-radius: 8px;
+  border: 2px solid #e0e0e0;
+  border-radius: 10px;
   font-size: 1rem;
-  transition: border-color 0.3s ease;
-  background-color: #FAFAFA;
+  transition: border-color 0.3s ease, box-shadow 0.2s ease;
 }
 
 .form-group input:focus {
   outline: none;
-  border-color: #A9B8FF;
+  border-color: #0e7a92;
   background-color: #FFFFFF;
+  box-shadow: 0 0 0 3px rgba(14, 122, 146, 0.15);
 }
 
 .form-group input::placeholder {
@@ -76,33 +76,34 @@
 }
 
 .forgot-link {
-  color: #A9B8FF;
+  color: #0e7a92;
   text-decoration: none;
   font-size: 0.9rem;
   transition: color 0.3s ease;
 }
 
 .forgot-link:hover {
-  color: #FF7043;
+  color: #1094ad;
   text-decoration: underline;
 }
 
 .submit-button {
-  background-color: #FF7043;
+  background-color: #0e7a92;
   color: #FFFFFF;
   border: none;
   padding: 14px 24px;
-  border-radius: 8px;
+  border-radius: 10px;
   font-size: 1rem;
-  font-weight: 600;
+  font-weight: 700;
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease;
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
   margin-top: 10px;
 }
 
 .submit-button:hover {
-  background-color: #E55A2B;
+  background-color: #1094ad;
   transform: translateY(-1px);
+  box-shadow: 0 10px 24px rgba(14, 122, 146, 0.25);
 }
 
 .submit-button:active {
@@ -125,8 +126,8 @@
 .toggle-button {
   background: none;
   border: none;
-  color: #A9B8FF;
-  font-weight: 600;
+  color: #0e7a92;
+  font-weight: 700;
   cursor: pointer;
   margin-left: 8px;
   text-decoration: underline;
@@ -134,7 +135,7 @@
 }
 
 .toggle-button:hover {
-  color: #FF7043;
+  color: #1094ad;
 }
 
 /* Responsive design */

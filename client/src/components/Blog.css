@@ -1,6 +1,6 @@
 /* Blog Section Styles */
 .blog-section {
-    padding: 20px 40px ;
+    padding: 20px 40px;
     background: white;
     position: relative;
     overflow: hidden;
@@ -22,7 +22,7 @@
 .blog-title {
     font-size: 48px;
     font-weight: 800;
-    color: #8b4513;
+    color: #0a2a33;
     margin: 0 0 20px 0;
     letter-spacing: -1px;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
@@ -30,7 +30,7 @@
 
 .blog-subtitle {
     font-size: 18px;
-    color: #6b4423;
+    color: #666666;
     margin: 0;
     line-height: 1.6;
     max-width: 600px;
@@ -76,7 +76,7 @@
 .section-title {
     font-size: 32px;
     font-weight: 700;
-    color: #8b4513;
+    color: #0a2a33;
     margin: 0 0 40px 0;
     text-align: center;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;

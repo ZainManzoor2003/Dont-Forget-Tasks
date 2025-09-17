@@ -1,0 +1,178 @@
+.followup-page {
+  padding: 24px;
+  margin-left: 280px;
+}
+
+.followup-picker {
+  margin-bottom: 16px;
+}
+
+.picker-label {
+  display: block;
+  margin-bottom: 8px;
+  color: #555;
+}
+
+.picker-row {
+  display: flex;
+  gap: 12px;
+}
+
+.picker-row .search-input {
+  padding: 10px 12px;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 14px;
+  background: white;
+  flex: 1;
+}
+
+.picker-row .search-input:focus {
+  outline: none;
+  border-color: #006FA7;
+}
+
+.followup-content {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 20px;
+}
+
+.task-summary {
+  background: #fff;
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+}
+
+.task-title-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.task-title {
+  margin: 0;
+}
+
+.task-datetime {
+  margin-top: 8px;
+  color: #666;
+}
+
+.task-description {
+  margin-top: 12px;
+  color: #333;
+}
+
+.followup-panel {
+  background: #fff;
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+}
+
+.panel-title {
+  margin: 0 0 12px 0;
+}
+
+.notes-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 16px 0;
+  display: grid;
+  gap: 12px;
+}
+
+.note-item {
+  border: 1px solid #eee;
+  border-radius: 10px;
+  padding: 12px;
+  background: #fafafa;
+}
+
+.note-item.empty {
+  text-align: center;
+  color: #777;
+  background: #fff;
+}
+
+.note-meta {
+  font-size: 12px;
+  color: #666;
+  margin-bottom: 6px;
+}
+
+.note-text {
+  width: 100%;
+  min-height: 64px;
+  border: none;
+  background: transparent;
+  resize: vertical;
+  color: #222;
+}
+
+.note-text:focus {
+  outline: none;
+}
+
+.add-note .note-input {
+  width: 100%;
+  min-height: 100px;
+  border: 1px solid #eee;
+  border-radius: 10px;
+  padding: 10px;
+  resize: vertical;
+  margin-bottom: 12px;
+}
+
+.actions-row {
+  display: flex;
+  gap: 10px;
+}
+
+.primary-btn, .secondary-btn {
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+}
+
+.primary-btn {
+  background: #2563eb;
+  color: white;
+}
+
+.primary-btn:disabled {
+  background: #9db5f0;
+  cursor: not-allowed;
+}
+
+.secondary-btn {
+  background: #f3f4f6;
+  color: #111827;
+}
+
+.status-badge {
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  background: #f3f4f6;
+}
+
+.status-badge.completed {
+  background: #10b981;
+  color: #fff;
+}
+
+@media (max-width: 900px) {
+  .followup-content { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 769px) {
+    .followup-page {
+      margin-left: 0;
+    }
+  }
+
+

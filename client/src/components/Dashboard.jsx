@@ -1,69 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import TaskCard from './TaskCard';
 import './Dashboard.css';
 
-const Dashboard = () => {
+const Dashboard = ({ tasks, setTasks, onNavigate }) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [filterPriority, setFilterPriority] = useState('all');
 
-  // Sample task data
-  const [tasks, setTasks] = useState([
-    {
-      id: 1,
-      name: 'Complete Project Proposal',
-      description: 'Draft and finalize the quarterly project proposal for client presentation',
-      dateTime: '2024-01-15T10:00:00',
-      priority: 'due-today',
-      status: 'in-progress'
-    },
-    {
-      id: 2,
-      name: 'Team Meeting Preparation',
-      description: 'Prepare agenda and materials for the weekly team standup meeting',
-      dateTime: '2024-01-16T14:30:00',
-      priority: 'upcoming',
-      status: 'pending'
-    },
-    {
-      id: 3,
-      name: 'Code Review Session',
-      description: 'Review pull requests and provide feedback to development team',
-      dateTime: '2024-01-14T16:00:00',
-      priority: 'late',
-      status: 'overdue'
-    },
-    {
-      id: 4,
-      name: 'Client Follow-up Call',
-      description: 'Schedule and conduct follow-up call with potential client',
-      dateTime: '2024-01-17T11:00:00',
-      priority: 'follow-up',
-      status: 'pending'
-    },
-    {
-      id: 5,
-      name: 'Database Migration',
-      description: 'Execute critical database migration for production environment',
-      dateTime: '2024-01-15T09:00:00',
-      priority: 'high-priority',
-      status: 'in-progress'
-    },
-    {
-      id: 6,
-      name: 'Documentation Update',
-      description: 'Update API documentation and user guides',
-      dateTime: '2024-01-18T15:00:00',
-      priority: 'upcoming',
-      status: 'pending'
-    }
-  ]);
-
-  const filteredTasks = tasks.filter(task => {
+  const filteredTasks = useMemo(() => tasks.filter(task => {
     const matchesSearch = task.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
                          task.description.toLowerCase().includes(searchTerm.toLowerCase());
     const matchesPriority = filterPriority === 'all' || task.priority === filterPriority;
     return matchesSearch && matchesPriority;
-  });
+  }), [tasks, searchTerm, filterPriority]);
 
   const handleEditTask = (task) => {
     console.log('Edit task:', task);
@@ -190,6 +138,9 @@ const Dashboard = () => {
                 <option value="follow-up">Follow-up</option>
                 <option value="high-priority">High Priority</option>
               </select>
+              <button className="primary-btn" onClick={() => onNavigate && onNavigate('follow-up')}>
+                Don't Forget to Follow Up
+              </button>
             </div>
           </div>
 
