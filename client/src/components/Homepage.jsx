@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { FiZap, FiSettings, FiSmartphone, FiMail, FiPhone, FiFeather } from 'react-icons/fi';
 import { useNavigate } from 'react-router-dom';
 import './Homepage.css';
 import Blob from './Blog'
@@ -110,21 +111,21 @@ const Homepage = () => {
             </p>
             <ul className="values-list">
               <li className="values-item">
-                <div className="v-icon">💡</div>
+                <div className="v-icon"><FiZap /></div>
                 <div>
                   <div className="v-title">Lightning-fast scheduling</div>
                   <div className="v-desc">Create tasks, set due times, and attach meeting links in seconds.</div>
                 </div>
               </li>
               <li className="values-item">
-                <div className="v-icon">⚙️</div>
+                <div className="v-icon"><FiSettings /></div>
                 <div>
                   <div className="v-title">Integrated bookings</div>
                   <div className="v-desc">Schedule calls, demos, and follow-ups that automatically carry your context.</div>
                 </div>
               </li>
               <li className="values-item">
-                <div className="v-icon">📱</div>
+                <div className="v-icon"><FiSmartphone /></div>
                 <div>
                   <div className="v-title">Never miss a follow-up</div>
                   <div className="v-desc">Smart reminders surface what’s next and keep links one tap away.</div>
@@ -293,11 +294,11 @@ const Homepage = () => {
             </p>
             <div className="contact-left-items">
               <div className="contact-left-item">
-                <span className="contact-left-icon">✉️</span>
+                <span className="contact-left-icon"><FiMail /></span>
                 <span>info@dontforget.com</span>
               </div>
               <div className="contact-left-item">
-                <span className="contact-left-icon">📞</span>
+                <span className="contact-left-icon"><FiPhone /></span>
                 <span>Support: (+21) 123 456 586</span>
               </div>
             </div>
@@ -348,8 +349,8 @@ const Homepage = () => {
           <div className="foot-follow">Follow us :</div>
         </div>
         <div className="footer-grid">
-          <div className="foot-brand">
-            <div className="foot-logo">🌿</div>
+            <div className="foot-brand">
+            <div className="foot-logo"><FiFeather /></div>
             <div className="foot-name">Don't Forget</div>
             <div className="foot-contact">+1 (234) 567 89 00</div>
             <div className="foot-email">outerweb@email.com</div>

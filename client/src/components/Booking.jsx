@@ -1,4 +1,5 @@
 import React, { useMemo, useState } from 'react';
+import { FiCalendar } from 'react-icons/fi';
 import './Booking.css';
 
 const defaultSlots = [
@@ -46,7 +47,7 @@ const Booking = () => {
     <div className="booking-page">
       <div className="content-header">
         <div className="section-title">
-          <span className="title-icon">📅</span>
+          <span className="title-icon"><FiCalendar /></span>
           <h2>Public Booking</h2>
         </div>
         <p className="section-desc">Pick a time slot, enter details, complete payment if required, and get your confirmation instantly.</p>
@@ -135,5 +136,6 @@ const Booking = () => {
 };
 
 export default Booking;
+
 
 

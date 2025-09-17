@@ -1,20 +1,21 @@
 import React from 'react';
+import { FiBarChart2, FiPlus, FiRepeat, FiCalendar, FiSettings, FiEdit3, FiUser } from 'react-icons/fi';
 import './Sidebar.css';
 
 const Sidebar = ({ activeSection, onSectionChange, isOpen, onClose }) => {
   const menuItems = [
-    { id: 'dashboard', label: 'Dashboard', icon: '📊' },
-    { id: 'add-task', label: 'Add Task', icon: '➕' },
-    { id: 'follow-up', label: "Don't Forget to Follow Up", icon: '🔁' },
-    { id: 'booking', label: 'Booking', icon: '📅' },
-    { id: 'settings', label: 'Settings', icon: '⚙️' }
+    { id: 'dashboard', label: 'Dashboard', icon: <FiBarChart2 /> },
+    { id: 'add-task', label: 'Add Task', icon: <FiPlus /> },
+    { id: 'follow-up', label: "Don't Forget to Follow Up", icon: <FiRepeat /> },
+    { id: 'booking', label: 'Booking', icon: <FiCalendar /> },
+    { id: 'settings', label: 'Settings', icon: <FiSettings /> }
   ];
 
   return (
     <div className={`sidebar ${isOpen ? 'open' : ''}`}>
       <div className="sidebar-header">
         <div className="logo">
-          <div className="logo-icon">📝</div>
+          <div className="logo-icon"><FiEdit3 /></div>
           <div className="logo-text">
             <div className="logo-title">DONT FORGET</div>
             <div className="logo-subtitle">Task Manager</div>
@@ -43,7 +44,7 @@ const Sidebar = ({ activeSection, onSectionChange, isOpen, onClose }) => {
       
       <div className="sidebar-footer">
         <div className="user-info">
-          <div className="user-avatar">👤</div>
+          <div className="user-avatar"><FiUser /></div>
           <div className="user-details">
             <div className="user-name">Admin User</div>
             <div className="user-role">Administrator</div>

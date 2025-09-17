@@ -1,4 +1,5 @@
 import React, { useMemo, useState } from 'react';
+import { FiSettings } from 'react-icons/fi';
 import './Settings.css';
 
 const SETTINGS_SECTIONS = [
@@ -66,7 +67,7 @@ const Settings = () => {
       <section className="settings-content">
         <div className="settings-header">
           <div className="section-title">
-            <span className="title-icon">⚙️</span>
+            <span className="title-icon"><FiSettings /></span>
             <h2>{sectionTitle}</h2>
           </div>
           <p className="section-desc">
@@ -195,5 +196,6 @@ const Settings = () => {
 };
 
 export default Settings;
+
 
 

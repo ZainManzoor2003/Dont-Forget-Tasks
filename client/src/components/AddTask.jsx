@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { FiPlus, FiX } from 'react-icons/fi';
 import './AddTask.css';
 
 const AddTask = () => {
@@ -48,7 +49,7 @@ const AddTask = () => {
     <div className="add-task-container">
       <div className="add-task-header">
         <div className="header-left">
-          <div className="add-icon">➕</div>
+          <div className="add-icon"><FiPlus /></div>
           <h1>Add New Task</h1>
         </div>
       </div>
@@ -284,7 +285,7 @@ const AddTask = () => {
               className="close-panel"
               onClick={() => setShowKeyPointsPanel(false)}
             >
-              ✕
+              <FiX />
             </button>
           </div>
           <div className="panel-content">
@@ -309,7 +310,7 @@ const AddTask = () => {
               className="close-popup-top-right"
               onClick={() => setShowKeyPointsPopup(false)}
             >
-              ✕
+              <FiX />
             </button>
             <div className="popup-header">
               <h3>Key Points</h3>

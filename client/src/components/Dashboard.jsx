@@ -1,4 +1,5 @@
 import React, { useState, useMemo } from 'react';
+import { FiBell, FiUser, FiClipboard, FiCalendar, FiClock, FiAlertTriangle, FiRefreshCw, FiAlertOctagon, FiSearch, FiFileText } from 'react-icons/fi';
 import TaskCard from './TaskCard';
 import './Dashboard.css';
 
@@ -57,10 +58,10 @@ const Dashboard = ({ tasks, setTasks, onNavigate }) => {
           </div>
           <div className="header-actions">
             <button className="notification-btn" title="Notifications">
-              🔔
+              <FiBell />
             </button>
             <button className="profile-btn" title="Profile">
-              👤
+              <FiUser />
             </button>
           </div>
         </div>
@@ -69,42 +70,42 @@ const Dashboard = ({ tasks, setTasks, onNavigate }) => {
       <div className="dashboard-content">
         <div className="content-header">
           <div className="section-title">
-            <span className="title-icon">📋</span>
+            <span className="title-icon"><FiClipboard /></span>
             <h2>Tasks Management</h2>
           </div>
         </div>
 
         <div className="stats-grid">
           <div className="stat-card upcoming">
-            <div className="stat-icon">📅</div>
+            <div className="stat-icon"><FiCalendar /></div>
             <div className="stat-content">
               <div className="stat-number">{counts.upcoming}</div>
               <div className="stat-label">Upcoming Tasks</div>
             </div>
           </div>
           <div className="stat-card due-today">
-            <div className="stat-icon">⏰</div>
+            <div className="stat-icon"><FiClock /></div>
             <div className="stat-content">
               <div className="stat-number">{counts.dueToday}</div>
               <div className="stat-label">Due Today</div>
             </div>
           </div>
           <div className="stat-card late">
-            <div className="stat-icon">⚠️</div>
+            <div className="stat-icon"><FiAlertTriangle /></div>
             <div className="stat-content">
               <div className="stat-number">{counts.late}</div>
               <div className="stat-label">Late Tasks</div>
             </div>
           </div>
           <div className="stat-card follow-up">
-            <div className="stat-icon">🔄</div>
+            <div className="stat-icon"><FiRefreshCw /></div>
             <div className="stat-content">
               <div className="stat-number">{counts.followUp}</div>
               <div className="stat-label">Follow-ups</div>
             </div>
           </div>
           <div className="stat-card high-priority">
-            <div className="stat-icon">🔥</div>
+            <div className="stat-icon"><FiAlertOctagon /></div>
             <div className="stat-content">
               <div className="stat-number">{counts.highPriority}</div>
               <div className="stat-label">High Priority</div>
@@ -117,7 +118,7 @@ const Dashboard = ({ tasks, setTasks, onNavigate }) => {
             <h3>Tasks List</h3>
             <div className="tasks-controls">
               <div className="search-box">
-                <span className="search-icon">🔍</span>
+                <span className="search-icon"><FiSearch /></span>
                 <input
                   type="text"
                   placeholder="Search tasks..."
@@ -158,7 +159,7 @@ const Dashboard = ({ tasks, setTasks, onNavigate }) => {
 
           {filteredTasks.length === 0 && (
             <div className="no-tasks">
-              <div className="no-tasks-icon">📝</div>
+              <div className="no-tasks-icon"><FiFileText /></div>
               <h3>No tasks found</h3>
               <p>Try adjusting your search or filter criteria</p>
             </div>

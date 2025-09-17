@@ -1,4 +1,5 @@
 import React, { useMemo, useState } from 'react';
+import { FiRefreshCw } from 'react-icons/fi';
 import './FollowUp.css';
 
 const FollowUp = ({ tasks, setTasks, onNavigate }) => {
@@ -77,7 +78,7 @@ const FollowUp = ({ tasks, setTasks, onNavigate }) => {
     <div className="followup-page">
       <div className="content-header">
         <div className="section-title">
-          <span className="title-icon">🔁</span>
+          <span className="title-icon"><FiRefreshCw /></span>
           <h2>Follow-Up</h2>
         </div>
       </div>
