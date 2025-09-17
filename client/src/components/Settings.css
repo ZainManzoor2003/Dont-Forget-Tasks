@@ -65,9 +65,9 @@
 
 .account-actions { display:flex; flex-wrap:wrap; gap:10px; }
 
-.primary-btn { background:#0e7a92; color:#fff; border:none; padding:10px 14px; border-radius:8px; cursor:pointer; }
-.secondary-btn { background:#f3f4f6; color:#111827; border:none; padding:10px 14px; border-radius:8px; cursor:pointer; }
-.danger-btn { background:#ef4444; color:#fff; border:none; padding:10px 14px; border-radius:8px; cursor:pointer; }
+.primary-btn { background: var(--coral-orange); color:#fff; border:none; padding:10px 14px; border-radius:8px; cursor:pointer; }
+.secondary-btn { background: var(--lavender-pastel); color: #fff; border:none; padding:10px 14px; border-radius:8px; cursor:pointer; }
+.danger-btn { background: var(--coral-orange);; color:#fff; border:none; padding:10px 14px; border-radius:8px; cursor:pointer; }
 
 /* Vertical stack is default; no extra breakpoint needed */
 

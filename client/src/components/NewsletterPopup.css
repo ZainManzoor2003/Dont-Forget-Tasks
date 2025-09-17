@@ -24,16 +24,16 @@
 }
 
 .newsletter-popup {
-  background: #FAFAFA;
+  background: var(--soft-white);
   border-radius: 20px;
   padding: 0;
   max-width: 500px;
   width: 90%;
   max-height: 90vh;
   position: relative;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 20px 60px var(--shadow-light);
   animation: slideIn 0.4s ease-out;
-  border: 2px solid #A9B8FF;
+  border: 2px solid var(--lavender-pastel);
 }
 
 @keyframes slideIn {
@@ -54,7 +54,7 @@
   background: none;
   border: none;
   font-size: 28px;
-  color: #0a2a33;
+  color: var(--black);
   cursor: pointer;
   width: 40px;
   height: 40px;
@@ -67,8 +67,8 @@
 }
 
 .close-button:hover {
-  background: rgba(139, 69, 19, 0.1);
-  color: #0a2a33;
+  background: rgba(0, 0, 0, 0.06);
+  color: var(--black);
 }
 
 .popup-content {
@@ -79,7 +79,7 @@
 .popup-logo h2 {
   font-size: 32px;
   font-weight: 800;
-  color: #0a2a33;
+  color: var(--black);
   margin: 0 0 20px 0;
   letter-spacing: -1px;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
@@ -88,7 +88,7 @@
 .popup-title {
   font-size: 24px;
   font-weight: 700;
-  color: #0a2a33;
+  color: var(--black);
   margin: 0 0 15px 0;
   line-height: 1.3;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
@@ -104,7 +104,7 @@
 
 .popup-description {
   font-size: 16px;
-  color: #0a2a33;
+  color: var(--text-secondary);
   margin: 0 0 30px 0;
   line-height: 1.5;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
@@ -119,9 +119,9 @@
   gap: 0;
   border-radius: 30px;
   overflow: hidden;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 15px var(--shadow-light);
   background: white;
-  border: 2px solid #A9B8FF;
+  border: 2px solid var(--lavender-pastel);
 }
 
 .email-input {
@@ -136,7 +136,7 @@
 }
 
 .email-input::placeholder {
-  color: #0a2a33;
+  color: var(--text-secondary);
   opacity: 0.7;
 }
 
@@ -146,8 +146,8 @@
 
 .subscribe-button {
   padding: 16px 30px;
-  background: #0a2a33;
-  color: white;
+  background: var(--coral-orange);
+  color: #ffffff;
   border: none;
   font-size: 16px;
   font-weight: 700;
@@ -160,7 +160,7 @@
 }
 
 .subscribe-button:hover {
-  background: #0a2a33;
+  background: #e55a2b;
   transform: translateY(-1px);
 }
 
@@ -175,7 +175,7 @@
 .success-message h3 {
   font-size: 24px;
   font-weight: 700;
-  color: #0a2a33;
+  color: var(--black);
   margin: 0 0 15px 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
   display: flex;
@@ -190,7 +190,7 @@
 
 .success-message p {
   font-size: 16px;
-  color: #6b4423;
+  color: var(--text-secondary);
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
 }
@@ -226,7 +226,7 @@
   
   .email-input {
     border-radius: 15px 15px 0 0;
-    border-bottom: 1px solid #A9B8FF;
+    border-bottom: 1px solid var(--lavender-pastel);
   }
   
   .subscribe-button {

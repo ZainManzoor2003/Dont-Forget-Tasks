@@ -10,7 +10,7 @@ const NewsletterPopup = () => {
     // Show popup after 8 seconds
     const timer = setTimeout(() => {
       setIsVisible(true);
-    }, 2000);
+    }, 8000);
 
     return () => clearTimeout(timer);
   }, []);

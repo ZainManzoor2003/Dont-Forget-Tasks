@@ -1,14 +1,14 @@
 .dashboard {
   margin-left: 280px;
   min-height: 100vh;
-  background-color: #f8f9fa;
+  background-color: var(--soft-white);
 }
 
 .dashboard-header {
-  background: white;
+  background: #ffffff;
   padding: 24px 32px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  border-bottom: 1px solid #e0e0e0;
+  box-shadow: 0 2px 4px var(--shadow-light);
+  border-bottom: 1px solid var(--border-color);
 }
 
 .header-content {
@@ -20,13 +20,13 @@
 .welcome-section h1 {
   font-size: 28px;
   font-weight: 700;
-  color: #333;
+  color: var(--black);
   margin: 0 0 4px 0;
 }
 
 .welcome-date {
   font-size: 14px;
-  color: #666;
+  color: var(--text-secondary);
   margin: 0;
 }
 
@@ -80,7 +80,7 @@
 .section-title h2 {
   font-size: 24px;
   font-weight: 600;
-  color: #333;
+  color: var(--black);
   margin: 0;
 }
 
@@ -116,7 +116,7 @@
   background: white;
   padding: 24px;
   border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 8px var(--shadow-light);
   display: flex;
   align-items: center;
   gap: 16px;
@@ -126,27 +126,27 @@
 
 .stat-card:hover {
   transform: translateY(-2px);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 4px 16px var(--shadow-medium);
 }
 
 .stat-card.upcoming {
-  border-left-color: #81C784;
+  border-left-color: #81C784; /* Fresh Mint */
 }
 
 .stat-card.due-today {
-  border-left-color: #FFB74D;
+  border-left-color: #FFB74D; /* Warm Amber */
 }
 
 .stat-card.late {
-  border-left-color: #E57373;
+  border-left-color: #E57373; /* Soft Red */
 }
 
 .stat-card.follow-up {
-  border-left-color: #64B5F6;
+  border-left-color: #64B5F6; /* Medium Sky Blue */
 }
 
 .stat-card.high-priority {
-  border-left-color: #F06292;
+  border-left-color: #F06292; /* Deep Coral */
 }
 
 .stat-icon {
@@ -167,13 +167,13 @@
 .stat-number {
   font-size: 32px;
   font-weight: 700;
-  color: #333;
+  color: var(--black);
   margin-bottom: 4px;
 }
 
 .stat-label {
   font-size: 14px;
-  color: #666;
+  color: var(--text-secondary);
   font-weight: 500;
 }
 
@@ -181,7 +181,7 @@
   background: white;
   border-radius: 12px;
   padding: 24px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 8px var(--shadow-light);
 }
 
 .tasks-header {
@@ -190,13 +190,13 @@
   align-items: center;
   margin-bottom: 24px;
   padding-bottom: 16px;
-  border-bottom: 1px solid #e0e0e0;
+  border-bottom: 1px solid var(--border-color);
 }
 
 .tasks-header h3 {
   font-size: 20px;
   font-weight: 600;
-  color: #333;
+  color: var(--black);
   margin: 0;
 }
 
@@ -216,13 +216,13 @@
   position: absolute;
   left: 12px;
   font-size: 16px;
-  color: #666;
+  color: var(--text-secondary);
   z-index: 1;
 }
 
 .search-input {
   padding: 10px 12px 10px 40px;
-  border: 2px solid #e0e0e0;
+  border: 2px solid var(--border-color);
   border-radius: 8px;
   font-size: 14px;
   width: 250px;
@@ -231,12 +231,12 @@
 
 .search-input:focus {
   outline: none;
-  border-color: #006FA7;
+  border-color: var(--lavender-pastel);
 }
 
 .filter-select {
   padding: 10px 12px;
-  border: 2px solid #e0e0e0;
+  border: 2px solid var(--border-color);
   border-radius: 8px;
   font-size: 14px;
   background: white;
@@ -246,7 +246,7 @@
 
 .filter-select:focus {
   outline: none;
-  border-color: #006FA7;
+  border-color: var(--lavender-pastel);
 }
 
 .tasks-grid {
@@ -258,7 +258,7 @@
 .no-tasks {
   text-align: center;
   padding: 60px 20px;
-  color: #666;
+  color: var(--text-secondary);
 }
 
 .no-tasks-icon {
@@ -269,7 +269,7 @@
 .no-tasks h3 {
   font-size: 20px;
   margin-bottom: 8px;
-  color: #333;
+  color: var(--black);
 }
 
 .no-tasks p {

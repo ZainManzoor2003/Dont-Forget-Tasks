@@ -27,26 +27,26 @@
 .details-card,
 .confirmation-card {
   background: #fff;
-  border: 1px solid #e5e7eb;
+  border: 1px solid var(--border-color);
   border-radius: 12px;
   padding: 16px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 2px 8px var(--shadow-light);
 }
 
 .card-title {
   font-weight: 700;
-  color: #111827;
+  color: var(--black);
   margin-bottom: 8px;
 }
 
 .section-desc {
-  color: #6b7280;
+  color: var(--text-secondary);
   margin-top: 4px;
 }
 
 .date-input {
   padding: 10px;
-  border: 1px solid #e5e7eb;
+  border: 1px solid var(--border-color);
   border-radius: 8px;
 }
 
@@ -59,16 +59,16 @@
 
 .slot-btn {
   padding: 8px 12px;
-  border: 1px solid #e5e7eb;
+  border: 1px solid var(--border-color);
   border-radius: 8px;
   background: #f9fafb;
   cursor: pointer;
 }
 
 .slot-btn.selected {
-  background: #0e7a92;
-  color: #fff;
-  border-color: #0e7a92;
+  background: var(--lavender-pastel);
+  color: #000;
+  border-color: var(--lavender-pastel);
 }
 
 .form-row {
@@ -90,7 +90,7 @@
 .form-field input,
 .form-field textarea {
   padding: 10px;
-  border: 1px solid #e5e7eb;
+  border: 1px solid var(--border-color);
   border-radius: 8px;
 }
 
@@ -111,7 +111,7 @@
 }
 
 .radio {
-  color: #374151;
+  color: var(--black);
 }
 
 .confirm-list {
@@ -127,17 +127,20 @@
 }
 
 .primary-btn {
-  background: #0e7a92;
+  background: var(--coral-orange);
   color: #fff;
   border: none;
   padding: 10px 14px;
   border-radius: 8px;
   cursor: pointer;
 }
+.primary-btn:disabled{
+  background: var(--coral-orange);
+}
 
 .secondary-btn {
   background: #f3f4f6;
-  color: #111827;
+  color: var(--black);
   border: none;
   padding: 10px 14px;
   border-radius: 8px;

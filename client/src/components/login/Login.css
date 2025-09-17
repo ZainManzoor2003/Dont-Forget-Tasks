@@ -1,6 +1,6 @@
 .login-container {
   min-height: 100vh;
-  background: linear-gradient(180deg, #0d5b75 0%, #093a49 100%);
+  background: var(--soft-white);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -10,11 +10,11 @@
 .login-card {
   background-color: #FFFFFF;
   border-radius: 16px;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 20px 60px var(--shadow-light);
   padding: 40px;
   width: 100%;
   max-width: 420px;
-  border: 1px solid #0e7a92;
+  border: 1px solid var(--border-color);
 }
 
 .login-header {
@@ -23,14 +23,14 @@
 }
 
 .login-header h1 {
-  color: #0e7a92;
+  color: var(--black);
   font-size: 2rem;
   font-weight: 800;
   margin-bottom: 8px;
 }
 
 .login-header p {
-  color: #666666;
+  color: var(--text-secondary);
   font-size: 1rem;
 }
 
@@ -53,7 +53,7 @@
 
 .form-group input {
   padding: 12px 16px;
-  border: 2px solid #e0e0e0;
+  border: 2px solid var(--border-color);
   border-radius: 10px;
   font-size: 1rem;
   transition: border-color 0.3s ease, box-shadow 0.2s ease;
@@ -61,9 +61,9 @@
 
 .form-group input:focus {
   outline: none;
-  border-color: #0e7a92;
+  border-color: var(--lavender-pastel);
   background-color: #FFFFFF;
-  box-shadow: 0 0 0 3px rgba(14, 122, 146, 0.15);
+  box-shadow: 0 0 0 3px rgba(169, 184, 255, 0.15);
 }
 
 .form-group input::placeholder {
@@ -76,19 +76,19 @@
 }
 
 .forgot-link {
-  color: #0e7a92;
+  color: var(--lavender-pastel);
   text-decoration: none;
   font-size: 0.9rem;
   transition: color 0.3s ease;
 }
 
 .forgot-link:hover {
-  color: #1094ad;
+  color: #8fa3ff;
   text-decoration: underline;
 }
 
 .submit-button {
-  background-color: #0e7a92;
+  background-color: var(--coral-orange);
   color: #FFFFFF;
   border: none;
   padding: 14px 24px;
@@ -101,9 +101,9 @@
 }
 
 .submit-button:hover {
-  background-color: #1094ad;
+  background-color: #e55a2b;
   transform: translateY(-1px);
-  box-shadow: 0 10px 24px rgba(14, 122, 146, 0.25);
+  box-shadow: 0 10px 24px rgba(255, 112, 67, 0.25);
 }
 
 .submit-button:active {
@@ -114,11 +114,11 @@
   text-align: center;
   margin-top: 20px;
   padding-top: 20px;
-  border-top: 1px solid #E0E0E0;
+  border-top: 1px solid var(--border-color);
 }
 
 .toggle-mode p {
-  color: #666666;
+  color: var(--text-secondary);
   font-size: 0.9rem;
   margin: 0;
 }
@@ -126,7 +126,7 @@
 .toggle-button {
   background: none;
   border: none;
-  color: #0e7a92;
+  color: var(--lavender-pastel);
   font-weight: 700;
   cursor: pointer;
   margin-left: 8px;
@@ -135,7 +135,7 @@
 }
 
 .toggle-button:hover {
-  color: #1094ad;
+  color: #8fa3ff;
 }
 
 /* Responsive design */
