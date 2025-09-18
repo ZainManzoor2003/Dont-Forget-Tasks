@@ -9,18 +9,17 @@
   display: flex;
   flex-direction: column;
   margin-left: 240px;
-  width: calc(100% - 240px);
+  width: 100%;
+  min-width: 0; /* allow children to shrink instead of overflow */
 }
 
 .sidebar-closed .main-content {
-  margin-left: 0;
-  width: 100%;
+  margin-left: 64px;
 }
 
 .sidebar.collapsed + .main-content,
 .layout.sidebar-closed .main-content {
   margin-left: 64px;
-  width: calc(100% - 64px);
 }
 
 .sidebar-open-btn {
