@@ -55,11 +55,15 @@
 }
 
 .sidebar.collapsed .logo-text { display: none; }
+.sidebar.collapsed .logo-icon { display: none; }
 .sidebar.collapsed .nav-label { display: none; }
 .sidebar.collapsed .sidebar-footer .user-details { display: none; }
 .sidebar.collapsed .sidebar-footer { padding: 10px; }
 .sidebar.collapsed .nav-link { justify-content: center; padding: 10px; }
 .sidebar.collapsed .nav-icon { width: auto; }
+.sidebar.collapsed .sidebar-header { padding: 10px; border-bottom: none; }
+.sidebar.collapsed .logo { gap: 0; }
+.sidebar.collapsed .sidebar-toggle { margin-left: 0; width: 32px; height: 32px; }
 
 .logo-title {
   font-size: 16px;
