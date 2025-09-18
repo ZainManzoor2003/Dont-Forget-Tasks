@@ -1,0 +1,17 @@
+.meeting-tasks-scroll::-webkit-scrollbar {
+  width: 8px;
+}
+
+.meeting-tasks-scroll::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.meeting-tasks-scroll::-webkit-scrollbar-thumb {
+  background: #cfcfcf;
+  border-radius: 4px;
+}
+
+.meeting-tasks-scroll::-webkit-scrollbar-thumb:hover {
+  background: #b5b5b5;
+}
+
