@@ -1,17 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { FiFeather } from 'react-icons/fi';
+import { FaRegCopyright } from 'react-icons/fa';
 
 const SiteFooter = () => {
   return (
     <footer className="site-footer">
-      <div className="footer-topbar">
-        <Link to="/privacy" className="foot-link"  rel="noopener noreferrer">Terms of Service</Link>
-        <Link to="/privacy" className="foot-link" rel="noopener noreferrer">Privacy Policy</Link>
-        <Link to="/faq" className="foot-link"  rel="noopener noreferrer">FAQ</Link>
-        <a href="#" className="foot-link">Support</a>
-        {/* <div className="foot-follow">Follow us :</div> */}
-      </div>
       <div className="footer-grid">
         <div className="foot-brand">
           <div className="foot-logo"><FiFeather /></div>
@@ -21,17 +15,14 @@ const SiteFooter = () => {
         </div>
         <div className="foot-col">
           <div className="foot-title">Navigation</div>
-          <a href="#about" className="foot-item">About</a>
-          <a href="#categories" className="foot-item">Categories</a>
-          <a href="#" className="foot-item">Benefits</a>
-          <a href="#contact" className="foot-item">Contacts</a>
+          <Link to="/about" className="foot-item">About</Link>
+          <Link to="/blog" className="foot-item">Blog</Link>
+          <Link to="/contact" className="foot-item">Contact</Link>
+          <Link to="/faq" className="foot-item">FAQ</Link>
         </div>
         <div className="foot-col">
-          <div className="foot-title">Information</div>
-          <a href="#" className="foot-item">Help</a>
-          <a href="#" className="foot-item">Featured</a>
-          <a href="#" className="foot-item">Cases</a>
-          <a href="#" className="foot-item">Support</a>
+          <div className="foot-title">Pages</div>
+          <Link to="/terms" className="foot-item">Terms of Service</Link>
         </div>
         <div className="foot-subscribe">
           <div className="foot-title">Subscribe</div>
@@ -41,6 +32,10 @@ const SiteFooter = () => {
             <button className="sub-btn">Subscribe</button>
           </form>
         </div>
+      </div>
+      <div style={{ maxWidth: 1200, margin: '8px auto 0', paddingTop: 8, borderTop: '1px solid #374151', textAlign: 'center', opacity: 0.85, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6 }}>
+        <FaRegCopyright aria-label="Copyright" />
+        <span>All rights reserved since 2025</span>
       </div>
     </footer>
   );
