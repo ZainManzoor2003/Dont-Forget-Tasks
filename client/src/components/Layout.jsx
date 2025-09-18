@@ -6,6 +6,7 @@ import AddTask from './AddTask';
 import FollowUp from './FollowUp';
 import Settings from './Settings';
 import Booking from './Booking';
+import Meetings from './Meetings';
 import './Layout.css';
 
 const Layout = () => {
@@ -108,6 +109,7 @@ const Layout = () => {
           <Route path="dashboard" element={<Navigate to="/dashboard" replace />} />
           <Route path="add-task" element={<AddTask tasks={tasks} setTasks={setTasks} />} />
           <Route path="follow-up" element={<FollowUp tasks={tasks} setTasks={setTasks} onNavigate={handleSectionChange} />} />
+          <Route path="meetings" element={<Meetings />} />
           <Route path="settings" element={<Settings />} />
           <Route path="booking" element={<Booking />} />
           <Route path="*" element={<Navigate to="/dashboard" replace />} />
