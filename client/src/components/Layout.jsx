@@ -13,7 +13,7 @@ const Layout = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const [activeSection, setActiveSection] = useState('dashboard');
-  const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [sidebarOpen, setSidebarOpen] = useState(true);
   const [tasks, setTasks] = useState([
     {
       id: 1,
@@ -84,15 +84,20 @@ const Layout = () => {
   const handleSectionChange = (section) => {
     setActiveSection(section);
     navigate(`/dashboard/${section === 'dashboard' ? '' : section}`);
+    if (section === 'meetings') {
+      // auto-collapse on meetings
+      setSidebarOpen(false);
+    }
   };
 
   return (
-    <div className="layout">
+    <div className={`layout${sidebarOpen ? '' : ' sidebar-closed'}`}>
       <Sidebar 
         activeSection={activeSection} 
         onSectionChange={handleSectionChange}
         isOpen={sidebarOpen}
         onClose={() => setSidebarOpen(false)}
+        onToggle={() => setSidebarOpen(prev => !prev)}
       />
       <div className="main-content">
         <div className="mobile-header">
@@ -104,6 +109,16 @@ const Layout = () => {
           </button>
           <h1>Dont Forget</h1>
         </div>
+        {!sidebarOpen && (
+          <button
+            className="sidebar-open-btn"
+            aria-label="Expand sidebar"
+            onClick={() => setSidebarOpen(true)}
+            title="Expand sidebar"
+          >
+            ☰
+          </button>
+        )}
         <Routes>
           <Route index element={<Dashboard tasks={tasks} setTasks={setTasks} onNavigate={handleSectionChange} />} />
           <Route path="dashboard" element={<Navigate to="/dashboard" replace />} />

@@ -12,6 +12,31 @@
   width: calc(100% - 240px);
 }
 
+.sidebar-closed .main-content {
+  margin-left: 0;
+  width: 100%;
+}
+
+.sidebar.collapsed + .main-content,
+.layout.sidebar-closed .main-content {
+  margin-left: 64px;
+  width: calc(100% - 64px);
+}
+
+.sidebar-open-btn {
+  position: fixed;
+  top: 12px;
+  left: 12px;
+  z-index: 1100;
+  background: var(--coral-orange);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 10px;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
+
 .mobile-header {
   display: none;
   background: white;

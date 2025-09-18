@@ -2,7 +2,7 @@ import React from 'react';
 import { FiBarChart2, FiPlus, FiRepeat, FiCalendar, FiSettings, FiEdit3, FiUser, FiVideo } from 'react-icons/fi';
 import './Sidebar.css';
 
-const Sidebar = ({ activeSection, onSectionChange, isOpen, onClose }) => {
+const Sidebar = ({ activeSection, onSectionChange, isOpen, onClose, onToggle }) => {
   const menuItems = [
     { id: 'dashboard', label: 'Dashboard', icon: <FiBarChart2 /> },
     { id: 'add-task', label: 'Add Task', icon: <FiPlus /> },
@@ -13,7 +13,7 @@ const Sidebar = ({ activeSection, onSectionChange, isOpen, onClose }) => {
   ];
 
   return (
-    <div className={`sidebar ${isOpen ? 'open' : ''}`}>
+    <div className={`sidebar ${isOpen ? 'open' : 'collapsed'}`}>
       <div className="sidebar-header">
         <div className="logo">
           <div className="logo-icon"><FiEdit3 /></div>
@@ -21,6 +21,14 @@ const Sidebar = ({ activeSection, onSectionChange, isOpen, onClose }) => {
             <div className="logo-title">DONT FORGET</div>
             <div className="logo-subtitle">Task Manager</div>
           </div>
+          <button
+            aria-label="Toggle sidebar"
+            className="sidebar-toggle"
+            onClick={() => (onToggle ? onToggle() : onClose && onClose())}
+            title={isOpen ? 'Collapse sidebar' : 'Expand sidebar'}
+          >
+            {isOpen ? '❯' : '❮'}
+          </button>
         </div>
       </div>
       
