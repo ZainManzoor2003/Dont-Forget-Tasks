@@ -28,7 +28,7 @@ const Meetings = () => {
         <div style={{ padding: 16, borderBottom: '1px solid var(--border-color)' }}>
           <h2 style={{ margin: 0 }}>Meeting Tasks</h2>
         </div>
-        <div style={{ padding: 16, whiteSpace: 'pre-wrap', lineHeight: 1.6 }}>
+        <div style={{ padding: 16, whiteSpace: 'pre-wrap', lineHeight: 1.6, maxHeight: 400, overflowY: 'auto' }}>
 {`7. Don’t Forget What To Say Page
 Hey friend—here are copy-and-paste templates you can use right away, so you don’t forget what to say.
 
