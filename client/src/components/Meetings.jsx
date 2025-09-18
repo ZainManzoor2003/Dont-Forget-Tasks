@@ -29,7 +29,7 @@ const Meetings = () => {
           <h2 style={{ margin: 0 }}>Meeting Tasks</h2>
         </div>
         <div style={{ padding: 16, lineHeight: 1.6, maxHeight: 300, overflowY: 'auto' }}>
-          {`7. Don’t Forget What To Say Page
+          {`Don’t Forget What To Say Page
 Hey friend—here are copy-and-paste templates you can use right away, so you don’t forget what to say.
 
 1) Professional Follow-Up (4)
@@ -79,9 +79,20 @@ Respectfully,
 [Your Name]`
             .split('\n')
             .map((line, idx) => {
-              const isBold = /^(7\.|\d\)|\d+\.\d+|\d\.\d|1\)|2\))/.test(line.trim());
+              const trimmed = line.trim();
+              const isTitle = idx === 0;
+              const isIntro = idx === 1 && trimmed.length > 0;
+              const isSectionHeader = /^\d\)/.test(trimmed);
+              const isSubHeader = /^\d+\.\d/.test(trimmed);
+              const isEmpty = trimmed === '';
+              if (isEmpty) return <div key={idx} style={{ height: 8 }} />;
               return (
-                <div key={idx} style={{ fontWeight: isBold ? 700 : 400, whiteSpace: 'pre-wrap' }}>
+                <div key={idx} style={{
+                  fontWeight: isTitle || isSectionHeader || isSubHeader ? 700 : 400,
+                  whiteSpace: 'pre-wrap',
+                  textAlign: isTitle || isIntro ? 'center' : 'left',
+                  marginTop: isSectionHeader ? 12 : isSubHeader ? 8 : 0
+                }}>
                   {line}
                 </div>
               );
