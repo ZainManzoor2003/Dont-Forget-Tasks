@@ -3,7 +3,6 @@
   flex-direction: column;
   gap: 16px;
   padding: 24px;
-  margin-left: 280px;
 }
 
 .settings-side {
@@ -73,7 +72,5 @@
 
 
 @media (max-width: 769px) {
-    .settings-page {
-      margin-left: 0px;
-    }
-  }
+  .settings-page { }
+}
