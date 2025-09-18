@@ -6,7 +6,7 @@ const Sidebar = ({ activeSection, onSectionChange, isOpen, onClose }) => {
   const menuItems = [
     { id: 'dashboard', label: 'Dashboard', icon: <FiBarChart2 /> },
     { id: 'add-task', label: 'Add Task', icon: <FiPlus /> },
-    { id: 'follow-up', label: "Don't Forget to Follow Up", icon: <FiRepeat /> },
+    { id: 'follow-up', label: 'Follow-ups', icon: <FiRepeat /> },
     { id: 'booking', label: 'Booking', icon: <FiCalendar /> },
     { id: 'settings', label: 'Settings', icon: <FiSettings /> }
   ];

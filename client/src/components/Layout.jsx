@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
+import { Routes, Route, useLocation, useNavigate, Navigate } from 'react-router-dom';
 import Sidebar from './Sidebar';
 import Dashboard from './Dashboard';
 import AddTask from './AddTask';
@@ -8,6 +9,8 @@ import Booking from './Booking';
 import './Layout.css';
 
 const Layout = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
   const [activeSection, setActiveSection] = useState('dashboard');
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [tasks, setTasks] = useState([
@@ -64,28 +67,29 @@ const Layout = () => {
     }
   ]);
 
-  const renderContent = () => {
-    switch (activeSection) {
-      case 'dashboard':
-        return <Dashboard tasks={tasks} setTasks={setTasks} onNavigate={setActiveSection} />;
-      case 'add-task':
-        return <AddTask tasks={tasks} setTasks={setTasks} />;
-      case 'follow-up':
-        return <FollowUp tasks={tasks} setTasks={setTasks} onNavigate={setActiveSection} />;
-      case 'settings':
-        return <Settings />;
-      case 'booking':
-        return <Booking />;
-      default:
-        return <Dashboard tasks={tasks} setTasks={setTasks} onNavigate={setActiveSection} />;
+  const sectionFromPath = useMemo(() => {
+    const parts = location.pathname.split('/').filter(Boolean);
+    // path: /dashboard/:section?
+    return parts[1] || 'dashboard';
+  }, [location.pathname]);
+
+  // Keep state in sync with URL
+  React.useEffect(() => {
+    if (activeSection !== sectionFromPath) {
+      setActiveSection(sectionFromPath);
     }
+  }, [sectionFromPath]);
+
+  const handleSectionChange = (section) => {
+    setActiveSection(section);
+    navigate(`/dashboard/${section === 'dashboard' ? '' : section}`);
   };
 
   return (
     <div className="layout">
       <Sidebar 
         activeSection={activeSection} 
-        onSectionChange={setActiveSection}
+        onSectionChange={handleSectionChange}
         isOpen={sidebarOpen}
         onClose={() => setSidebarOpen(false)}
       />
@@ -99,7 +103,15 @@ const Layout = () => {
           </button>
           <h1>Dont Forget</h1>
         </div>
-        {renderContent()}
+        <Routes>
+          <Route index element={<Dashboard tasks={tasks} setTasks={setTasks} onNavigate={handleSectionChange} />} />
+          <Route path="dashboard" element={<Navigate to="/dashboard" replace />} />
+          <Route path="add-task" element={<AddTask tasks={tasks} setTasks={setTasks} />} />
+          <Route path="follow-up" element={<FollowUp tasks={tasks} setTasks={setTasks} onNavigate={handleSectionChange} />} />
+          <Route path="settings" element={<Settings />} />
+          <Route path="booking" element={<Booking />} />
+          <Route path="*" element={<Navigate to="/dashboard" replace />} />
+        </Routes>
       </div>
       {sidebarOpen && (
         <div 

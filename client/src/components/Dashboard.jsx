@@ -140,7 +140,7 @@ const Dashboard = ({ tasks, setTasks, onNavigate }) => {
                 <option value="high-priority">High Priority</option>
               </select>
               <button className="primary-btn" onClick={() => onNavigate && onNavigate('follow-up')}>
-                Don't Forget to Follow Up
+                Follow-ups
               </button>
             </div>
           </div>
