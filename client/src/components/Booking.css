@@ -1,6 +1,5 @@
 .booking-page {
   padding: 24px;
-  margin-left: 280px;
 }
 
 .booking-page .content-header {
@@ -150,7 +149,5 @@
 /* Stacked layout is default; no breakpoint needed */
 
 @media (max-width: 769px) {
-  .booking-page {
-    margin-left: 0px;
-  }
+  .booking-page { }
 }

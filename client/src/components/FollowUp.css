@@ -1,6 +1,5 @@
 .followup-page {
   padding: 24px;
-  margin-left: 280px;
 }
 
 .followup-picker {
@@ -170,9 +169,7 @@
 }
 
 @media (max-width: 769px) {
-    .followup-page {
-      margin-left: 0;
-    }
-  }
+  .followup-page { }
+}
 
 
