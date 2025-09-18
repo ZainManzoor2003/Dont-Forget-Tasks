@@ -4,6 +4,7 @@
     background: white;
     position: relative;
     overflow: hidden;
+    margin-top: 100px;
 }
 
 .blog-container {

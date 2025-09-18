@@ -6,11 +6,11 @@ const SiteFooter = () => {
   return (
     <footer className="site-footer">
       <div className="footer-topbar">
-        <Link to="/privacy" className="foot-link" target="_blank" rel="noopener noreferrer">Terms of Service</Link>
-        <Link to="/privacy" className="foot-link" target="_blank" rel="noopener noreferrer">Privacy Policy</Link>
-        <Link to="/faq" className="foot-link" target="_blank" rel="noopener noreferrer">FAQ</Link>
+        <Link to="/privacy" className="foot-link"  rel="noopener noreferrer">Terms of Service</Link>
+        <Link to="/privacy" className="foot-link" rel="noopener noreferrer">Privacy Policy</Link>
+        <Link to="/faq" className="foot-link"  rel="noopener noreferrer">FAQ</Link>
         <a href="#" className="foot-link">Support</a>
-        <div className="foot-follow">Follow us :</div>
+        {/* <div className="foot-follow">Follow us :</div> */}
       </div>
       <div className="footer-grid">
         <div className="foot-brand">

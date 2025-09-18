@@ -41,6 +41,7 @@
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
+  cursor: pointer;
 }
 
 .pill-nav {
@@ -143,10 +144,10 @@
 
 .signin-btn {
   padding: 10px 20px;
-  background: transparent;
-  color: #ffffff;
-  border: 1px solid #404040;
-  border-radius: 6px;
+  background: var(--coral-orange);
+  color: var(--soft-white);
+    border: 2px solid var(--coral-orange);
+  border-radius: 999px;
   font-size: 14px;
   font-weight: 500;
   cursor: pointer;
@@ -154,15 +155,16 @@
 }
 
 .signin-btn:hover {
-  background: #404040;
+  background-color: var(--soft-white);
+  color: var(--coral-orange);
 }
 
 .signup-btn {
   padding: 10px 20px;
-  background: #53e0d6;
-  color: #0a2a33;
-  border: none;
-  border-radius: 6px;
+  background: var(--soft-white);
+  color: var(--coral-orange);
+  border: 2px solid var(--coral-orange);
+  border-radius: 999px;
   font-size: 14px;
   font-weight: 600;
   cursor: pointer;
@@ -170,8 +172,8 @@
 }
 
 .signup-btn:hover {
-  background: #33c6bd;
-  transform: translateY(-1px);
+  background: var(--coral-orange);
+  color: var(--soft-white);
 }
 
 /* Hero Section */
@@ -219,6 +221,13 @@
   color: var(--text-secondary);
   margin: 0;
   font-weight: 300;
+}
+
+.hero-paragraph {
+  font-size: 16px;
+  color: var(--black);
+  line-height: 1.7;
+  margin-top: 8px;
 }
 
 .hero-buttons {
@@ -282,6 +291,7 @@
 .hero-images {
   display: flex;
   justify-content: center;
+  margin-top: 20px;
 }
 
 .image-stack {
@@ -641,7 +651,7 @@
 .collage-item { position: absolute; border-radius: 16px; overflow: hidden; background:#111; box-shadow: 0 12px 32px rgba(0,0,0,0.35); border: 6px solid #ffffff; }
 .collage-main { top: 0; left: 0; width: 380px; height: 260px; }
 .collage-side.top { top: 200px; left: 300px; width: 280px; height: 180px; }
-.collage-side.bottom { top: 360px; left: 140px; width: 360px; height: 220px; }
+.collage-side.bottom { top: 300px; left: 140px; width: 360px; height: 220px; }
 
 /* Responsive collage */
 @media (max-width: 1024px) {
@@ -692,7 +702,7 @@
 
 /* Footer */
 .site-footer { color: #e5e7eb; padding: 32px 40px 60px; border-top: 1px solid #1f2937; background: #111827; }
-.footer-topbar { max-width:1200px; margin:0 auto 24px; padding-bottom:16px; border-bottom:1px solid #374151; display:flex; gap:28px; align-items:center; justify-content:space-between; }
+.footer-topbar { max-width:1200px; margin:0 auto 24px; padding-bottom:16px; border-bottom:1px solid #374151; display:flex; gap:28px; align-items:center; justify-content:center; }
 .footer-topbar .foot-link { color: #e5e7eb; text-decoration:none; margin-right:20px; opacity:0.9; }
 .footer-topbar .foot-link:hover { opacity:1; }
 .footer-grid { max-width:1200px; margin:0 auto; display:grid; grid-template-columns: 1.4fr 1fr 1fr 1.3fr; gap:40px; }

@@ -27,6 +27,7 @@ const Login = () => {
   };
 
   return (
+    <>
     <div className="login-container">
       <Header />
       <div className="login-card">
@@ -78,8 +79,9 @@ const Login = () => {
           </p>
         </div>
       </div>
-      <SiteFooter />
     </div>
+      <SiteFooter />
+      </>
   );
 };
 

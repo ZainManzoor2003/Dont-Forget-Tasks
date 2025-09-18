@@ -52,7 +52,8 @@ const FAQ = () => {
   return (
     <div className="homepage">
       <Header />
-      <div className="homepage-container" style={{ maxWidth: '900px', margin: '0 auto', padding: '2rem' }}>
+      <div className="homepage-container" style={{ maxWidth: '900px', margin: '0 auto', padding: '2rem'
+        ,marginTop:'100px'}}>
         <h2>Don’t Forget To Read Our FAQ</h2>
 
         <div className="accordion">

@@ -7,7 +7,9 @@ const PrivacyPolicy = () => {
   return (
     <div className="homepage">
       <Header />
-      <div className="homepage-container" style={{ maxWidth: '900px', margin: '0 auto', padding: '2rem' }}>
+      <div className="homepage-container" style={{ maxWidth: '900px', margin: '0 auto', padding: '2rem'
+        ,marginTop:'90px'
+      }}>
         <h2>Don’t Forget – Privacy Policy & Terms</h2>
 
         <h3>Privacy Policy</h3>

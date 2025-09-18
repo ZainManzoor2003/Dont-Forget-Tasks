@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './Blog.css';
+import Header from './Header';
+import SiteFooter from './SiteFooter';
 
 const Blog = () => {
   const [articles, setArticles] = useState([]);
@@ -68,6 +70,8 @@ const Blog = () => {
   }
 
   return (
+    <>
+    <Header/>
     <section className="blog-section">
       <div className="blog-container">
         <div className="blog-header">
@@ -96,6 +100,8 @@ const Blog = () => {
 
       </div>
     </section>
+    <SiteFooter/>
+    </>
   );
 };
 
