@@ -26,7 +26,7 @@ body {
   --lavender-pastel: #A9B8FF;
   --soft-white: #FAFAFA;
   --black: #000000;
-  --coral-orange: #FF7043;
+  --coral-orange: #FF8A65;
   --text-secondary: #666666;
   --border-color: #e0e0e0;
   --shadow-light: rgba(0, 0, 0, 0.1);
@@ -161,10 +161,10 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--lavender-pastel);
+  background: var(--coral-orange);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #8fa3ff;
+  background: #FF7043;
 }
