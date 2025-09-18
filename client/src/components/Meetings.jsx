@@ -28,8 +28,8 @@ const Meetings = () => {
         <div style={{ padding: 16, borderBottom: '1px solid var(--border-color)' }}>
           <h2 style={{ margin: 0 }}>Meeting Tasks</h2>
         </div>
-        <div style={{ padding: 16, whiteSpace: 'pre-wrap', lineHeight: 1.6, maxHeight: 400, overflowY: 'auto' }}>
-{`7. Don’t Forget What To Say Page
+        <div style={{ padding: 16, lineHeight: 1.6, maxHeight: 300, overflowY: 'auto' }}>
+          {`7. Don’t Forget What To Say Page
 Hey friend—here are copy-and-paste templates you can use right away, so you don’t forget what to say.
 
 1) Professional Follow-Up (4)
@@ -76,8 +76,16 @@ Best regards,
 Hi [Name], to accelerate [goal/outcome], I recommend a focused touchpoint on [topic]. I can meet [option A] or [option B], and I’ll circulate a one-page brief beforehand to maximize the value of our time.
 Kindly share the slot that aligns with your calendar.
 Respectfully,
-[Your Name]
-`}
+[Your Name]`
+            .split('\n')
+            .map((line, idx) => {
+              const isBold = /^(7\.|\d\)|\d+\.\d+|\d\.\d|1\)|2\))/.test(line.trim());
+              return (
+                <div key={idx} style={{ fontWeight: isBold ? 700 : 400, whiteSpace: 'pre-wrap' }}>
+                  {line}
+                </div>
+              );
+            })}
         </div>
       </div>
     </div>
