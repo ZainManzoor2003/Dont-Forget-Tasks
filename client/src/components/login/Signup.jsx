@@ -4,7 +4,7 @@ import './Login.css';
 import Header from '../Header';
 import SiteFooter from '../SiteFooter';
 
-const Login = () => {
+const Signup = () => {
   const [formData, setFormData] = useState({
     email: '',
     password: ''
@@ -20,9 +20,7 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // TODO: Implement actual authentication logic
-    // For now, just redirect to dashboard
-    console.log('Form submitted:', formData);
+    console.log('Signup submitted:', formData);
     navigate('/dashboard');
   };
 
@@ -32,9 +30,9 @@ const Login = () => {
       <div className="login-card">
         <div className="login-header">
           <h1>Don't Forget</h1>
-          <p>Welcome back!</p>
+          <p>Create your account</p>
         </div>
-        
+
         <form onSubmit={handleSubmit} className="login-form">
           <div className="form-group">
             <label htmlFor="email">Email</label>
@@ -48,7 +46,7 @@ const Login = () => {
               placeholder="Enter your email"
             />
           </div>
-          
+
           <div className="form-group">
             <label htmlFor="password">Password</label>
             <input
@@ -58,23 +56,17 @@ const Login = () => {
               value={formData.password}
               onChange={handleChange}
               required
-              placeholder="Enter your password"
+              placeholder="Create a password"
             />
           </div>
-          
-          <div className="forgot-password">
-            <a href="#" className="forgot-link">Forgot Password?</a>
-          </div>
-          
-          <button type="submit" className="submit-button">
-            Login
-          </button>
+
+          <button type="submit" className="submit-button">Create Account</button>
         </form>
-        
+
         <div className="toggle-mode">
           <p>
-            Don't have an account?
-            <Link to="/signup" className="toggle-button">Create Account</Link>
+            Already have an account?
+            <Link to="/login" className="toggle-button">Login</Link>
           </p>
         </div>
       </div>
@@ -83,4 +75,6 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Signup;
+
+
