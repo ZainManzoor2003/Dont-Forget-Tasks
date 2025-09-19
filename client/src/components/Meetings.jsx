@@ -94,7 +94,7 @@ const Meetings = ({ tasks = [], setTasks = () => { } }) => {
         <div className="meetings-right">
           <div className="tasks-card">
             <div className="tasks-head">
-              <h2 className="tasks-title">Meeting Tasks</h2>
+              <h2 className="tasks-title">Meeting Notes</h2>
               <p className="tasks-desc">Quick templates you can copy for common meeting scenarios.</p>
             </div>
             <div className="meeting-tasks-scroll">

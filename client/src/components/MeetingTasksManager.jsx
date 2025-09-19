@@ -36,7 +36,7 @@ const MeetingTasksManager = () => {
       <div className="add-task-header">
         <div className="header-left">
           <div className="add-icon"><FiClipboard /></div>
-          <h1>Meetings Tasks</h1>
+          <h1>Meetings Notes</h1>
         </div>
       </div>
 
