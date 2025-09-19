@@ -5,6 +5,7 @@ import Dashboard from './Dashboard';
 import AddTask from './AddTask';
 import FollowUp from './FollowUp';
 import Settings from './Settings';
+import MeetingTasksManager from './MeetingTasksManager';
 import Booking from './Booking';
 import Meetings from './Meetings';
 import './Layout.css';
@@ -84,10 +85,6 @@ const Layout = () => {
   const handleSectionChange = (section) => {
     setActiveSection(section);
     navigate(`/dashboard/${section === 'dashboard' ? '' : section}`);
-    if (section === 'meetings') {
-      // auto-collapse on meetings
-      setSidebarOpen(false);
-    }
   };
 
   return (
@@ -100,31 +97,13 @@ const Layout = () => {
         onToggle={() => setSidebarOpen(prev => !prev)}
       />
       <div className="main-content">
-        <div className="mobile-header">
-          <button 
-            className="menu-toggle"
-            onClick={() => setSidebarOpen(!sidebarOpen)}
-          >
-            ☰
-          </button>
-          <h1>Dont Forget</h1>
-        </div>
-        {!sidebarOpen && (
-          <button
-            className="sidebar-open-btn"
-            aria-label="Expand sidebar"
-            onClick={() => setSidebarOpen(true)}
-            title="Expand sidebar"
-          >
-            ☰
-          </button>
-        )}
         <Routes>
           <Route index element={<Dashboard tasks={tasks} setTasks={setTasks} onNavigate={handleSectionChange} />} />
           <Route path="dashboard" element={<Navigate to="/dashboard" replace />} />
           <Route path="add-task" element={<AddTask tasks={tasks} setTasks={setTasks} />} />
           <Route path="follow-up" element={<FollowUp tasks={tasks} setTasks={setTasks} onNavigate={handleSectionChange} />} />
-          <Route path="meetings" element={<Meetings />} />
+          <Route path="meetings" element={<Meetings tasks={tasks} setTasks={setTasks} />} />
+          <Route path="meeting-tasks" element={<MeetingTasksManager />} />
           <Route path="settings" element={<Settings />} />
           <Route path="booking" element={<Booking />} />
           <Route path="*" element={<Navigate to="/dashboard" replace />} />

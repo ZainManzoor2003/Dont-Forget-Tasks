@@ -13,7 +13,8 @@
 }
 
 .picker-row {
-  display: flex;
+  display: grid;
+  grid-template-columns: auto 1fr 2fr;
   gap: 12px;
 }
 
@@ -23,7 +24,7 @@
   border-radius: 8px;
   font-size: 14px;
   background: white;
-  flex: 1;
+  width: 100%;
 }
 
 .picker-row .search-input:focus {
@@ -166,6 +167,7 @@
 
 @media (max-width: 900px) {
   .followup-content { grid-template-columns: 1fr; }
+  .picker-row { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 769px) {

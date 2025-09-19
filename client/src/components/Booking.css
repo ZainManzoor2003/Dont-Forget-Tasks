@@ -74,6 +74,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 12px;
+  min-width: 0;
 }
 
 .form-field {
@@ -91,6 +92,8 @@
   padding: 10px;
   border: 1px solid var(--border-color);
   border-radius: 8px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .actions-row {
@@ -149,5 +152,5 @@
 /* Stacked layout is default; no breakpoint needed */
 
 @media (max-width: 769px) {
-  .booking-page { }
+  .form-row { grid-template-columns: 1fr; }
 }
