@@ -352,40 +352,91 @@
   }
   
   .dashboard-header {
-    padding: 16px 20px;
+    padding: 12px 16px;
   }
   
   .welcome-section h1 {
-    font-size: 24px;
+    font-size: 20px;
+  }
+  
+  .welcome-date {
+    font-size: 12px;
   }
   
   .dashboard-content {
-    padding: 20px;
+    padding: 16px;
+  }
+  
+  .section-title h2 {
+    font-size: 18px;
+  }
+  
+  .title-icon {
+    font-size: 18px;
   }
   
   .content-header {
     flex-direction: column;
-    gap: 16px;
+    gap: 12px;
     align-items: flex-start;
   }
   
   .stats-grid {
     grid-template-columns: 1fr;
-    gap: 16px;
+    gap: 12px;
+  }
+  
+  .stat-card {
+    padding: 14px;
+  }
+  
+  .stat-icon {
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
+  }
+  
+  .stat-number {
+    font-size: 20px;
+  }
+  
+  .stat-label {
+    font-size: 11px;
+  }
+  
+  .tasks-section {
+    padding: 14px;
+  }
+  
+  .tasks-header h3 {
+    font-size: 16px;
   }
   
   .tasks-controls {
     flex-direction: column;
-    gap: 12px;
+    gap: 10px;
     width: 100%;
   }
   
   .search-input {
     width: 100%;
+    font-size: 13px;
+    padding: 8px 12px 8px 35px;
+  }
+  
+  .filter-select {
+    font-size: 13px;
+    padding: 8px 12px;
   }
   
   .tasks-grid {
     grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  
+  .primary-btn {
+    font-size: 13px;
+    padding: 8px 14px;
   }
   
   .modal {
@@ -396,20 +447,85 @@
   .modal-actions {
     flex-direction: column;
   }
+  
+  .notification-btn,
+  .profile-btn {
+    width: 32px;
+    height: 32px;
+    font-size: 14px;
+  }
 }
 
 @media (max-width: 480px) {
+  .dashboard-header {
+    padding: 10px 12px;
+  }
+  
+  .welcome-section h1 {
+    font-size: 18px;
+  }
+  
+  .welcome-date {
+    font-size: 11px;
+  }
+  
+  .dashboard-content {
+    padding: 12px;
+  }
+  
+  .section-title h2 {
+    font-size: 16px;
+  }
+  
+  .title-icon {
+    font-size: 16px;
+  }
+  
   .stat-card {
-    padding: 16px;
+    padding: 12px;
   }
   
   .stat-icon {
-    width: 50px;
-    height: 50px;
-    font-size: 24px;
+    width: 35px;
+    height: 35px;
+    font-size: 16px;
   }
   
   .stat-number {
-    font-size: 24px;
+    font-size: 18px;
+  }
+  
+  .stat-label {
+    font-size: 10px;
+  }
+  
+  .tasks-section {
+    padding: 12px;
+  }
+  
+  .tasks-header h3 {
+    font-size: 15px;
+  }
+  
+  .search-input {
+    font-size: 12px;
+    padding: 7px 10px 7px 32px;
+  }
+  
+  .filter-select {
+    font-size: 12px;
+    padding: 7px 10px;
+  }
+  
+  .primary-btn {
+    font-size: 13px;
+    padding: 8px 14px;
+  }
+  
+  .notification-btn,
+  .profile-btn {
+    width: 32px;
+    height: 32px;
+    font-size: 14px;
   }
 }

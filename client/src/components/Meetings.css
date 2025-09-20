@@ -16,54 +16,39 @@
 }
 
 /* Layout */
-.meetings-page { padding: 24px; }
-.meetings-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 20px; }
-.meetings-left { display: flex; flex-direction: column; gap: 16px; }
+.meetings-page { 
+  padding: 24px; 
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.meeting-platform-section {
+  flex: 0 0 70%;
+  width: 100%;
+}
+
+.task-notes-section {
+  flex: 0 0 30%;
+  width: 100%;
+}
 .meeting-selector { display: flex; gap: 8px; margin-bottom: 8px; }
 .meeting-btn { padding: 8px 16px; border: 1px solid #d1d5db; background: #fff; border-radius: 8px; cursor: pointer; font-weight: 500; transition: all 0.2s; }
 .meeting-btn:hover { background: #f9fafb; }
 .meeting-btn.active { background: var(--coral-orange); color: #fff; border-color: var(--coral-orange); }
-.meet-card { background:#fff; border:1px solid var(--border-color); border-radius:12px; overflow:hidden; box-shadow:0 2px 8px var(--shadow-light); flex: 1; }
+.meet-card { background:#fff; border:1px solid var(--border-color); border-radius:12px; overflow:hidden; box-shadow:0 2px 8px var(--shadow-light); height: 100%; display: flex; flex-direction: column; }
 .meet-card-head { padding:12px; border-bottom:1px solid var(--border-color); font-weight:700; }
 .meet-card-head.head-with-actions { display:flex; align-items:center; justify-content:space-between; gap:12px; }
 .head-title { font-weight:700; }
 .head-actions { display:flex; gap:8px; }
-.meet-iframe { width:100%; height: 84vh; border:0; }
+.meet-iframe { width:100%; flex: 1; border:0; }
 
-.meetings-right { display:flex; flex-direction: column; gap: 16px; }
-.tasks-card, .notes-card { background:#fff; border:1px solid var(--border-color); border-radius:12px; box-shadow:0 2px 8px var(--shadow-light); }
-.tasks-head { padding: 12px 16px; border-bottom:1px solid var(--border-color); }
-.tasks-title { margin:0 0 8px 0; }
-.tasks-desc { margin:0; color:#6b7280; font-size:14px; }
-.meeting-tasks-scroll { padding: 16px; line-height:1.6; max-height: 260px; overflow-y:auto; }
-.template-cards { display:flex; flex-direction:column; gap:12px; }
-.template-card { background:#f9fafb; border:1px solid #e5e7eb; border-radius:8px; padding:12px; }
-.template-card-row { display:flex; align-items:flex-start; justify-content:space-between; gap:12px; }
-.template-title { margin:0 0 6px 0; font-size:16px; font-weight:600; color:#374151; }
-.template-desc { margin:0; font-size:14px; color:#6b7280; line-height:1.4; }
-.copy-btn { 
-  padding:8px 12px; 
-  border:1px solid var(--border-color); 
-  background:#fff; 
-  border-radius:8px; 
-  cursor:pointer; 
-  font-weight:600; 
-  display:flex; 
-  align-items:center; 
-  gap:6px; 
-  transition: all 0.2s;
-}
-.copy-btn:hover { background:#f3f4f6; }
-.copy-btn.copied { 
-  background: #10b981; 
-  color: #fff; 
-  border-color: #10b981; 
-}
-.copy-icon { font-size: 14px; }
+.tasks-card, .notes-card { background:#fff; border:1px solid var(--border-color); border-radius:12px; box-shadow:0 2px 8px var(--shadow-light); height: 100%; display: flex; flex-direction: column; }
 
 .notes-head { padding: 12px 16px; border-bottom:1px solid var(--border-color); }
 .notes-title { margin:0; }
-.notes-body { padding: 16px; display:flex; flex-direction:column; gap:8px; }
+.notes-body { padding: 16px; display:flex; flex-direction:column; gap:8px; flex: 1; }
 .notes-list { margin: 0; padding: 0; list-style: none; max-height:120px; overflow-y:auto; }
 .note-item { 
   background:#f9fafb; 
@@ -87,11 +72,176 @@
 .primary-btn:disabled { opacity:.5; cursor:not-allowed; }
 
 /* Task selection at top of notes */
-.selection-row { display:flex; gap:12px; margin-top:8px; }
+.selection-row { display:flex; gap:12px; margin-top:8px; flex-wrap: wrap; }
 .selection-row.top { padding-left: 8px; border-top: none; }
 .filter-select { padding:8px 10px; border:1px solid var(--border-color); border-radius:8px; flex:1; }
 .tasks-select { padding:8px 10px; border:1px solid var(--border-color); border-radius:8px; flex:2; }
 
-@media (max-width: 1024px) {
-  .meetings-grid { grid-template-columns: 1fr; }
+@media (max-width: 768px) {
+  .meetings-page {
+    padding: 16px;
+    gap: 16px;
+  }
+  
+  .meeting-platform-section {
+    flex: 0 0 65%;
+  }
+  
+  .task-notes-section {
+    flex: 0 0 35%;
+  }
+  
+  .meeting-selector {
+    gap: 6px;
+    margin-bottom: 6px;
+  }
+  
+  .meeting-btn {
+    padding: 6px 12px;
+    font-size: 13px;
+  }
+  
+  .meet-card-head {
+    padding: 10px;
+    font-size: 14px;
+  }
+  
+  .meet-card-head.head-with-actions {
+    gap: 8px;
+  }
+  
+  .head-title {
+    font-size: 14px;
+  }
+  
+  .head-actions {
+    gap: 6px;
+  }
+  
+  .notes-head {
+    padding: 10px 12px;
+  }
+  
+  .notes-title {
+    font-size: 14px;
+  }
+  
+  
+  .notes-body {
+    padding: 12px;
+    gap: 6px;
+  }
+  
+  .notes-list {
+    max-height: 100px;
+  }
+  
+  .note-item {
+    padding: 6px 10px;
+    padding-left: 18px;
+    margin-bottom: 4px;
+    font-size: 12px;
+  }
+  
+  .note-item::before {
+    left: 6px;
+  }
+  
+  .note-input {
+    min-height: 60px;
+    padding: 8px;
+    font-size: 12px;
+  }
+  
+  .primary-btn {
+    padding: 8px 12px;
+    font-size: 12px;
+  }
+  
+  .selection-row {
+    gap: 8px;
+    margin-top: 6px;
+  }
+  
+  .filter-select,
+  .tasks-select {
+    padding: 6px 8px;
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .meetings-page {
+    padding: 12px;
+    gap: 12px;
+  }
+  
+  .meeting-platform-section {
+    flex: 0 0 60%;
+  }
+  
+  .task-notes-section {
+    flex: 0 0 40%;
+  }
+  
+  .meeting-btn {
+    padding: 5px 10px;
+    font-size: 12px;
+  }
+  
+  .meet-card-head {
+    padding: 8px;
+    font-size: 13px;
+  }
+  
+  .head-title {
+    font-size: 13px;
+  }
+  
+  .notes-head {
+    padding: 8px 10px;
+  }
+  
+  .notes-title {
+    font-size: 13px;
+  }
+  
+  
+  .notes-body {
+    padding: 10px;
+    gap: 4px;
+  }
+  
+  .notes-list {
+    max-height: 80px;
+  }
+  
+  .note-item {
+    padding: 5px 8px;
+    padding-left: 16px;
+    margin-bottom: 3px;
+    font-size: 11px;
+  }
+  
+  .note-input {
+    min-height: 50px;
+    padding: 6px;
+    font-size: 11px;
+  }
+  
+  .primary-btn {
+    padding: 8px 12px;
+    font-size: 12px;
+  }
+  
+  .selection-row {
+    gap: 6px;
+    margin-top: 4px;
+  }
+  
+  .filter-select,
+  .tasks-select {
+    padding: 5px 6px;
+    font-size: 11px;
+  }
 }

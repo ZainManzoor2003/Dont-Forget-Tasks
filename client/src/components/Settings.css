@@ -71,6 +71,169 @@
 /* Vertical stack is default; no extra breakpoint needed */
 
 
-@media (max-width: 769px) {
-  .settings-page { }
+@media (max-width: 768px) {
+  .settings-page {
+    padding: 16px;
+    gap: 12px;
+  }
+  
+  .settings-side-header {
+    font-size: 16px;
+    padding: 12px 12px 6px 12px;
+  }
+  
+  .settings-nav {
+    padding: 6px;
+  }
+  
+  .settings-link {
+    padding: 8px 10px;
+    font-size: 14px;
+  }
+  
+  .settings-header {
+    padding: 16px 16px 0 16px;
+  }
+  
+  .section-title {
+    gap: 8px;
+  }
+  
+  .title-icon {
+    font-size: 18px;
+  }
+  
+  .section-title h2 {
+    font-size: 18px;
+  }
+  
+  .section-desc {
+    font-size: 13px;
+    margin: 4px 0 12px;
+  }
+  
+  .card-grid {
+    padding: 12px;
+    gap: 12px;
+  }
+  
+  .setting-card {
+    padding: 12px;
+  }
+  
+  .card-title {
+    font-size: 15px;
+  }
+  
+  .card-desc {
+    font-size: 13px;
+    margin: 4px 0 10px;
+  }
+  
+  .status-badge {
+    font-size: 11px;
+    padding: 3px 8px;
+  }
+  
+  .primary-btn,
+  .secondary-btn,
+  .danger-btn {
+    font-size: 13px;
+    padding: 8px 12px;
+  }
+  
+  .form-row {
+    gap: 10px;
+  }
+  
+  .form-field input[type="number"],
+  .form-field input[type="color"],
+  .form-field input[type="file"] {
+    padding: 8px;
+    font-size: 13px;
+  }
+  
+  .hint {
+    font-size: 11px;
+  }
+  
+  .guest-info {
+    padding: 10px;
+    font-size: 13px;
+  }
+  
+  .report-buttons,
+  .account-actions {
+    gap: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .settings-page {
+    padding: 12px;
+    gap: 10px;
+  }
+  
+  .settings-side-header {
+    font-size: 15px;
+    padding: 10px 10px 5px 10px;
+  }
+  
+  .settings-link {
+    padding: 6px 8px;
+    font-size: 13px;
+  }
+  
+  .settings-header {
+    padding: 12px 12px 0 12px;
+  }
+  
+  .section-title h2 {
+    font-size: 16px;
+  }
+  
+  .title-icon {
+    font-size: 16px;
+  }
+  
+  .section-desc {
+    font-size: 12px;
+  }
+  
+  .card-grid {
+    padding: 8px;
+    gap: 8px;
+  }
+  
+  .setting-card {
+    padding: 10px;
+  }
+  
+  .card-title {
+    font-size: 14px;
+  }
+  
+  .card-desc {
+    font-size: 12px;
+    margin: 3px 0 8px;
+  }
+  
+  .primary-btn,
+  .secondary-btn,
+  .danger-btn {
+    font-size: 13px;
+    padding: 8px 12px;
+  }
+  
+  .form-field input[type="number"],
+  .form-field input[type="color"],
+  .form-field input[type="file"] {
+    padding: 6px;
+    font-size: 12px;
+  }
+  
+  .guest-info {
+    padding: 8px;
+    font-size: 12px;
+  }
 }

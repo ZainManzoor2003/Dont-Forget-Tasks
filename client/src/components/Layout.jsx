@@ -6,6 +6,7 @@ import AddTask from './AddTask';
 import FollowUp from './FollowUp';
 import Settings from './Settings';
 import MeetingTasksManager from './MeetingTasksManager';
+import MeetingTemplates from './MeetingTemplates';
 import Booking from './Booking';
 import Meetings from './Meetings';
 import './Layout.css';
@@ -104,6 +105,7 @@ const Layout = () => {
           <Route path="follow-up" element={<FollowUp tasks={tasks} setTasks={setTasks} onNavigate={handleSectionChange} />} />
           <Route path="meetings" element={<Meetings tasks={tasks} setTasks={setTasks} />} />
           <Route path="meeting-tasks" element={<MeetingTasksManager />} />
+          <Route path="meeting-templates" element={<MeetingTemplates />} />
           <Route path="settings" element={<Settings />} />
           <Route path="booking" element={<Booking />} />
           <Route path="*" element={<Navigate to="/dashboard" replace />} />

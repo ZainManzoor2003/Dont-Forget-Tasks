@@ -458,23 +458,68 @@
 @media (max-width: 768px) {
   .add-task-container {
     margin-left: 0;
-    padding: 16px;
+    padding: 14px;
   }
   
   .add-task-header {
-    padding: 16px 20px;
+    padding: 12px 16px;
     flex-direction: column;
-    gap: 16px;
+    gap: 12px;
     align-items: flex-start;
   }
   
+  .add-task-header h1 {
+    font-size: 18px;
+  }
+  
+  .add-icon {
+    width: 32px;
+    height: 32px;
+    font-size: 16px;
+  }
+  
   .add-task-form {
-    padding: 20px;
+    padding: 16px;
     max-width: 100%;
+  }
+  
+  .form-group {
+    margin-bottom: 14px;
+  }
+  
+  .form-label {
+    font-size: 12px;
+    margin-bottom: 5px;
+  }
+  
+  .form-input,
+  .form-select,
+  .form-textarea {
+    padding: 8px 10px;
+    font-size: 13px;
   }
   
   .form-actions {
     flex-direction: column;
+    gap: 10px;
+    margin-top: 20px;
+    padding-top: 16px;
+  }
+  
+  .save-btn,
+  .cancel-btn {
+    font-size: 13px;
+    padding: 8px 16px;
+  }
+  
+  .key-points-btn {
+    font-size: 12px;
+    padding: 6px 10px;
+  }
+  
+  .add-key-point-btn {
+    font-size: 12px;
+    padding: 6px 10px;
   }
   
   .key-points-side-panel {
@@ -485,18 +530,86 @@
     width: 90%;
     max-width: 500px;
   }
+  
+  .checkbox-text {
+    font-size: 12px;
+  }
 }
 
 @media (max-width: 480px) {
+  .add-task-container {
+    padding: 12px;
+  }
+  
+  .add-task-header {
+    padding: 10px 12px;
+    gap: 10px;
+  }
+  
+  .add-task-header h1 {
+    font-size: 16px;
+  }
+  
+  .add-icon {
+    width: 28px;
+    height: 28px;
+    font-size: 14px;
+  }
+  
+  .add-task-form {
+    padding: 12px;
+  }
+  
+  .form-group {
+    margin-bottom: 12px;
+  }
+  
+  .form-label {
+    font-size: 11px;
+    margin-bottom: 4px;
+  }
+  
+  .form-input,
+  .form-select,
+  .form-textarea {
+    padding: 6px 8px;
+    font-size: 12px;
+  }
+  
+  .form-actions {
+    gap: 8px;
+    margin-top: 16px;
+    padding-top: 12px;
+  }
+  
+  .save-btn,
+  .cancel-btn {
+    font-size: 13px;
+    padding: 8px 14px;
+  }
+  
   .key-points-actions {
     flex-direction: column;
+    gap: 8px;
   }
   
   .key-points-input-container {
     flex-direction: column;
+    gap: 8px;
   }
   
   .add-key-point-btn {
     width: 100%;
+    font-size: 12px;
+    padding: 6px 10px;
+  }
+  
+  .key-points-btn {
+    font-size: 12px;
+    padding: 6px 10px;
+  }
+  
+  .checkbox-text {
+    font-size: 11px;
   }
 }
