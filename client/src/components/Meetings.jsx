@@ -44,8 +44,8 @@ const Meetings = ({ tasks = [], setTasks = () => { } }) => {
   };
 
   const fallbackNotes = [
-    { id: 'n1', date: new Date().toISOString(), text: 'Prepared agenda and materials.' },
-    { id: 'n2', date: new Date().toISOString(), text: 'Confirmed attendee availability.' }
+    { id: 'n1', text: 'Prepared agenda and materials' },
+    { id: 'n2', text: 'Confirmed attendee availability' }
   ];
 
   const meetingTemplates = [
@@ -156,14 +156,13 @@ const Meetings = ({ tasks = [], setTasks = () => { } }) => {
             </div>
             {selectedTask && (
               <div className="notes-body">
-                <div className="notes-timeline">
+                <ul className="notes-list">
                   {((selectedTask.followUps && selectedTask.followUps.length > 0) ? selectedTask.followUps : fallbackNotes).map(note => (
-                    <div key={note.id} className="note-row">
-                      <div className="note-date">{note.date ? new Date(note.date).toLocaleString() : ''}</div>
-                      <div className="note-text">{note.text}</div>
-                    </div>
+                    <li key={note.id} className="note-item">
+                      {note.text}
+                    </li>
                   ))}
-                </div>
+                </ul>
               </div>
             )}
                 </div>
