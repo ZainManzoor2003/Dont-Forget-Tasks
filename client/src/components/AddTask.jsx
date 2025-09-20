@@ -22,6 +22,8 @@ const AddTask = () => {
 
   const [showKeyPointsPanel, setShowKeyPointsPanel] = useState(false);
   const [showKeyPointsPopup, setShowKeyPointsPopup] = useState(false);
+  const [keyPointsList, setKeyPointsList] = useState([]);
+  const [currentKeyPoint, setCurrentKeyPoint] = useState('');
 
 
   const handleChange = (e) => {
@@ -30,6 +32,24 @@ const AddTask = () => {
       ...prev,
       [name]: type === 'checkbox' ? checked : value
     }));
+  };
+
+  const handleAddKeyPoint = () => {
+    if (currentKeyPoint.trim()) {
+      setKeyPointsList(prev => [...prev, currentKeyPoint.trim()]);
+      setCurrentKeyPoint('');
+    }
+  };
+
+  const handleKeyPointInputChange = (e) => {
+    setCurrentKeyPoint(e.target.value);
+  };
+
+  const handleKeyPress = (e) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      handleAddKeyPoint();
+    }
   };
 
 
@@ -129,14 +149,23 @@ const AddTask = () => {
         <div className="form-group">
           <label className="form-label">Key Points</label>
           <div className="key-points-container">
-            <textarea
-              name="keyPoints"
-              value={formData.keyPoints}
-              onChange={handleChange}
-              className="form-textarea"
-              placeholder="Enter key points (one per line)"
-              rows="4"
-            />
+            <div className="key-points-input-container">
+              <input
+                type="text"
+                value={currentKeyPoint}
+                onChange={handleKeyPointInputChange}
+                onKeyPress={handleKeyPress}
+                className="form-input"
+                placeholder="Enter a key point"
+              />
+              <button
+                type="button"
+                className="add-key-point-btn"
+                onClick={handleAddKeyPoint}
+              >
+                Add Key Point
+              </button>
+            </div>
             <div className="key-points-actions">
               <button
                 type="button"
@@ -289,10 +318,10 @@ const AddTask = () => {
             </button>
           </div>
           <div className="panel-content">
-            {formData.keyPoints ? (
+            {keyPointsList.length > 0 ? (
               <ul className="key-points-list">
-                {formData.keyPoints.split('\n').filter(point => point.trim()).map((point, index) => (
-                  <li key={index}>• {point.trim()}</li>
+                {keyPointsList.map((point, index) => (
+                  <li key={index}>• {point}</li>
                 ))}
               </ul>
             ) : (
@@ -316,10 +345,10 @@ const AddTask = () => {
               <h3>Key Points</h3>
             </div>
             <div className="popup-content">
-              {formData.keyPoints ? (
+              {keyPointsList.length > 0 ? (
                 <ul className="key-points-list">
-                  {formData.keyPoints.split('\n').filter(point => point.trim()).map((point, index) => (
-                    <li key={index}>• {point.trim()}</li>
+                  {keyPointsList.map((point, index) => (
+                    <li key={index}>• {point}</li>
                   ))}
                 </ul>
               ) : (

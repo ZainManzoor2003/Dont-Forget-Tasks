@@ -112,6 +112,36 @@
   position: relative;
 }
 
+.key-points-input-container {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.key-points-input-container .form-input {
+  flex: 1;
+}
+
+.add-key-point-btn {
+  background: var(--coral-orange);
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.add-key-point-btn:hover {
+  background: #e55a2b;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(255, 112, 67, 0.3);
+}
+
+
 .key-points-actions {
   display: flex;
   gap: 12px;
@@ -297,12 +327,14 @@
 
 .key-points-popup .panel-content {
   padding: 0;
+  text-align: left;
 }
 
 .key-points-list {
   list-style: none;
   padding: 10px;
   margin: 0;
+  text-align: left;
 }
 
 .key-points-list li {
@@ -458,5 +490,13 @@
 @media (max-width: 480px) {
   .key-points-actions {
     flex-direction: column;
+  }
+  
+  .key-points-input-container {
+    flex-direction: column;
+  }
+  
+  .add-key-point-btn {
+    width: 100%;
   }
 }
