@@ -1,0 +1,325 @@
+.meeting-templates-page {
+  padding: 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+  background: #FAFAFA;
+}
+
+.templates-header {
+  margin-bottom: 32px;
+}
+
+.templates-header h1 {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--black);
+  margin-bottom: 8px;
+}
+
+.templates-header p {
+  font-size: 16px;
+  color: var(--gray-600);
+  margin: 0;
+}
+
+.templates-content {
+  display: grid;
+  gap: 32px;
+}
+
+.templates-sidebar {
+  background: #F7F8FF;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  height: fit-content;
+}
+
+.templates-sidebar h3 {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--black);
+  margin-bottom: 16px;
+}
+
+.category-selector {
+  position: relative;
+}
+
+.category-select {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--black);
+  background: white;
+  cursor: pointer;
+  appearance: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  box-sizing: border-box;
+  min-width: 0;
+  max-width: 100%;
+}
+
+.category-select:focus {
+  outline: none;
+  border-color: #93c5fd;
+  box-shadow: 0 0 0 4px rgba(147, 197, 253, 0.35);
+}
+
+.select-icon {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--gray-600);
+  pointer-events: none;
+}
+
+.templates-main {
+  flex: 1;
+}
+
+.copy-success {
+  background: #10b981;
+  color: white;
+  padding: 12px 16px;
+  border-radius: 8px;
+  margin-bottom: 24px;
+  font-weight: 500;
+  animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.templates-grid {
+  display: grid;
+  gap: 20px;
+}
+
+.template-card {
+  background: #F7F8FF;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border: 1px solid #f3f4f6;
+  transition: all 0.2s ease;
+}
+
+.template-card:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
+}
+
+.template-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid #A9B8FF;
+}
+
+.template-header h3 {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--black);
+  margin: 0;
+}
+
+.template-section-chip {
+  display: inline-block;
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 999px;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+  margin-right: 12px;
+}
+
+.copy-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #1e3a8a; /* base */
+  color: #ffffff;
+  border: 1px solid #172554;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.copy-btn:hover {
+  background: #172554;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(23, 37, 84, 0.35);
+}
+
+/* Increase specificity to beat any global button styles */
+.template-card .template-header .copy-btn {
+  background-color: #0f172a !important; /* slate-900 */
+  border-color: #0b1220 !important;
+  color: #ffffff !important;
+}
+
+.template-card .template-header .copy-btn:hover {
+  background-color: #0b1220 !important;
+}
+
+.copy-btn:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.copy-icon {
+  font-size: 14px;
+}
+
+.template-content {
+  line-height: 1.6;
+}
+
+.template-content p {
+  font-size: 14px;
+  color: var(--gray-700);
+  margin: 0;
+  white-space: pre-line;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .meeting-templates-page {
+    padding: 16px;
+  }
+  
+  .templates-header h1 {
+    font-size: 24px;
+  }
+  
+  .templates-header p {
+    font-size: 14px;
+  }
+  
+  .templates-content {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .templates-sidebar {
+    padding: 16px;
+  }
+  
+  .templates-sidebar h3 {
+    font-size: 16px;
+    margin-bottom: 12px;
+  }
+  
+  .category-select {
+    padding: 10px 14px;
+    font-size: 13px;
+  }
+
+  /* Add side padding for the dropdown container on tablet/mobile */
+  .category-selector {
+    padding: 0 8px;
+  }
+  
+  .template-card {
+    padding: 16px;
+  }
+  
+  .template-header h3 {
+    font-size: 16px;
+  }
+  
+  .copy-btn {
+    padding: 6px 12px;
+    font-size: 13px;
+  }
+  
+  .template-content p {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 480px) {
+  .meeting-templates-page {
+    padding: 12px;
+  }
+  
+  .templates-header h1 {
+    font-size: 20px;
+  }
+  
+  .templates-header p {
+    font-size: 13px;
+  }
+  
+  .templates-content {
+    gap: 16px;
+  }
+  
+  .templates-sidebar {
+    padding: 12px;
+  }
+  
+  .templates-sidebar h3 {
+    font-size: 15px;
+    margin-bottom: 10px;
+  }
+  
+  .category-select {
+    padding: 8px 12px;
+    font-size: 12px;
+    width: calc(100% - 16px); /* create visual side padding */
+    margin: 0 8px;
+  }
+
+  /* Ensure the dropdown icon aligns with new padding */
+  .category-selector .select-icon {
+    right: 20px;
+  }
+  
+  .template-card {
+    padding: 12px;
+  }
+  
+  .template-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  
+  .template-header h3 {
+    font-size: 15px;
+  }
+  
+  .copy-btn {
+    width: 100%;
+    justify-content: center;
+    padding: 8px 12px;
+    font-size: 12px;
+  }
+  
+  .template-content p {
+    font-size: 12px;
+  }
+}
+

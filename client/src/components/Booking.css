@@ -1,0 +1,522 @@
+.booking-page {
+  padding: 24px;
+  background: #FAFAFA;
+}
+
+.booking-page .content-header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+
+.booking-page .section-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.booking-container {
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+}
+
+.booking-main {
+  flex: 1;
+  min-width: 0;
+}
+
+.booking-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.task-details-section {
+  width: 400px;
+  flex-shrink: 0;
+}
+
+.calendar-card,
+.details-card,
+.confirmation-card,
+.task-summary {
+  background: #F7F8FF;
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 2px 8px var(--shadow-light);
+}
+
+.card-title {
+  font-weight: 700;
+  color: var(--black);
+  margin-bottom: 8px;
+  border-bottom: 2px solid #A9B8FF;
+  padding-bottom: 8px;
+}
+
+.section-desc {
+  color: var(--text-secondary);
+  margin-top: 4px;
+}
+
+.date-input {
+  padding: 10px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+}
+
+.date-input:focus {
+  outline: none;
+  border-color: #A9B8FF;
+  box-shadow: 0 0 0 2px rgba(169, 184, 255, 0.2);
+}
+
+.slots-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.slot-btn {
+  padding: 8px 12px;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  background: #f9fafb;
+  cursor: pointer;
+}
+
+.slot-btn.selected {
+  background: #FF7043;
+  color: #fff;
+  border-color: #FF7043;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  min-width: 0;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-field.full {
+  grid-column: 1 / -1;
+}
+
+.form-field input,
+.form-field textarea {
+  padding: 10px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.form-field input:focus,
+.form-field textarea:focus {
+  outline: none;
+  border-color: #006FA7;
+  box-shadow: 0 0 0 2px rgba(0, 111, 167, 0.1);
+}
+
+.connected-task-info {
+  background: #f8f9fa;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 12px;
+  margin: 12px 0;
+}
+
+.connected-task-header {
+  margin-bottom: 8px;
+}
+
+.connected-task-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: #6b7280;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.connected-task-details {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.connected-task-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--black);
+  line-height: 1.4;
+}
+
+.connected-task-date {
+  font-size: 13px;
+  color: #6b7280;
+  font-weight: 500;
+}
+
+.actions-row {
+  display: flex;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.payment-panel {
+  margin-top: 12px;
+}
+
+.pay-methods {
+  display: flex;
+  gap: 12px;
+  margin: 8px 0;
+}
+
+.radio {
+  color: var(--black);
+}
+
+.confirm-list {
+  list-style: none;
+  padding: 0;
+  margin: 8px 0 0 0;
+  display: grid;
+  gap: 6px;
+}
+
+.mono {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+.primary-btn {
+  background: var(--coral-orange);
+  color: #fff;
+  border: none;
+  padding: 10px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.primary-btn:disabled{
+  background: var(--coral-orange);
+}
+
+.secondary-btn {
+  background: #f3f4f6;
+  color: var(--black);
+  border: none;
+  padding: 10px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/* Task Details Section Styles */
+.task-picker {
+  margin-bottom: 16px;
+  background: #F7F8FF;
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 16px;
+}
+
+.picker-label {
+  display: block;
+  margin-bottom: 10px;
+  color: #000000;
+  font-weight: 700;
+  border-bottom: 2px solid #A9B8FF;
+  padding-bottom: 6px;
+}
+
+.picker-row {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.picker-row:last-child {
+  margin-bottom: 0;
+}
+
+
+.filter-select {
+  padding: 10px 12px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 14px;
+  background: white;
+  cursor: pointer;
+}
+
+.filter-select:focus {
+  outline: none;
+  border-color: #A9B8FF;
+  box-shadow: 0 0 0 2px rgba(169, 184, 255, 0.2);
+}
+
+.task-title-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.task-title {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--black);
+}
+
+.task-datetime {
+  margin-top: 8px;
+  color: #666;
+  font-size: 14px;
+}
+
+.task-description {
+  margin-top: 12px;
+  color: #333;
+  line-height: 1.5;
+  font-size: 14px;
+}
+
+.status-badge {
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 500;
+  background: #f3f4f6;
+  color: #374151;
+}
+
+.status-badge.completed {
+  background: #10b981;
+  color: #fff;
+}
+
+.status-badge.in-progress {
+  background: #f59e0b;
+  color: #fff;
+}
+
+.status-badge.pending {
+  background: #6b7280;
+  color: #fff;
+}
+
+.status-badge.overdue {
+  background: #ef4444;
+  color: #fff;
+}
+
+.connect-booking-actions {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 2px solid #A9B8FF;
+}
+
+.connect-booking-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--coral-orange);
+  color: #fff;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: background-color 0.2s ease;
+}
+
+.connect-booking-btn:hover {
+  background: #e55a4a;
+}
+
+.btn-icon {
+  font-size: 16px;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .booking-container {
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .task-details-section {
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .form-row { 
+    grid-template-columns: 1fr; 
+  }
+  
+  .booking-container {
+    gap: 12px;
+  }
+  
+  .booking-page {
+    padding: 14px;
+  }
+  
+  .booking-header h1 {
+    font-size: 20px;
+  }
+  
+  .booking-header p {
+    font-size: 13px;
+  }
+  
+  .calendar-card,
+  .details-card,
+  .confirmation-card,
+  .task-summary {
+    padding: 14px;
+  }
+  
+  .calendar-header h3,
+  .details-header h3,
+  .confirmation-header h3,
+  .task-summary h3 {
+    font-size: 16px;
+  }
+  
+  .form-group {
+    margin-bottom: 14px;
+  }
+  
+  .form-label {
+    font-size: 12px;
+    margin-bottom: 5px;
+  }
+  
+  .form-input,
+  .form-select,
+  .form-textarea {
+    padding: 8px 10px;
+    font-size: 13px;
+  }
+  
+  .slots-grid {
+    gap: 8px;
+  }
+  
+  .slot-btn {
+    padding: 8px 12px;
+    font-size: 13px;
+  }
+  
+  .connect-booking-btn {
+    width: 100%;
+    justify-content: center;
+    font-size: 13px;
+    padding: 10px 16px;
+  }
+  
+  .task-title {
+    font-size: 14px;
+  }
+  
+  .task-description {
+    font-size: 12px;
+  }
+  
+  .task-meta {
+    font-size: 11px;
+  }
+  
+  .confirmation-details {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 480px) {
+  .booking-page {
+    padding: 12px;
+  }
+  
+  .booking-header h1 {
+    font-size: 18px;
+  }
+  
+  .booking-header p {
+    font-size: 12px;
+  }
+  
+  .calendar-card,
+  .details-card,
+  .confirmation-card,
+  .task-summary {
+    padding: 10px;
+  }
+  
+  .calendar-header h3,
+  .details-header h3,
+  .confirmation-header h3,
+  .task-summary h3 {
+    font-size: 15px;
+  }
+  
+  .form-group {
+    margin-bottom: 12px;
+  }
+  
+  .form-label {
+    font-size: 11px;
+    margin-bottom: 4px;
+  }
+  
+  .form-input,
+  .form-select,
+  .form-textarea {
+    padding: 6px 8px;
+    font-size: 12px;
+  }
+  
+  .slots-grid {
+    gap: 6px;
+  }
+  
+  .slot-btn {
+    padding: 8px 12px;
+    font-size: 13px;
+  }
+  
+  .connect-booking-btn {
+    font-size: 13px;
+    padding: 10px 16px;
+  }
+  
+  .task-title {
+    font-size: 13px;
+  }
+  
+  .task-description {
+    font-size: 11px;
+  }
+  
+  .task-meta {
+    font-size: 10px;
+  }
+  
+  .confirmation-details {
+    font-size: 12px;
+  }
+}
