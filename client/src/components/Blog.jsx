@@ -5,6 +5,8 @@ import SiteFooter from './SiteFooter';
 
 const Blog = () => {
   const [articles, setArticles] = useState([]);
+  const [tips, setTips] = useState([]);
+  const [updates, setUpdates] = useState([]);
   const [loading, setLoading] = useState(true);
 
   // Sample blog articles data
@@ -47,10 +49,48 @@ const Blog = () => {
     }
   ];
 
+  const sampleTips = [
+    {
+      id: 1,
+      title: "Batch Similar Tasks to Save Time",
+      description: "Group related tasks together and knock them out in focused sessions.",
+      image: "https://images.unsplash.com/photo-1506784983877-45594efa4cbe?w=500&h=300&fit=crop"
+    },
+    {
+      id: 2,
+      title: "Use Time Blocks for Deep Work",
+      description: "Reserve calendar blocks to work distraction‑free on high‑value work.",
+      image: "https://images.unsplash.com/photo-1515879218367-8466d910aaa4?w=500&h=300&fit=crop"
+    },
+    {
+      id: 3,
+      title: "Automate Follow‑ups",
+      description: "Create reminders so no conversation or lead slips through the cracks.",
+      image: "https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?w=500&h=300&fit=crop"
+    }
+  ];
+
+  const sampleUpdates = [
+    {
+      id: 1,
+      title: "New Calendar Sync Improvements",
+      description: "Faster, more reliable syncing across Google and Outlook calendars.",
+      image: "https://picsum.photos/seed/update1/500/300"
+    },
+    {
+      id: 2,
+      title: "Smart Reminders Released",
+      description: "Automatically prioritize tasks due today and urgent follow‑ups.",
+      image: "https://picsum.photos/seed/update2/500/300"
+    }
+  ];
+
   useEffect(() => {
     // Simulate loading
     setTimeout(() => {
       setArticles(sampleArticles);
+      setTips(sampleTips);
+      setUpdates(sampleUpdates);
       setLoading(false);
     }, 1000);
   }, []);
@@ -75,10 +115,8 @@ const Blog = () => {
     <section className="blog-section">
       <div className="blog-container">
         <div className="blog-header">
-          <h2 className="blog-title">Don’t Forget to Read Our Blog</h2>
-          <p className="blog-subtitle">
-            Stay updated with the latest insights on productivity, task management, and work-life balance.
-          </p>
+          <h2 className="blog-title">Don’t Forget to Read Our Blog (optional)</h2>
+          <p className="blog-subtitle">Articles, tips, updates</p>
         </div>
 
         <div className="all-articles">
@@ -92,6 +130,40 @@ const Blog = () => {
                 <div className="article-content">
                   <h4 className="article-title">{article.title}</h4>
                   <p className="article-excerpt">{article.description}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="all-articles" style={{ marginTop: 40 }}>
+          <h3 className="section-title">Tips</h3>
+          <div className="articles-grid">
+            {tips.map(item => (
+              <div key={item.id} className="article-card">
+                <div className="article-image">
+                  <img src={item.image} alt={item.title} onError={(e)=>{ e.currentTarget.src = 'https://picsum.photos/seed/fallback/500/300'; }} />
+                </div>
+                <div className="article-content">
+                  <h4 className="article-title">{item.title}</h4>
+                  <p className="article-excerpt">{item.description}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="all-articles" style={{ marginTop: 40 }}>
+          <h3 className="section-title">Updates</h3>
+          <div className="articles-grid">
+            {updates.map(item => (
+              <div key={item.id} className="article-card">
+                <div className="article-image">
+                  <img src={item.image} alt={item.title} onError={(e)=>{ e.currentTarget.src = 'https://picsum.photos/seed/fallback2/500/300'; }} />
+                </div>
+                <div className="article-content">
+                  <h4 className="article-title">{item.title}</h4>
+                  <p className="article-excerpt">{item.description}</p>
                 </div>
               </div>
             ))}

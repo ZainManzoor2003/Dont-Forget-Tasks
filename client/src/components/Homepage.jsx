@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { FiCalendar, FiCreditCard, FiMail, FiAlertCircle, FiBook, FiTrendingUp, FiBookOpen, FiUsers, FiGrid } from 'react-icons/fi';
+import { FiCalendar, FiCreditCard, FiMail, FiAlertCircle, FiBook, FiTrendingUp, FiBookOpen, FiUsers, FiGrid, FiLayers, FiShield, FiClock, FiTarget, FiArrowRight } from 'react-icons/fi';
 import Header from './Header';
 import NewsletterPopup from './NewsletterPopup';
 import SiteFooter from './SiteFooter';
@@ -24,9 +24,13 @@ const Homepage = () => {
       <section className="hero-section">
         <div className="hero-container">
           <div className="hero-content">
-            <h1 className="hero-title">Don’t Forget Your Home Page</h1>
+            <h1 className="hero-title">Don't Forget — Take Control Today</h1>
+            <p className="hero-subtitle">Stay Organized. Stay Ahead. Never Miss a Thing.</p>
             <p className="hero-paragraph">Ever missed something important… and felt the fallout immediately? A meeting you forgot. A deadline you blew past. A client you lost because the follow-up never happened. One small slip can cost time, money, and trust.</p>
-            <p className="hero-paragraph">Let’s be honest. Life is coming at you fast — clients to manage, meetings to schedule, deadlines to hit, and personal responsibilities you can’t drop. Whether you’re an entrepreneur, a consultant, a student organizing study groups, a virtual assistant juggling multiple clients, a busy supervisor, or a parent trying to keep the family calendar from falling apart… one thing is certain:</p>
+            <p className="hero-paragraph">Let's be honest.</p>
+            <p className="hero-paragraph">Life is coming at you fast — clients to manage, meetings to schedule, deadlines to hit, and personal responsibilities you can't drop. Whether you're an entrepreneur, a consultant, a student organizing study groups, a virtual assistant juggling multiple clients, a busy supervisor, or a parent trying to keep the family calendar from falling apart… one thing is certain:</p>
+            <p className="hero-paragraph">You can't afford to forget.</p>
+            <p className="hero-paragraph">That's where Don't Forget comes in.</p>
 
             <div className="cta-inline" role="button" tabIndex={0} onClick={handleStartNow} onKeyDown={(e)=>{ if(e.key==='Enter'){ handleStartNow(); } }}>
               <span className="cta-inline-lead">Start Now —</span> Keep Every Detail on Track!
@@ -43,6 +47,14 @@ const Homepage = () => {
               </figure>
             </div>
           </div>
+        </div>
+      </section>
+
+      <section className="what-is-section">
+        <div className="what-is-container">
+          <h2 className="what-is-title">Why Use Don't Forget?</h2>
+          <p className="what-is-description">No more scattered tools. No more missed opportunities.</p>
+          <p className="what-is-description">With Don't Forget, you see everything in one clean, organized space — so you can work smarter, stay prepared, and protect your time. Don't just manage your schedule. Own it.</p>
         </div>
       </section>
 
@@ -127,13 +139,20 @@ const Homepage = () => {
         </div>
       </section>
 
+      <section className="why-choose-section">
+        <div className="why-choose-container">
+          <h2 className="why-choose-title">Why Choose Don't Forget?</h2>
+          <div className="why-choose-content">
+            <p className="why-choose-paragraph">No more scattered tools. No more missed opportunities.</p>
+            <p className="why-choose-paragraph">With Don't Forget, you see everything in one clean, organized space — so you can work smarter, stay prepared, and protect your time. Don't just manage your schedule. Own it.</p>
+          </div>
+        </div>
+      </section>
+
       <section className="cta-section">
         <div className="cta-container">
-          <p className="cta-copy">No more scattered tools. No more missed opportunities. With Don’t Forget, you see everything in one clean, organized space — so you can work smarter, stay prepared, and protect your time. Don’t just manage your schedule. Own it.</p>
-          <h3 className="cta-heading">Don’t Forget — Take Control Today!</h3>
-          <div className="cta-actions">
-            <button className="primary-btn" onClick={handleSignup}>Start Now — Keep Every Detail on Track!</button>
-          </div>
+          <h3 className="cta-heading">Don't Forget — Take Control Today!</h3>
+          <p className="cta-copy" style={{ marginBottom: 0 }}>Start Now — Keep Every Detail on Track!</p>
         </div>
       </section>
 

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { FaBars, FaTimes } from 'react-icons/fa';
+import { FiFeather } from 'react-icons/fi';
 
 const Header = () => {
   const navigate = useNavigate();
@@ -23,11 +24,8 @@ const Header = () => {
         aria-label="Go to homepage"
         style={{ display: 'inline-flex', alignItems: 'center', gap: 8, cursor: 'pointer', whiteSpace: 'nowrap' }}
       >
-        {/* Simple checklist icon as a logo */}
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect x="3" y="3" width="18" height="18" rx="3" stroke="currentColor" strokeWidth="2"/>
-          <path d="M7 12L10 15L17 8" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-        </svg>
+        {/* Feather/pen icon as logo */}
+        <FiFeather size={22} />
         <span className="brand-text" style={{ fontWeight: 700, whiteSpace: 'nowrap' }}>Don't Forget</span>
       </div>
       
