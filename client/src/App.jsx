@@ -9,6 +9,7 @@ import PrivacyPolicy from './components/PrivacyPolicy';
 import FAQ from './components/FAQ';
 import Contact from './components/Contact';
 import AboutUs from './components/AboutUs';
+import PublicBooking from './components/PublicBooking';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/dashboard/*" element={<Layout />} />
+          <Route path="/book" element={<PublicBooking />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/about" element={<AboutUs />} />

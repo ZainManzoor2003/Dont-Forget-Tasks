@@ -5,11 +5,11 @@ import './Sidebar.css';
 const Sidebar = ({ activeSection, onSectionChange, isOpen, onClose, onToggle }) => {
   const menuItems = [
     { id: 'dashboard', label: 'Dashboard', icon: <FiBarChart2 /> },
-    { id: 'add-task', label: 'Create Task', icon: <FiPlus /> },
-    { id: 'follow-up', label: 'Follow Up', icon: <FiRepeat /> },
-    { id: 'booking', label: 'Public Booking', icon: <FiCalendar /> },
+    { id: 'add-task', label: 'Create a Task', icon: <FiPlus /> },
+    { id: 'follow-up', label: 'Follow-Ups', icon: <FiRepeat /> },
+    { id: 'booking', label: 'Public Booking Page', icon: <FiCalendar /> },
     { id: 'settings', label: 'Settings', icon: <FiSettings /> },
-    { id: 'meeting-templates', label: 'What To Say', icon: <FiFileText /> },
+    { id: 'meeting-templates', label: 'Communication Templates', icon: <FiFileText /> },
     { id: 'faq', label: 'FAQ', icon: <FiClipboard /> },
     { id: 'contact', label: 'Contact Us', icon: <FiEdit3 /> },
     { id: 'blog', label: 'Blog', icon: <FiBookOpen /> },

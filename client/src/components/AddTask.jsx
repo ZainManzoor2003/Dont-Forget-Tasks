@@ -20,6 +20,12 @@ const AddTask = () => {
     reminder: '15 minutes'
   });
 
+  const generateMeetingLink = () => {
+    const token = Math.random().toString(36).slice(2, 6) + '-' + Math.random().toString(36).slice(2, 6) + '-' + Math.random().toString(36).slice(2, 6);
+    // Placeholder auto-generated link (simulate Zoom/Google Meet integration)
+    return `https://meet.dontforget.app/${token}`;
+  };
+
   const [showKeyPointsPanel, setShowKeyPointsPanel] = useState(false);
   const [showKeyPointsPopup, setShowKeyPointsPopup] = useState(false);
   const [keyPointsList, setKeyPointsList] = useState([]);
@@ -28,10 +34,21 @@ const AddTask = () => {
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: type === 'checkbox' ? checked : value
-    }));
+    setFormData(prev => {
+      const next = { ...prev, [name]: type === 'checkbox' ? checked : value };
+      if (name === 'taskType') {
+        if (value === 'Video' && !prev.meetingLink) {
+          next.meetingLink = generateMeetingLink();
+        }
+        if (value !== 'Video') {
+          next.meetingLink = '';
+        }
+      }
+      if (name === 'dateTime' && prev.taskType === 'Video' && !prev.meetingLink) {
+        next.meetingLink = generateMeetingLink();
+      }
+      return next;
+    });
   };
 
   const handleAddKeyPoint = () => {
@@ -70,7 +87,7 @@ const AddTask = () => {
       <div className="add-task-header">
         <div className="header-left">
           <div className="add-icon"><FiPlus /></div>
-          <h1>Don't Forget To Create Your Task</h1>
+          <h1>Don't Forget To Create a Task</h1>
         </div>
       </div>
 
@@ -117,17 +134,17 @@ const AddTask = () => {
           </select>
         </div>
 
-        {/* Zoom/Google Meet link if video */}
+        {/* Auto-generated meeting link for Video */}
         {formData.taskType === 'Video' && (
           <div className="form-group">
-            <label className="form-label">Zoom/Google Meet Link</label>
+            <label className="form-label">Meeting Link (auto-generated)</label>
             <input
-              type="url"
+              type="text"
               name="meetingLink"
-              value={formData.meetingLink}
-              onChange={handleChange}
+              value={formData.meetingLink || ''}
+              readOnly
               className="form-input"
-              placeholder="Paste or connect meeting link"
+              placeholder="Generating link..."
             />
           </div>
         )}

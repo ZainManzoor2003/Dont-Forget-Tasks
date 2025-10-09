@@ -789,7 +789,7 @@ Warm regards,
   return (
     <div className="meeting-templates-page">
       <div className="templates-header">
-        <h1>Don’t Forget What To Say Page</h1>
+        <h1>Communication Templates</h1>
         <p>Hey friend—here are copy-and-paste templates you can use right away, so you don’t forget what to say.</p>
       </div>
 
