@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { FaCopy, FaChevronDown } from 'react-icons/fa';
+import { FaCopy, FaChevronDown, FaChevronUp } from 'react-icons/fa';
 import './MeetingTemplates.css';
 
 const MeetingTemplates = () => {
-  const [selectedCategory, setSelectedCategory] = useState('all');
+  const [expandedCategories, setExpandedCategories] = useState({});
   const [copySuccess, setCopySuccess] = useState('');
 
   const templateCategories = [
@@ -755,9 +755,24 @@ Warm regards,
     }
   };
 
-  const filteredTemplates = selectedCategory === 'all' 
-    ? templates 
-    : templates.filter(template => template.category === selectedCategory);
+  const toggleCategory = (categoryValue) => {
+    setExpandedCategories(prev => ({
+      ...prev,
+      [categoryValue]: !prev[categoryValue]
+    }));
+  };
+
+  const groupedTemplates = templateCategories.reduce((acc, category) => {
+    if (category.value === 'all') return acc;
+    const categoryTemplates = templates.filter(t => t.category === category.value);
+    if (categoryTemplates.length > 0) {
+      acc[category.value] = {
+        label: category.label,
+        templates: categoryTemplates
+      };
+    }
+    return acc;
+  }, {});
 
   const copyToClipboard = async (content, title) => {
     try {
@@ -790,68 +805,71 @@ Warm regards,
     <div className="meeting-templates-page">
       <div className="templates-header">
         <h1>Communication Templates</h1>
-        <p>Hey friend—here are copy-and-paste templates you can use right away, so you don’t forget what to say.</p>
+        <p className="header-intro">
+          Ever get stuck—or forget what to say—professionally?
+        </p>
+        <p className="header-description">
+          Don't Forget has you covered. These done-for-you communication templates help you say it right every time. 
+          Just copy, paste, and fill in the blanks to add your personal touch for emails, texts, or messages that 
+          help you sound clear, confident, and professional.
+        </p>
+        <p className="header-tagline">Thank me later.</p>
       </div>
 
-      <div className="templates-content">
-        <div className="templates-sidebar">
-          <h3>Categories</h3>
-          <div className="category-selector">
-            <select 
-              value={selectedCategory} 
-              onChange={(e) => setSelectedCategory(e.target.value)}
-              className="category-select"
-            >
-              {templateCategories.map(category => (
-                <option key={category.value} value={category.value}>
-                  {category.label}
-                </option>
-              ))}
-            </select>
-            <FaChevronDown className="select-icon" />
-          </div>
+      {copySuccess && (
+        <div className="copy-success">
+          {copySuccess}
         </div>
+      )}
 
-        <div className="templates-main">
-          {copySuccess && (
-            <div className="copy-success">
-              {copySuccess}
-            </div>
-          )}
-          
-          <div className="templates-grid">
-            {filteredTemplates.map(template => {
-              const section = mapCategoryToSection(template.category);
-              return (
-                <div
-                  key={template.id}
-                  className="template-card"
-                  style={{
-                    borderColor: section.color,
-                    boxShadow: `0 2px 10px ${section.color}33`,
-                    background: `linear-gradient(0deg, ${section.color}14, ${section.color}0A)`
-                  }}
-                >
-                  <div className="template-header">
-                  <h3>{template.title}</h3>
-                  <button 
-                    type="button"
-                    className="copy-btn"
-                    onClick={(e) => { e.preventDefault(); e.stopPropagation(); copyToClipboard(template.content, template.title); }}
-                    aria-label={`Copy template: ${template.title}`}
-                  >
-                    <FaCopy className="copy-icon" />
-                    Copy
-                  </button>
-                  </div>
-                  <div className="template-content">
-                  <p>{template.content}</p>
+      <div className="templates-accordion">
+        {Object.entries(groupedTemplates).map(([categoryValue, categoryData]) => {
+          const isExpanded = expandedCategories[categoryValue];
+          return (
+            <div key={categoryValue} className="accordion-item">
+              <button 
+                className="accordion-header"
+                onClick={() => toggleCategory(categoryValue)}
+                aria-expanded={isExpanded}
+              >
+                <span className="accordion-title">{categoryData.label}</span>
+                <span className="accordion-icon">
+                  {isExpanded ? <FaChevronUp /> : <FaChevronDown />}
+                </span>
+              </button>
+              
+              {isExpanded && (
+                <div className="accordion-content">
+                  <div className="templates-grid">
+                    {categoryData.templates.map(template => (
+                      <div key={template.id} className="template-card">
+                        <div className="template-header">
+                          <h3>{template.title}</h3>
+                          <button 
+                            type="button"
+                            className="copy-btn"
+                            onClick={(e) => { 
+                              e.preventDefault(); 
+                              e.stopPropagation(); 
+                              copyToClipboard(template.content, template.title); 
+                            }}
+                            aria-label={`Copy template: ${template.title}`}
+                          >
+                            <FaCopy className="copy-icon" />
+                            Copy
+                          </button>
+                        </div>
+                        <div className="template-content">
+                          <p>{template.content}</p>
+                        </div>
+                      </div>
+                    ))}
                   </div>
                 </div>
-              );
-            })}
-          </div>
-        </div>
+              )}
+            </div>
+          );
+        })}
       </div>
     </div>
   );
