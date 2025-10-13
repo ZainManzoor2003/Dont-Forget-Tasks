@@ -20,6 +20,12 @@ const PublicBooking = () => {
   const [payNow, setPayNow] = useState(false); // Client chooses to pay now or not
   const [isSharedLink, setIsSharedLink] = useState(false);
   const [ownerName, setOwnerName] = useState('us');
+  const [packages, setPackages] = useState([
+    { id: 'consult-30', name: 'Consultation (30 min)', price: 29, duration: 30, description: 'Quick consult call' },
+    { id: 'strategy-60', name: 'Strategy Session (60 min)', price: 59, duration: 60, description: 'In-depth strategy meeting' },
+    { id: 'vip-90', name: 'VIP Intensive (90 min)', price: 99, duration: 90, description: 'Deep dive and action plan' }
+  ]);
+  const [selectedPackageId, setSelectedPackageId] = useState('');
 
   // In a real app, you might fetch owner-configured pricing here; for now, payment is optional without service selection
 
@@ -28,6 +34,7 @@ const PublicBooking = () => {
     const owner = searchParams.get('owner');
     const payment = searchParams.get('payment');
     const task = searchParams.get('task');
+    const pkgs = searchParams.get('pkgs');
     
     if (owner === 'true') {
       setIsSharedLink(true);
@@ -40,7 +47,17 @@ const PublicBooking = () => {
       setRequirePayment(true);
     }
     
-    // In a real app, you would load task details based on the task parameter
+    // Decode packages from link if present (overrides defaults)
+    if (pkgs) {
+      try {
+        const json = decodeURIComponent(escape(atob(pkgs)));
+        const list = JSON.parse(json);
+        const normalized = list.map(p => ({ id: p.id, name: p.n, price: Number(p.pr)||0, duration: Number(p.du)||0, description: p.d||'' }));
+        if (Array.isArray(normalized) && normalized.length > 0) setPackages(normalized);
+      } catch (e) {
+        console.error('Invalid packages payload');
+      }
+    }
   }, [searchParams]);
 
   const meetingLink = useMemo(() => {
@@ -50,7 +67,8 @@ const PublicBooking = () => {
   }, [date, selectedSlot]);
 
   const isGuestValid = guest.name.trim() && guest.email.trim() && guest.phone.trim();
-  const needsPayment = requirePayment || payNow; // requirePayment (owner-enforced) OR client chooses to pay now
+  const selectedPackage = packages.find(p => p.id === selectedPackageId);
+  const needsPayment = (requirePayment || payNow) && !!selectedPackage;
 
   const handleConfirm = (e) => {
     e.preventDefault();
@@ -76,6 +94,31 @@ const PublicBooking = () => {
     setStep('select');
     setPayNow(false);
   };
+
+  if (!isSharedLink) {
+    return (
+      <div className="public-booking-page">
+        <div className="public-header">
+          <div className="public-header-content">
+            <Link to="/" className="back-link"><FiArrowLeft /> Back to Home</Link>
+            <div className="public-logo"><FiCalendar /><span>Don't Forget</span></div>
+          </div>
+        </div>
+        <div className="booking-page">
+          <div className="content-header">
+            <div className="section-title">
+              <span className="title-icon"><FiCalendar /></span>
+              <h2>Link Required</h2>
+            </div>
+            <p className="section-desc">This booking page is only accessible via a shared link from the account owner.</p>
+          </div>
+          <div className="actions-row">
+            <Link to="/" className="primary-btn">Go to Home</Link>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="public-booking-page">
@@ -133,6 +176,19 @@ const PublicBooking = () => {
 
                 <form className="details-card" onSubmit={handleConfirm}>
                   <div className="card-title">Your Details</div>
+                  {packages.length > 0 && (
+                    <div className="form-row">
+                      <div className="form-field full">
+                        <label>Select a Package</label>
+                        <select value={selectedPackageId} onChange={(e)=>setSelectedPackageId(e.target.value)} className="filter-select">
+                          <option value="">Choose...</option>
+                          {packages.map(p => (
+                            <option key={p.id} value={p.id}>{p.name} — ${p.price.toFixed(2)} • {p.duration}m</option>
+                          ))}
+                        </select>
+                      </div>
+                    </div>
+                  )}
                   <div className="form-row">
                     <div className="form-field">
                       <label>Full Name *</label>
@@ -196,7 +252,7 @@ const PublicBooking = () => {
                     <div className="payment-panel">
                       <div className="card-title">Payment</div>
                       <div className="payment-info">
-                        <p className="payment-note">You chose to pay now. Complete payment to confirm your booking.</p>
+                        <p className="payment-note">{selectedPackage ? `Pay $${selectedPackage.price.toFixed(2)} for ${selectedPackage.name}.` : 'You chose to pay now. Complete payment to confirm your booking.'}</p>
                       </div>
                       <div className="pay-methods">
                         <label className="radio"><input type="radio" name="pay" checked={paymentMethod==='stripe'} onChange={()=>setPaymentMethod('stripe')} /> Stripe</label>
@@ -219,7 +275,7 @@ const PublicBooking = () => {
             <div className="card-title">Booking Confirmed! 🎉</div>
             <ul className="confirm-list">
               <li><strong>Date/Time:</strong> {date} at {selectedSlot}</li>
-              <li><strong>Meeting link:</strong> <span className="mono">{meetingLink}</span></li>
+              <li><strong>Meeting link:</strong> <span className="mono">{meetingLink}</span> <button className="secondary-btn" onClick={()=>navigator.clipboard.writeText(meetingLink)} style={{ marginLeft: 8 }}>Copy</button></li>
               <li><strong>Payment:</strong> {payNow || requirePayment ? 'Collected' : 'Not collected'}</li>
               {guest.comment && (<li><strong>Notes:</strong> {guest.comment}</li>)}
             </ul>

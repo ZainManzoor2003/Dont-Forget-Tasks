@@ -63,9 +63,7 @@ const Login = () => {
             />
           </div>
           
-          <div className="forgot-password">
-            <a href="#" className="forgot-link">Forgot Password?</a>
-          </div>
+          {/* Forgot password link removed per request */}
           
           <button type="submit" className="submit-button">
             Login

@@ -7,6 +7,7 @@ const AddTask = () => {
     title: '',
     invitee: '',
     taskType: 'Regular',
+    platform: 'Zoom',
     meetingLink: '',
     dateTime: '',
     keyPoints: '',
@@ -14,15 +15,24 @@ const AddTask = () => {
     priority: 'Medium',
     tags: '',
     followUpLink: '',
-    guestAccess: false,
     redirectUrl: '',
     bookingLimit: '',
     reminder: '15 minutes'
   });
 
-  const generateMeetingLink = () => {
-    const token = Math.random().toString(36).slice(2, 6) + '-' + Math.random().toString(36).slice(2, 6) + '-' + Math.random().toString(36).slice(2, 6);
-    // Placeholder auto-generated link (simulate Zoom/Google Meet integration)
+  const generateMeetingLink = (platform) => {
+    const token = Math.random().toString(36).slice(2, 10);
+    const meetingId = Math.floor(Math.random() * 900000000) + 100000000;
+    
+    if (platform === 'Zoom') {
+      // Generate Zoom-style meeting link
+      return `https://zoom.us/j/${meetingId}?pwd=${token}`;
+    } else if (platform === 'Google Meet') {
+      // Generate Google Meet-style meeting link
+      return `https://meet.google.com/${token.slice(0, 3)}-${token.slice(3, 6)}-${token.slice(6, 9)}`;
+    }
+    
+    // Fallback
     return `https://meet.dontforget.app/${token}`;
   };
 
@@ -36,17 +46,28 @@ const AddTask = () => {
     const { name, value, type, checked } = e.target;
     setFormData(prev => {
       const next = { ...prev, [name]: type === 'checkbox' ? checked : value };
+      
+      // Handle task type change
       if (name === 'taskType') {
-        if (value === 'Video' && !prev.meetingLink) {
-          next.meetingLink = generateMeetingLink();
-        }
-        if (value !== 'Video') {
+        if (value === 'Video') {
+          // Generate meeting link when switching to Video type
+          next.meetingLink = generateMeetingLink(prev.platform);
+        } else {
+          // Clear meeting link and platform when switching away from Video
           next.meetingLink = '';
         }
       }
-      if (name === 'dateTime' && prev.taskType === 'Video' && !prev.meetingLink) {
-        next.meetingLink = generateMeetingLink();
+      
+      // Handle platform change - regenerate link with new platform
+      if (name === 'platform' && prev.taskType === 'Video') {
+        next.meetingLink = generateMeetingLink(value);
       }
+      
+      // Handle date/time change - regenerate link to ensure it's fresh
+      if (name === 'dateTime' && prev.taskType === 'Video' && prev.platform) {
+        next.meetingLink = generateMeetingLink(prev.platform);
+      }
+      
       return next;
     });
   };
@@ -134,6 +155,22 @@ const AddTask = () => {
           </select>
         </div>
 
+        {/* Video Platform Selection - only show when Video is selected */}
+        {formData.taskType === 'Video' && (
+          <div className="form-group">
+            <label className="form-label">Video Platform</label>
+            <select
+              name="platform"
+              value={formData.platform}
+              onChange={handleChange}
+              className="form-select"
+            >
+              <option value="Zoom">Zoom</option>
+              <option value="Google Meet">Google Meet</option>
+            </select>
+          </div>
+        )}
+
         {/* Auto-generated meeting link for Video */}
         {formData.taskType === 'Video' && (
           <div className="form-group">
@@ -144,7 +181,7 @@ const AddTask = () => {
               value={formData.meetingLink || ''}
               readOnly
               className="form-input"
-              placeholder="Generating link..."
+              placeholder="Select platform and date/time to generate link..."
             />
           </div>
         )}
@@ -258,21 +295,7 @@ const AddTask = () => {
           />
         </div>
 
-        {/* Guest Access toggle (video only) */}
-        {formData.taskType === 'Video' && (
-          <div className="form-group">
-            <label className="checkbox-label">
-              <input
-                type="checkbox"
-                name="guestAccess"
-                checked={formData.guestAccess}
-                onChange={handleChange}
-                className="checkbox-input"
-              />
-              <span className="checkbox-text">Guest Access (Video only)</span>
-            </label>
-          </div>
-        )}
+        {/* Guest Access removed */}
 
         {/* Redirect URL (optional) */}
         <div className="form-group">

@@ -25,9 +25,7 @@ const Homepage = () => {
   const handleSignup = () => {
     navigate('/signup');
   };
-  const handleStartNow = () => {
-    navigate('/dashboard');
-  };
+  // Removed CTA navigation to dashboard for logged-out users
 
   // GSAP Animations
   useEffect(() => {

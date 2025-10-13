@@ -1,5 +1,6 @@
 import React, { useMemo, useState } from 'react';
 import { FiCalendar, FiChevronDown, FiRefreshCw, FiLink } from 'react-icons/fi';
+import { Link } from 'react-router-dom';
 import './Booking.css';
 
 const defaultSlots = [
@@ -14,6 +15,12 @@ const Booking = () => {
   const [guest, setGuest] = useState({ name: '', phone: '', comment: '' });
   const [step, setStep] = useState('select'); // select -> payment -> confirm
   const [paymentMethod, setPaymentMethod] = useState('stripe');
+
+  // Packages (services) the owner offers
+  const [packages, setPackages] = useState([
+    { id: 'consult-30', name: 'Consultation (30 min)', price: 29, duration: 30, description: 'Quick consult call' }
+  ]);
+  const [newPackage, setNewPackage] = useState({ name: '', price: '', duration: '', description: '' });
   
   // Task details state
   const [selectedTaskType, setSelectedTaskType] = useState('all');
@@ -127,13 +134,102 @@ const Booking = () => {
     setStep('select');
   };
 
+  const publicBookingLink = useMemo(() => {
+    const paymentParam = 'optional';
+    const minimalPkgs = packages.map(p => ({ id: p.id, n: p.name, pr: Number(p.price) || 0, du: Number(p.duration) || 0, d: p.description || '' }));
+    const pkgsParam = btoa(unescape(encodeURIComponent(JSON.stringify(minimalPkgs))));
+    return `/book?owner=true&payment=${paymentParam}&pkgs=${pkgsParam}`;
+  }, [packages]);
+
+  const fullPublicBookingUrl = useMemo(() => {
+    try {
+      return (window?.location?.origin || '') + publicBookingLink;
+    } catch {
+      return publicBookingLink;
+    }
+  }, [publicBookingLink]);
+
+  const handleCopyLink = async () => {
+    try {
+      await navigator.clipboard.writeText(window.location.origin + publicBookingLink);
+      alert('Public booking link copied!');
+    } catch (e) {
+      console.error(e);
+      alert('Could not copy link.');
+    }
+  };
+
+  const copyMeetingLink = async (link) => {
+    try {
+      await navigator.clipboard.writeText(link);
+      alert('Meeting link copied!');
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
+  const addPackage = (e) => {
+    e.preventDefault();
+    if (!newPackage.name || !newPackage.duration) return;
+    const pkg = {
+      id: `${newPackage.name.toLowerCase().replace(/[^a-z0-9]+/g,'-')}-${Date.now().toString(36)}`,
+      name: newPackage.name.trim(),
+      price: Number(newPackage.price) || 0,
+      duration: Number(newPackage.duration) || 0,
+      description: newPackage.description?.trim() || ''
+    };
+    setPackages(prev => [...prev, pkg]);
+    setNewPackage({ name: '', price: '', duration: '', description: '' });
+  };
+
+  const removePackage = (id) => setPackages(prev => prev.filter(p => p.id !== id));
+
   return (
     <div className="booking-page">
       <div className="content-header">
         <div className="section-title">
           <span className="title-icon"><FiCalendar /></span>
-          <h2>Public Booking</h2>
+          <h2>Booking Setup</h2>
         </div>
+        <p className="section-desc">Configure your public booking options and share your link with clients.</p>
+      </div>
+
+      {/* Owner Controls */}
+      <div className="owner-controls" style={{ display: 'flex', gap: 12, alignItems: 'center', flexWrap: 'wrap', marginBottom: 16 }}>
+        <div className="link-preview" style={{ display: 'flex', gap: 8, alignItems: 'center', flex: 1, minWidth: 280 }}>
+          <code className="mono" style={{ padding: '6px 10px', background: '#f6f7fb', borderRadius: 8, border: '1px solid var(--border-color)', overflowX: 'auto', whiteSpace: 'nowrap', flex: 1 }}>{fullPublicBookingUrl}</code>
+          <button className="secondary-btn" onClick={handleCopyLink}><FiLink style={{ marginRight: 6 }} />Copy Link</button>
+          <Link to={publicBookingLink} target="_blank" className="primary-btn">Preview</Link>
+        </div>
+        {/* Payment required control removed: public link defaults to optional payment */}
+      </div>
+
+      {/* Packages Builder */}
+      <div className="packages-builder" style={{ display: 'grid', gap: 12, marginBottom: 24 }}>
+        <h3>Create Packages</h3>
+        <form onSubmit={addPackage} className="packages-form" style={{ display: 'grid', gridTemplateColumns: '2fr 1fr 1fr 3fr auto', gap: 8 }}>
+          <input placeholder="Package name" value={newPackage.name} onChange={(e)=>setNewPackage({ ...newPackage, name: e.target.value })} required className="form-input" />
+          <input type="number" min="0" step="0.01" placeholder="Price ($)" value={newPackage.price} onChange={(e)=>setNewPackage({ ...newPackage, price: e.target.value })} className="form-input" />
+          <input type="number" min="0" step="5" placeholder="Duration (min)" value={newPackage.duration} onChange={(e)=>setNewPackage({ ...newPackage, duration: e.target.value })} required className="form-input" />
+          <input placeholder="Description (optional)" value={newPackage.description} onChange={(e)=>setNewPackage({ ...newPackage, description: e.target.value })} className="form-input" />
+          <button className="primary-btn" type="submit">Add</button>
+        </form>
+        {packages.length > 0 && (
+          <div className="packages-list" style={{ display: 'grid', gap: 8 }}>
+            {packages.map(p => (
+              <div key={p.id} className="package-item" style={{ display: 'grid', gridTemplateColumns: '2fr 1fr 1fr 3fr auto', gap: 8, alignItems: 'center', border: '1px solid var(--border-color)', borderRadius: 10, padding: '8px 10px', background: '#fff' }}>
+                <div><strong>{p.name}</strong></div>
+                <div>${p.price.toFixed(2)}</div>
+                <div>{p.duration}m</div>
+                <div className="text-muted" style={{ color: 'var(--text-secondary)' }}>{p.description}</div>
+                <button className="secondary-btn" onClick={()=>removePackage(p.id)}>Remove</button>
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
+      <div className="content-subhead">
+        <h3>Your Booking Flow (example)</h3>
         <p className="section-desc">Pick a time slot, enter details, complete payment if required, and get your confirmation instantly.</p>
       </div>
 
@@ -198,7 +294,7 @@ const Booking = () => {
 
             {step === 'select' && (
               <div className="actions-row">
-                <button type="submit" className="primary-btn" disabled={!isGuestValid || !selectedSlot}>Continue to Payment</button>
+                <button type="button" className="primary-btn" disabled={!isGuestValid || !selectedSlot}>Confirm</button>
               </div>
             )}
 
@@ -282,7 +378,7 @@ const Booking = () => {
           <ul className="confirm-list">
             <li><strong>Service:</strong> Consultation</li>
             <li><strong>Date/Time:</strong> {date} at {selectedSlot}</li>
-            <li><strong>Meeting link:</strong> <span className="mono">{meetingLink}</span></li>
+            <li><strong>Meeting link:</strong> <span className="mono">{meetingLink}</span> <button className="secondary-btn" onClick={()=>copyMeetingLink(meetingLink)} style={{ marginLeft: 8 }}>Copy</button></li>
             {guest.comment && (<li><strong>Notes:</strong> {guest.comment}</li>)}
           </ul>
           <div className="actions-row">

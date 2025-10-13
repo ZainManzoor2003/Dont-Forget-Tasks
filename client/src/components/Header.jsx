@@ -98,7 +98,6 @@ const Header = () => {
       {/* Desktop Header Right */}
       <div className="header-right desktop-header-right" ref={buttonsRef} style={{ display: 'flex', gap: 8 }}>
         <Link to='/login' className="signin-btn" style={{ textDecoration: 'none', display: 'inline-block' }}>Login</Link>
-        <Link to='/dashboard' className="signup-btn" style={{ textDecoration: 'none', display: 'inline-block' }}>Dashboard</Link>
         <Link to="/signup" className="signup-btn" style={{ textDecoration: 'none', display: 'inline-block' }}>Signup</Link>
       </div>
 
@@ -123,7 +122,6 @@ const Header = () => {
           
           <div className="mobile-nav-buttons">
             <Link to='/login' className="mobile-signin-btn" onClick={closeMobileMenu}>Login</Link>
-            <Link to='/dashboard' className="mobile-signup-btn" onClick={closeMobileMenu}>Dashboard</Link>
             <Link to="/signup" className="mobile-signup-btn" onClick={closeMobileMenu}>Signup</Link>
           </div>
         </nav>

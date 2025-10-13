@@ -8,13 +8,23 @@
   margin-top: 50px;
 }
 
-.login-card {
+.login-container.signup {
+  margin-top: 140px; /* ensure not hidden under navbar */
+}
+
+@media (max-width: 480px) {
+  .login-container.signup {
+    margin-top: 160px;
+  }
+}
+
+.login-card, .signup-card {
   background-color: #FFFFFF;
   border-radius: 16px;
   box-shadow: 0 20px 60px var(--shadow-light);
   padding: 40px;
   width: 100%;
-  max-width: 420px;
+  max-width: 900px;
   border: 1px solid var(--border-color);
 }
 
@@ -38,6 +48,19 @@
 .login-form {
   display: flex;
   flex-direction: column;
+}
+
+/* Signup Grid */
+.signup-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px 20px;
+}
+
+.signup-form .form-group.full,
+.signup-form .form-note.full,
+.signup-form .full {
+  grid-column: 1 / -1;
 }
 
 .form-group {
@@ -141,9 +164,12 @@
 
 /* Responsive design */
 @media (max-width: 480px) {
-  .login-card {
+  .login-card, .signup-card {
     padding: 30px 20px;
     margin: 10px;
+  }
+  .signup-form {
+    grid-template-columns: 1fr;
   }
   
   .login-header h1 {
