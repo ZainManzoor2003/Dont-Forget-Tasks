@@ -12,7 +12,7 @@ const defaultSlots = [
 const Booking = () => {
   const [date, setDate] = useState(() => new Date().toISOString().slice(0, 10));
   const [selectedSlot, setSelectedSlot] = useState('');
-  const [guest, setGuest] = useState({ name: '', phone: '', comment: '' });
+  const [guest, setGuest] = useState({ name: '', email: '', phone: '', comment: '' });
   const [step, setStep] = useState('select'); // select -> payment -> confirm
   const [paymentMethod, setPaymentMethod] = useState('stripe');
 
@@ -77,7 +77,7 @@ const Booking = () => {
     return `https://dontforget.app/meet/${date}-${selectedSlot}-${token}`;
   }, [date, selectedSlot]);
 
-  const isGuestValid = guest.name.trim() && guest.phone.trim();
+  const isGuestValid = guest.name.trim() && guest.email.trim() && guest.phone.trim();
 
   // Task filtering logic (similar to FollowUp component)
   const tasksByRelevance = useMemo(() => {
@@ -129,7 +129,7 @@ const Booking = () => {
 
   const resetBooking = () => {
     setSelectedSlot('');
-    setGuest({ name: '', phone: '', comment: '' });
+    setGuest({ name: '', email: '', phone: '', comment: '' });
     setPaymentMethod('stripe');
     setStep('select');
   };
@@ -191,7 +191,7 @@ const Booking = () => {
           <span className="title-icon"><FiCalendar /></span>
           <h2>Booking Setup</h2>
         </div>
-        <p className="section-desc">Configure your public booking options and share your link with clients.</p>
+        <p className="section-desc">Copy and share your booking link so clients can view your availability, choose a date and time, and book their appointment — all updates appear automatically on your dashboard.</p>
       </div>
 
       {/* Owner Controls */}
@@ -278,6 +278,12 @@ const Booking = () => {
                     <label>Name</label>
                     <input value={guest.name} onChange={(e)=>setGuest({ ...guest, name: e.target.value })} placeholder="Your full name" required />
                   </div>
+                  <div className="form-field">
+                    <label>Email</label>
+                    <input type="email" value={guest.email} onChange={(e)=>setGuest({ ...guest, email: e.target.value })} placeholder="Your email address" required />
+                  </div>
+                </div>
+                <div className="form-row">
                   <div className="form-field">
                     <label>Phone</label>
                     <input value={guest.phone} onChange={(e)=>setGuest({ ...guest, phone: e.target.value })} placeholder="Your phone number" required />
