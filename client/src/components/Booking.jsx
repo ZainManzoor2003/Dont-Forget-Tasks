@@ -195,34 +195,48 @@ const Booking = () => {
       </div>
 
       {/* Owner Controls */}
-      <div className="owner-controls" style={{ display: 'flex', gap: 12, alignItems: 'center', flexWrap: 'wrap', marginBottom: 16 }}>
-        <div className="link-preview" style={{ display: 'flex', gap: 8, alignItems: 'center', flex: 1, minWidth: 280 }}>
-          <code className="mono" style={{ padding: '6px 10px', background: '#f6f7fb', borderRadius: 8, border: '1px solid var(--border-color)', overflowX: 'auto', whiteSpace: 'nowrap', flex: 1 }}>{fullPublicBookingUrl}</code>
-          <button className="secondary-btn" onClick={handleCopyLink}><FiLink style={{ marginRight: 6 }} />Copy Link</button>
-          <Link to={publicBookingLink} target="_blank" className="primary-btn">Preview</Link>
+      <div className="owner-controls">
+        <div className="link-preview">
+          <code className="mono link-url">{fullPublicBookingUrl}</code>
+          <div className="link-actions">
+            <button className="secondary-btn" onClick={handleCopyLink}><FiLink style={{ marginRight: 6 }} />Copy Link</button>
+            <Link to={publicBookingLink} target="_blank" className="primary-btn">Preview</Link>
+          </div>
         </div>
         {/* Payment required control removed: public link defaults to optional payment */}
       </div>
 
       {/* Packages Builder */}
-      <div className="packages-builder" style={{ display: 'grid', gap: 12, marginBottom: 24 }}>
+      <div className="packages-builder">
         <h3>Create Packages</h3>
-        <form onSubmit={addPackage} className="packages-form" style={{ display: 'grid', gridTemplateColumns: '2fr 1fr 1fr 3fr auto', gap: 8 }}>
-          <input placeholder="Package name" value={newPackage.name} onChange={(e)=>setNewPackage({ ...newPackage, name: e.target.value })} required className="form-input" />
-          <input type="number" min="0" step="0.01" placeholder="Price ($)" value={newPackage.price} onChange={(e)=>setNewPackage({ ...newPackage, price: e.target.value })} className="form-input" />
-          <input type="number" min="0" step="5" placeholder="Duration (min)" value={newPackage.duration} onChange={(e)=>setNewPackage({ ...newPackage, duration: e.target.value })} required className="form-input" />
-          <input placeholder="Description (optional)" value={newPackage.description} onChange={(e)=>setNewPackage({ ...newPackage, description: e.target.value })} className="form-input" />
-          <button className="primary-btn" type="submit">Add</button>
+        <form onSubmit={addPackage} className="packages-form">
+          <div className="form-row">
+            <input placeholder="Package name" value={newPackage.name} onChange={(e)=>setNewPackage({ ...newPackage, name: e.target.value })} required className="form-input" />
+            <input type="number" min="0" step="0.01" placeholder="Price ($)" value={newPackage.price} onChange={(e)=>setNewPackage({ ...newPackage, price: e.target.value })} className="form-input" />
+          </div>
+          <div className="form-row">
+            <input type="number" min="0" step="5" placeholder="Duration (min)" value={newPackage.duration} onChange={(e)=>setNewPackage({ ...newPackage, duration: e.target.value })} required className="form-input" />
+            <input placeholder="Description (optional)" value={newPackage.description} onChange={(e)=>setNewPackage({ ...newPackage, description: e.target.value })} className="form-input" />
+          </div>
+          <div className="form-row">
+            <button className="primary-btn" type="submit">Add Package</button>
+          </div>
         </form>
         {packages.length > 0 && (
-          <div className="packages-list" style={{ display: 'grid', gap: 8 }}>
+          <div className="packages-list">
             {packages.map(p => (
-              <div key={p.id} className="package-item" style={{ display: 'grid', gridTemplateColumns: '2fr 1fr 1fr 3fr auto', gap: 8, alignItems: 'center', border: '1px solid var(--border-color)', borderRadius: 10, padding: '8px 10px', background: '#fff' }}>
-                <div><strong>{p.name}</strong></div>
-                <div>${p.price.toFixed(2)}</div>
-                <div>{p.duration}m</div>
-                <div className="text-muted" style={{ color: 'var(--text-secondary)' }}>{p.description}</div>
-                <button className="secondary-btn" onClick={()=>removePackage(p.id)}>Remove</button>
+              <div key={p.id} className="package-item">
+                <div className="package-info">
+                  <div className="package-name"><strong>{p.name}</strong></div>
+                  <div className="package-details">
+                    <span className="package-price">${p.price.toFixed(2)}</span>
+                    <span className="package-duration">{p.duration}m</span>
+                  </div>
+                  {p.description && (
+                    <div className="package-description">{p.description}</div>
+                  )}
+                </div>
+                <button className="secondary-btn remove-btn" onClick={()=>removePackage(p.id)}>Remove</button>
               </div>
             ))}
           </div>

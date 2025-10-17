@@ -129,28 +129,28 @@
 }
 
 .stat-card.upcoming {
-  border-left-color: #81C784; /* Fresh Mint */
-  background: rgba(129, 199, 132, 0.12);
+  border-left-color: #28A745; /* Green */
+  background: rgba(40, 167, 69, 0.12);
 }
 
 .stat-card.due-today {
-  border-left-color: #FFB74D; /* Warm Amber */
-  background: rgba(255, 183, 77, 0.12);
+  border-left-color: #FFC107; /* Yellow/Orange */
+  background: rgba(255, 193, 7, 0.12);
 }
 
 .stat-card.late {
-  border-left-color: #E57373; /* Soft Red */
-  background: rgba(229, 115, 115, 0.12);
+  border-left-color: #DC3545; /* Red */
+  background: rgba(220, 53, 69, 0.12);
 }
 
 .stat-card.follow-up {
-  border-left-color: #64B5F6; /* Medium Sky Blue */
-  background: rgba(100, 181, 246, 0.12);
+  border-left-color: #007BFF; /* Blue */
+  background: rgba(0, 123, 255, 0.12);
 }
 
 .stat-card.high-priority {
-  border-left-color: #F06292; /* Deep Coral */
-  background: rgba(240, 98, 146, 0.12);
+  border-left-color: #E83E8C; /* Pink/Magenta */
+  background: rgba(232, 62, 140, 0.12);
 }
 
 .stat-icon {
@@ -180,6 +180,7 @@
   color: #4b5563;
   font-weight: 500;
 }
+
 
 .tasks-section {
   background: #F7F8FF; /* subtle lavender tint */
@@ -412,6 +413,7 @@
     font-size: 11px;
   }
   
+
   .tasks-section {
     padding: 14px;
   }

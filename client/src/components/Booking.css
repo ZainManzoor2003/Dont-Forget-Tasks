@@ -54,6 +54,7 @@
   background: #FAFAFA;
   max-width: 1200px;
   margin: 0 auto;
+  min-height: 100vh;
 }
 
 .booking-page .content-header {
@@ -133,6 +134,7 @@
   flex-wrap: wrap;
   gap: 8px;
   margin-top: 8px;
+  justify-content: flex-start;
 }
 
 .slot-btn {
@@ -286,6 +288,12 @@
   padding: 10px 14px;
   border-radius: 8px;
   cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.secondary-btn:hover {
+  background: #e5e7eb;
+  color: var(--black);
 }
 
 /* Service Selection Styles */
@@ -719,6 +727,117 @@
   font-size: 16px;
 }
 
+/* Owner Controls */
+.owner-controls {
+  margin-bottom: 24px;
+}
+
+.link-preview {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background: #F7F8FF;
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 16px;
+}
+
+.link-url {
+  padding: 8px 12px;
+  background: #f6f7fb;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  font-size: 13px;
+  word-break: break-all;
+  overflow-wrap: break-word;
+  white-space: pre-wrap;
+}
+
+.link-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+/* Packages Builder */
+.packages-builder {
+  background: #F7F8FF;
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 24px;
+}
+
+.packages-builder h3 {
+  margin: 0 0 16px 0;
+  font-weight: 700;
+  color: var(--black);
+  border-bottom: 2px solid #A9B8FF;
+  padding-bottom: 8px;
+}
+
+.packages-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.packages-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.package-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  padding: 12px;
+  background: #fff;
+}
+
+.package-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.package-name {
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.package-details {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 4px;
+  font-size: 14px;
+}
+
+.package-price {
+  color: #059669;
+  font-weight: 600;
+}
+
+.package-duration {
+  color: #6b7280;
+}
+
+.package-description {
+  color: var(--text-secondary);
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.remove-btn {
+  flex-shrink: 0;
+  font-size: 13px;
+  padding: 8px 12px;
+}
+
 /* Responsive Design */
 @media (max-width: 1024px) {
   .booking-container {
@@ -732,63 +851,67 @@
 }
 
 @media (max-width: 768px) {
+  .booking-page {
+    padding: 16px;
+  }
+  
+  .owner-controls {
+    margin-bottom: 20px;
+  }
+  
+  .link-preview {
+    padding: 12px;
+  }
+  
+  .link-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .link-actions .secondary-btn,
+  .link-actions .primary-btn {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .packages-builder {
+    padding: 12px;
+    margin-bottom: 20px;
+  }
+  
+  .package-item {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .remove-btn {
+    align-self: flex-end;
+    width: auto;
+  }
+  
   .form-row { 
     grid-template-columns: 1fr; 
   }
   
   .booking-container {
-    gap: 12px;
-  }
-  
-  .booking-page {
-    padding: 14px;
-  }
-  
-  .booking-header h1 {
-    font-size: 20px;
-  }
-  
-  .booking-header p {
-    font-size: 13px;
+    gap: 16px;
   }
   
   .calendar-card,
   .details-card,
   .confirmation-card,
   .task-summary {
-    padding: 14px;
-  }
-  
-  .calendar-header h3,
-  .details-header h3,
-  .confirmation-header h3,
-  .task-summary h3 {
-    font-size: 16px;
-  }
-  
-  .form-group {
-    margin-bottom: 14px;
-  }
-  
-  .form-label {
-    font-size: 12px;
-    margin-bottom: 5px;
-  }
-  
-  .form-input,
-  .form-select,
-  .form-textarea {
-    padding: 8px 10px;
-    font-size: 13px;
+    padding: 12px;
   }
   
   .slots-grid {
-    gap: 8px;
+    gap: 6px;
   }
   
   .slot-btn {
-    padding: 8px 12px;
-    font-size: 13px;
+    padding: 6px 10px;
+    font-size: 12px;
+    min-width: 60px;
   }
   
   .connect-booking-btn {
@@ -813,6 +936,11 @@
   .confirmation-details {
     font-size: 13px;
   }
+  
+  .package-details {
+    flex-direction: column;
+    gap: 4px;
+  }
 }
 
 @media (max-width: 480px) {
@@ -820,12 +948,17 @@
     padding: 12px;
   }
   
-  .booking-header h1 {
-    font-size: 18px;
+  .link-preview {
+    padding: 10px;
   }
   
-  .booking-header p {
+  .link-url {
     font-size: 12px;
+    padding: 6px 8px;
+  }
+  
+  .packages-builder {
+    padding: 10px;
   }
   
   .calendar-card,
@@ -835,41 +968,26 @@
     padding: 10px;
   }
   
-  .calendar-header h3,
-  .details-header h3,
-  .confirmation-header h3,
-  .task-summary h3 {
-    font-size: 15px;
-  }
-  
-  .form-group {
-    margin-bottom: 12px;
-  }
-  
-  .form-label {
-    font-size: 11px;
-    margin-bottom: 4px;
-  }
-  
   .form-input,
   .form-select,
   .form-textarea {
-    padding: 6px 8px;
-    font-size: 12px;
+    padding: 8px 10px;
+    font-size: 14px;
   }
   
   .slots-grid {
-    gap: 6px;
+    gap: 4px;
   }
   
   .slot-btn {
-    padding: 8px 12px;
-    font-size: 13px;
+    padding: 6px 8px;
+    font-size: 11px;
+    min-width: 50px;
   }
   
   .connect-booking-btn {
-    font-size: 13px;
-    padding: 10px 16px;
+    font-size: 12px;
+    padding: 8px 12px;
   }
   
   .task-title {
@@ -886,5 +1004,17 @@
   
   .confirmation-details {
     font-size: 12px;
+  }
+  
+  .package-name {
+    font-size: 14px;
+  }
+  
+  .package-details {
+    font-size: 12px;
+  }
+  
+  .package-description {
+    font-size: 11px;
   }
 }

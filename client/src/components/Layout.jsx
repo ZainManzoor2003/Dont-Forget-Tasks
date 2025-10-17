@@ -26,32 +26,44 @@ const Layout = () => {
       name: 'Complete Project Proposal',
       description: 'Draft and finalize the quarterly project proposal for client presentation',
       dateTime: '2024-01-15T10:00:00',
-      priority: 'due-today',
-      status: 'in-progress'
+      priority: 'medium',
+      status: 'in-progress',
+      repeat: 'None',
+      repeatDays: [],
+      repeatMonths: []
     },
     {
       id: 2,
-      name: 'Team Meeting Preparation',
+      name: 'Weekly Team Standup',
       description: 'Prepare agenda and materials for the weekly team standup meeting',
       dateTime: '2024-01-16T14:30:00',
-      priority: 'upcoming',
-      status: 'pending'
+      priority: 'low',
+      status: 'pending',
+      repeat: 'Weekly',
+      repeatDays: ['monday', 'wednesday', 'friday'],
+      repeatMonths: []
     },
     {
       id: 3,
       name: 'Code Review Session',
       description: 'Review pull requests and provide feedback to development team',
       dateTime: '2024-01-14T16:00:00',
-      priority: 'late',
-      status: 'overdue'
+      priority: 'high',
+      status: 'overdue',
+      repeat: 'None',
+      repeatDays: [],
+      repeatMonths: []
     },
     {
       id: 4,
-      name: 'Client Follow-up Call',
+      name: 'Monthly Client Check-in',
       description: 'Schedule and conduct follow-up call with potential client',
       dateTime: '2024-01-17T11:00:00',
-      priority: 'follow-up',
+      priority: 'urgent',
       status: 'pending',
+      repeat: 'Monthly',
+      repeatDays: [],
+      repeatMonths: ['january', 'march', 'may', 'july', 'september', 'november'],
       followUps: [
         { id: '2024-03-01T10:00:00Z', text: 'Zoom call completed. Need to send proposal.', date: '2024-03-01T10:00:00Z' }
       ]
@@ -61,16 +73,22 @@ const Layout = () => {
       name: 'Database Migration',
       description: 'Execute critical database migration for production environment',
       dateTime: '2024-01-15T09:00:00',
-      priority: 'high-priority',
-      status: 'in-progress'
+      priority: 'medium',
+      status: 'in-progress',
+      repeat: 'None',
+      repeatDays: [],
+      repeatMonths: []
     },
     {
       id: 6,
-      name: 'Documentation Update',
-      description: 'Update API documentation and user guides',
+      name: 'Annual Review Meeting',
+      description: 'Conduct yearly performance review with team members',
       dateTime: '2024-01-18T15:00:00',
-      priority: 'upcoming',
-      status: 'pending'
+      priority: 'low',
+      status: 'pending',
+      repeat: 'Yearly',
+      repeatDays: ['monday', 'tuesday', 'wednesday'],
+      repeatMonths: ['january', 'june', 'december']
     }
   ]);
 

@@ -650,3 +650,99 @@
     font-size: 11px;
   }
 }
+
+/* Repeat Options Styles */
+.repeat-options-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.repeat-option {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  background: #f8f9fa;
+  border: 1px solid #e9ecef;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 14px;
+}
+
+.repeat-option:hover {
+  background: #e9ecef;
+  border-color: #A9B8FF;
+}
+
+.repeat-option input[type="checkbox"] {
+  margin: 0;
+  accent-color: #A9B8FF;
+}
+
+.repeat-option span {
+  user-select: none;
+  color: var(--black);
+  font-weight: 500;
+}
+
+.repeat-option:has(input:checked) {
+  background: #EDEFFF;
+  border-color: #A9B8FF;
+  color: var(--black);
+}
+
+.repeat-option:has(input:checked) span {
+  color: var(--black);
+  font-weight: 600;
+}
+
+/* Yearly Repeat Container */
+.yearly-repeat-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-top: 8px;
+}
+
+.yearly-section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* Responsive Design for Repeat Options */
+@media (max-width: 768px) {
+  .repeat-options-grid {
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 6px;
+  }
+  
+  .repeat-option {
+    padding: 6px 10px;
+    font-size: 13px;
+  }
+  
+  .yearly-repeat-container {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .repeat-options-grid {
+    grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
+    gap: 4px;
+  }
+  
+  .repeat-option {
+    padding: 6px 8px;
+    font-size: 12px;
+  }
+  
+  .yearly-repeat-container {
+    gap: 12px;
+  }
+}

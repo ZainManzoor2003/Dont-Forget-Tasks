@@ -31,11 +31,10 @@ const Dashboard = ({ tasks, setTasks, onNavigate }) => {
   const getTaskCounts = () => {
     return {
       total: tasks.length,
-      upcoming: tasks.filter(t => t.priority === 'upcoming').length,
-      dueToday: tasks.filter(t => t.priority === 'due-today').length,
-      late: tasks.filter(t => t.priority === 'late').length,
-      followUp: tasks.filter(t => t.priority === 'follow-up').length,
-      highPriority: tasks.filter(t => t.priority === 'high-priority').length
+      low: tasks.filter(t => t.priority === 'low').length,
+      medium: tasks.filter(t => t.priority === 'medium').length,
+      high: tasks.filter(t => t.priority === 'high').length,
+      urgent: tasks.filter(t => t.priority === 'urgent').length
     };
   };
 
@@ -79,39 +78,33 @@ const Dashboard = ({ tasks, setTasks, onNavigate }) => {
           <div className="stat-card upcoming">
             <div className="stat-icon"><FiCalendar /></div>
             <div className="stat-content">
-              <div className="stat-number">{counts.upcoming}</div>
-              <div className="stat-label">Upcoming Tasks</div>
+              <div className="stat-number">{counts.low}</div>
+              <div className="stat-label">Low</div>
             </div>
           </div>
           <div className="stat-card due-today">
             <div className="stat-icon"><FiClock /></div>
             <div className="stat-content">
-              <div className="stat-number">{counts.dueToday}</div>
-              <div className="stat-label">Due Today</div>
+              <div className="stat-number">{counts.medium}</div>
+              <div className="stat-label">Medium</div>
             </div>
           </div>
           <div className="stat-card late">
             <div className="stat-icon"><FiAlertTriangle /></div>
             <div className="stat-content">
-              <div className="stat-number">{counts.late}</div>
-              <div className="stat-label">Late Tasks</div>
-            </div>
-          </div>
-          <div className="stat-card follow-up">
-            <div className="stat-icon"><FiRefreshCw /></div>
-            <div className="stat-content">
-              <div className="stat-number">{counts.followUp}</div>
-              <div className="stat-label">Follow-ups</div>
+              <div className="stat-number">{counts.high}</div>
+              <div className="stat-label">High</div>
             </div>
           </div>
           <div className="stat-card high-priority">
             <div className="stat-icon"><FiAlertOctagon /></div>
             <div className="stat-content">
-              <div className="stat-number">{counts.highPriority}</div>
-              <div className="stat-label">High Priority</div>
+              <div className="stat-number">{counts.urgent}</div>
+              <div className="stat-label">Urgent</div>
             </div>
           </div>
         </div>
+
 
         <div className="tasks-section">
           <div className="tasks-header">
@@ -133,11 +126,10 @@ const Dashboard = ({ tasks, setTasks, onNavigate }) => {
                 className="filter-select"
               >
                 <option value="all">All Priorities</option>
-                <option value="upcoming">Upcoming</option>
-                <option value="due-today">Due Today</option>
-                <option value="late">Late</option>
-                <option value="follow-up">Follow-up</option>
-                <option value="high-priority">High Priority</option>
+                <option value="low">Low</option>
+                <option value="medium">Medium</option>
+                <option value="high">High</option>
+                <option value="urgent">Urgent</option>
               </select>
               <button className="primary-btn" onClick={() => onNavigate && onNavigate('follow-up')}>
                 Follow-ups

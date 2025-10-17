@@ -12,6 +12,8 @@ const AddTask = () => {
     dateTime: '',
     keyPoints: '',
     repeat: 'None',
+    repeatDays: [],
+    repeatMonths: [],
     priority: 'Medium',
     tags: '',
     followUpLink: '',
@@ -68,7 +70,33 @@ const AddTask = () => {
         next.meetingLink = generateMeetingLink(prev.platform);
       }
       
+      // Handle repeat change - reset repeat options when changing repeat type
+      if (name === 'repeat') {
+        next.repeatDays = [];
+        next.repeatMonths = [];
+      }
+      
       return next;
+    });
+  };
+  
+  // Handle repeat day selection
+  const handleRepeatDayChange = (dayValue, checked) => {
+    setFormData(prev => {
+      const newDays = checked 
+        ? [...prev.repeatDays, dayValue]
+        : prev.repeatDays.filter(day => day !== dayValue);
+      return { ...prev, repeatDays: newDays };
+    });
+  };
+  
+  // Handle repeat month selection
+  const handleRepeatMonthChange = (monthValue, checked) => {
+    setFormData(prev => {
+      const newMonths = checked 
+        ? [...prev.repeatMonths, monthValue]
+        : prev.repeatMonths.filter(month => month !== monthValue);
+      return { ...prev, repeatMonths: newMonths };
     });
   };
 
@@ -93,15 +121,84 @@ const AddTask = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('Task data:', formData);
-    // Handle form submission
+    const newTask = {
+      id: Date.now(),
+      name: formData.title,
+      description: formData.keyPoints || 'No description provided',
+      dateTime: formData.dateTime,
+      priority: formData.priority.toLowerCase().replace(' ', '-'),
+      status: 'pending',
+      repeat: formData.repeat,
+      repeatDays: formData.repeatDays,
+      repeatMonths: formData.repeatMonths,
+      invitee: formData.invitee,
+      taskType: formData.taskType,
+      platform: formData.platform,
+      meetingLink: formData.meetingLink,
+      tags: formData.tags,
+      followUpLink: formData.followUpLink,
+      redirectUrl: formData.redirectUrl,
+      bookingLimit: formData.bookingLimit,
+      reminder: formData.reminder
+    };
+    
+    console.log('Task data:', newTask);
+    // Handle form submission - you can pass this to parent component
     alert('Task saved successfully!');
+    
+    // Reset form
+    setFormData({
+      title: '',
+      invitee: '',
+      taskType: 'Regular',
+      platform: 'Zoom',
+      meetingLink: '',
+      dateTime: '',
+      keyPoints: '',
+      repeat: 'None',
+      repeatDays: [],
+      repeatMonths: [],
+      priority: 'Medium',
+      tags: '',
+      followUpLink: '',
+      redirectUrl: '',
+      bookingLimit: '',
+      reminder: '15 minutes'
+    });
+    setKeyPointsList([]);
   };
 
   const taskTypes = ['Regular', 'Video', 'Phone', 'Note'];
   const repeatOptions = ['None', 'Daily', 'Weekly', 'Monthly', 'Yearly'];
   const priorityOptions = ['Low', 'Medium', 'High', 'Urgent'];
   const reminderOptions = ['5 minutes', '15 minutes', '30 minutes', '1 hour', '2 hours', '1 day'];
+  
+  // Days of the week for weekly repeat
+  const daysOfWeek = [
+    { value: 'monday', label: 'Monday' },
+    { value: 'tuesday', label: 'Tuesday' },
+    { value: 'wednesday', label: 'Wednesday' },
+    { value: 'thursday', label: 'Thursday' },
+    { value: 'friday', label: 'Friday' },
+    { value: 'saturday', label: 'Saturday' },
+    { value: 'sunday', label: 'Sunday' }
+  ];
+  
+  // Months for monthly/yearly repeat
+  const months = [
+    { value: 'january', label: 'January' },
+    { value: 'february', label: 'February' },
+    { value: 'march', label: 'March' },
+    { value: 'april', label: 'April' },
+    { value: 'may', label: 'May' },
+    { value: 'june', label: 'June' },
+    { value: 'july', label: 'July' },
+    { value: 'august', label: 'August' },
+    { value: 'september', label: 'September' },
+    { value: 'october', label: 'October' },
+    { value: 'november', label: 'November' },
+    { value: 'december', label: 'December' }
+  ];
 
   return (
     <div className="add-task-container">
@@ -253,6 +350,82 @@ const AddTask = () => {
             ))}
           </select>
         </div>
+
+        {/* Weekly Repeat Options */}
+        {formData.repeat === 'Weekly' && (
+          <div className="form-group">
+            <label className="form-label">Select Days</label>
+            <div className="repeat-options-grid">
+              {daysOfWeek.map(day => (
+                <label key={day.value} className="repeat-option">
+                  <input
+                    type="checkbox"
+                    checked={formData.repeatDays.includes(day.value)}
+                    onChange={(e) => handleRepeatDayChange(day.value, e.target.checked)}
+                  />
+                  <span>{day.label}</span>
+                </label>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* Monthly Repeat Options */}
+        {formData.repeat === 'Monthly' && (
+          <div className="form-group">
+            <label className="form-label">Select Months</label>
+            <div className="repeat-options-grid">
+              {months.map(month => (
+                <label key={month.value} className="repeat-option">
+                  <input
+                    type="checkbox"
+                    checked={formData.repeatMonths.includes(month.value)}
+                    onChange={(e) => handleRepeatMonthChange(month.value, e.target.checked)}
+                  />
+                  <span>{month.label}</span>
+                </label>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* Yearly Repeat Options */}
+        {formData.repeat === 'Yearly' && (
+          <div className="form-group">
+            <div className="yearly-repeat-container">
+              <div className="yearly-section">
+                <label className="form-label">Select Days</label>
+                <div className="repeat-options-grid">
+                  {daysOfWeek.map(day => (
+                    <label key={day.value} className="repeat-option">
+                      <input
+                        type="checkbox"
+                        checked={formData.repeatDays.includes(day.value)}
+                        onChange={(e) => handleRepeatDayChange(day.value, e.target.checked)}
+                      />
+                      <span>{day.label}</span>
+                    </label>
+                  ))}
+                </div>
+              </div>
+              <div className="yearly-section">
+                <label className="form-label">Select Months</label>
+                <div className="repeat-options-grid">
+                  {months.map(month => (
+                    <label key={month.value} className="repeat-option">
+                      <input
+                        type="checkbox"
+                        checked={formData.repeatMonths.includes(month.value)}
+                        onChange={(e) => handleRepeatMonthChange(month.value, e.target.checked)}
+                      />
+                      <span>{month.label}</span>
+                    </label>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
 
         {/* Priority */}
         <div className="form-group">

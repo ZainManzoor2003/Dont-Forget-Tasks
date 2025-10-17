@@ -1,28 +1,26 @@
 import React from 'react';
-import { FiEye, FiEdit2, FiTrash2, FiCalendar as FiCalendarIcon, FiClock } from 'react-icons/fi';
+import { FiEye, FiEdit2, FiTrash2, FiCalendar as FiCalendarIcon, FiClock, FiRefreshCw, FiRepeat } from 'react-icons/fi';
 import './TaskCard.css';
 
 const TaskCard = ({ task, onEdit, onDelete, onView }) => {
   const getPriorityColor = (priority) => {
     const colors = {
-      'upcoming': '#81C784',
-      'due-today': '#FFB74D',
-      'late': '#E57373',
-      'follow-up': '#64B5F6',
-      'high-priority': '#F06292'
+      'low': '#28A745',      // Green (#28A745)
+      'medium': '#FFC107',   // Yellow/Orange (#FFC107)
+      'high': '#DC3545',     // Red (#DC3545)
+      'urgent': '#E83E8C'    // Pink/Magenta (#E83E8C)
     };
-    return colors[priority] || '#81C784';
+    return colors[priority] || '#28A745';
   };
 
   const getPriorityLabel = (priority) => {
     const labels = {
-      'upcoming': 'Upcoming Tasks',
-      'due-today': 'Due Today Tasks',
-      'late': 'Late Tasks',
-      'follow-up': 'Follow-Up Tasks',
-      'high-priority': 'High Priority Tasks'
+      'low': 'LOW PRIORITY',
+      'medium': 'MEDIUM PRIORITY',
+      'high': 'HIGH PRIORITY',
+      'urgent': 'URGENT'
     };
-    return labels[priority] || 'Upcoming Tasks';
+    return labels[priority] || 'LOW PRIORITY';
   };
 
   const formatDateTime = (dateTime) => {
@@ -40,9 +38,42 @@ const TaskCard = ({ task, onEdit, onDelete, onView }) => {
       })
     };
   };
+  
+  const formatRepeatInfo = (repeat, repeatDays, repeatMonths) => {
+    if (repeat === 'None') return null;
+    
+    const dayNames = {
+      monday: 'Mon', tuesday: 'Tue', wednesday: 'Wed', thursday: 'Thu',
+      friday: 'Fri', saturday: 'Sat', sunday: 'Sun'
+    };
+    
+    const monthNames = {
+      january: 'Jan', february: 'Feb', march: 'Mar', april: 'Apr',
+      may: 'May', june: 'Jun', july: 'Jul', august: 'Aug',
+      september: 'Sep', october: 'Oct', november: 'Nov', december: 'Dec'
+    };
+    
+    if (repeat === 'Daily') return 'Daily';
+    if (repeat === 'Weekly') {
+      const days = repeatDays.map(day => dayNames[day]).join(', ');
+      return `Weekly (${days})`;
+    }
+    if (repeat === 'Monthly') {
+      const months = repeatMonths.map(month => monthNames[month]).join(', ');
+      return `Monthly (${months})`;
+    }
+    if (repeat === 'Yearly') {
+      const days = repeatDays.length > 0 ? repeatDays.map(day => dayNames[day]).join(', ') : 'All days';
+      const months = repeatMonths.length > 0 ? repeatMonths.map(month => monthNames[month]).join(', ') : 'All months';
+      return `Yearly (${days}, ${months})`;
+    }
+    
+    return repeat;
+  };
 
   const { date, time } = formatDateTime(task.dateTime);
   const priorityColor = getPriorityColor(task.priority);
+  const repeatInfo = formatRepeatInfo(task.repeat, task.repeatDays, task.repeatMonths);
 
   return (
     <div className={`task-card ${task.priority}`} style={{ borderLeftColor: priorityColor }}>
@@ -95,10 +126,18 @@ const TaskCard = ({ task, onEdit, onDelete, onView }) => {
             <span className="datetime-text">{time}</span>
           </div>
         </div>
-        <div className="task-status">
-          <span className={`status-badge ${task.status}`}>
-            {task.status.charAt(0).toUpperCase() + task.status.slice(1)}
-          </span>
+        <div className="task-meta">
+          <div className="task-status">
+            <span className={`status-badge ${task.status}`}>
+              {task.status.charAt(0).toUpperCase() + task.status.slice(1)}
+            </span>
+          </div>
+          {repeatInfo && (
+            <div className="task-repeat">
+              <span className="repeat-icon"><FiRepeat size={14} /></span>
+              <span className="repeat-text">{repeatInfo}</span>
+            </div>
+          )}
         </div>
       </div>
     </div>
