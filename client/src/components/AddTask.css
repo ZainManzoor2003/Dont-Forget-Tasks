@@ -769,17 +769,19 @@
   box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
 }
 
+button.add-date-btn,
 .add-date-btn {
-  padding: 12px 24px;
-  background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
-  color: white;
-  border: none;
+  padding: 12px 24px !important;
+  background: #ff6b35 !important;
+  background-color: #ff6b35 !important;
+  color: white !important;
+  border: none !important;
   border-radius: 8px;
   font-size: 14px;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: 0 2px 4px rgba(0, 123, 255, 0.2);
+  box-shadow: 0 2px 4px rgba(255, 107, 53, 0.2);
   min-width: 120px;
   white-space: nowrap;
   display: flex;
@@ -788,15 +790,17 @@
   gap: 6px;
 }
 
+button.add-date-btn:hover:not(:disabled),
 .add-date-btn:hover:not(:disabled) {
-  background: linear-gradient(135deg, #0056b3 0%, #004085 100%);
+  background: #e55a2b !important;
+  background-color: #e55a2b !important;
   transform: translateY(-1px);
-  box-shadow: 0 4px 8px rgba(0, 123, 255, 0.3);
+  box-shadow: 0 4px 8px rgba(255, 107, 53, 0.3);
 }
 
 .add-date-btn:active:not(:disabled) {
   transform: translateY(0);
-  box-shadow: 0 2px 4px rgba(0, 123, 255, 0.2);
+  box-shadow: 0 2px 4px rgba(255, 107, 53, 0.2);
 }
 
 .add-date-btn:disabled {
