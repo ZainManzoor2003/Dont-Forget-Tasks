@@ -1,6 +1,72 @@
 import React, { useState } from 'react';
-import { FiPlus, FiX } from 'react-icons/fi';
+import { FiPlus, FiX, FiChevronLeft, FiChevronRight } from 'react-icons/fi';
 import './AddTask.css';
+
+// Simple Yearly Options Component
+const YearlyOptions = ({ selectedDates, onDateSelect }) => {
+  const [newDate, setNewDate] = useState('');
+  
+  const handleAddDate = () => {
+    if (newDate && !selectedDates.includes(newDate)) {
+      onDateSelect(newDate);
+      setNewDate('');
+    }
+  };
+  
+  const handleRemoveDate = (dateToRemove) => {
+    onDateSelect(dateToRemove);
+  };
+  
+  return (
+    <div className="yearly-options">
+      <div className="form-group">
+        <label className="form-label">Select Specific Dates</label>
+        <div className="date-input-section">
+          <div className="button-row">
+            <button
+              type="button"
+              onClick={handleAddDate}
+              className="add-date-btn"
+              disabled={!newDate}
+            >
+              Add Date
+            </button>
+          </div>
+          
+          <div className="date-input-row">
+            <input
+              type="date"
+              value={newDate}
+              onChange={(e) => setNewDate(e.target.value)}
+              className="form-input"
+              placeholder="Select a date"
+            />
+          </div>
+          
+          {selectedDates.length > 0 && (
+            <div className="selected-dates">
+              <h4>Selected Dates:</h4>
+              <div className="date-tags">
+                {selectedDates.map((date, index) => (
+                  <span key={index} className="date-tag">
+                    {new Date(date).toLocaleDateString()}
+                    <button
+                      type="button"
+                      onClick={() => handleRemoveDate(date)}
+                      className="remove-date-btn"
+                    >
+                      ×
+                    </button>
+                  </span>
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+};
 
 const AddTask = () => {
   const [formData, setFormData] = useState({
@@ -14,6 +80,7 @@ const AddTask = () => {
     repeat: 'None',
     repeatDays: [],
     repeatMonths: [],
+    yearlyDates: [],
     priority: 'Medium',
     tags: '',
     followUpLink: '',
@@ -74,6 +141,7 @@ const AddTask = () => {
       if (name === 'repeat') {
         next.repeatDays = [];
         next.repeatMonths = [];
+        next.yearlyDates = [];
       }
       
       return next;
@@ -97,6 +165,17 @@ const AddTask = () => {
         ? [...prev.repeatMonths, monthValue]
         : prev.repeatMonths.filter(month => month !== monthValue);
       return { ...prev, repeatMonths: newMonths };
+    });
+  };
+
+  // Handle yearly date selection (toggle behavior for calendar)
+  const handleYearlyDateChange = (dateValue) => {
+    setFormData(prev => {
+      const isSelected = prev.yearlyDates.includes(dateValue);
+      const newDates = isSelected 
+        ? prev.yearlyDates.filter(date => date !== dateValue)
+        : [...prev.yearlyDates, dateValue];
+      return { ...prev, yearlyDates: newDates };
     });
   };
 
@@ -131,6 +210,7 @@ const AddTask = () => {
       repeat: formData.repeat,
       repeatDays: formData.repeatDays,
       repeatMonths: formData.repeatMonths,
+      yearlyDates: formData.yearlyDates,
       invitee: formData.invitee,
       taskType: formData.taskType,
       platform: formData.platform,
@@ -158,6 +238,7 @@ const AddTask = () => {
       repeat: 'None',
       repeatDays: [],
       repeatMonths: [],
+      yearlyDates: [],
       priority: 'Medium',
       tags: '',
       followUpLink: '',
@@ -199,6 +280,7 @@ const AddTask = () => {
     { value: 'november', label: 'November' },
     { value: 'december', label: 'December' }
   ];
+
 
   return (
     <div className="add-task-container">
@@ -391,39 +473,11 @@ const AddTask = () => {
 
         {/* Yearly Repeat Options */}
         {formData.repeat === 'Yearly' && (
-          <div className="form-group">
-            <div className="yearly-repeat-container">
-              <div className="yearly-section">
-                <label className="form-label">Select Days</label>
-                <div className="repeat-options-grid">
-                  {daysOfWeek.map(day => (
-                    <label key={day.value} className="repeat-option">
-                      <input
-                        type="checkbox"
-                        checked={formData.repeatDays.includes(day.value)}
-                        onChange={(e) => handleRepeatDayChange(day.value, e.target.checked)}
-                      />
-                      <span>{day.label}</span>
-                    </label>
-                  ))}
-                </div>
-              </div>
-              <div className="yearly-section">
-                <label className="form-label">Select Months</label>
-                <div className="repeat-options-grid">
-                  {months.map(month => (
-                    <label key={month.value} className="repeat-option">
-                      <input
-                        type="checkbox"
-                        checked={formData.repeatMonths.includes(month.value)}
-                        onChange={(e) => handleRepeatMonthChange(month.value, e.target.checked)}
-                      />
-                      <span>{month.label}</span>
-                    </label>
-                  ))}
-                </div>
-              </div>
-            </div>
+          <div className="yearly-options-container">
+            <YearlyOptions 
+              selectedDates={formData.yearlyDates}
+              onDateSelect={handleYearlyDateChange}
+            />
           </div>
         )}
 
