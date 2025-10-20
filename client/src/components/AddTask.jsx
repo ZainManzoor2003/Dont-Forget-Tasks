@@ -251,7 +251,7 @@ const AddTask = () => {
 
   const taskTypes = ['Regular', 'Video', 'Phone', 'Note'];
   const repeatOptions = ['None', 'Daily', 'Weekly', 'Monthly', 'Yearly'];
-  const priorityOptions = ['Low', 'Medium', 'High', 'Urgent'];
+  const priorityOptions = ['Low', 'Medium', 'High'];
   const reminderOptions = ['5 minutes', '15 minutes', '30 minutes', '1 hour', '2 hours', '1 day'];
   
   // Days of the week for weekly repeat

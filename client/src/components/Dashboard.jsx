@@ -5,14 +5,44 @@ import './Dashboard.css';
 
 const Dashboard = ({ tasks, setTasks, onNavigate }) => {
   const [searchTerm, setSearchTerm] = useState('');
-  const [filterPriority, setFilterPriority] = useState('all');
+  const [filterCategory, setFilterCategory] = useState('all');
 
-  const filteredTasks = useMemo(() => tasks.filter(task => {
-    const matchesSearch = task.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         task.description.toLowerCase().includes(searchTerm.toLowerCase());
-    const matchesPriority = filterPriority === 'all' || task.priority === filterPriority;
-    return matchesSearch && matchesPriority;
-  }), [tasks, searchTerm, filterPriority]);
+  const getTaskCategory = (task) => {
+    if (!task || !task.dateTime) return 'due-today';
+    
+    try {
+      const today = new Date();
+      const taskDate = new Date(task.dateTime);
+      const isToday = taskDate.toDateString() === today.toDateString();
+      const isOverdue = taskDate < today && task.status !== 'completed';
+      
+      // Priority-based categorization first
+      if (task.priority === 'urgent') return 'high-priority';
+      if (task.priority === 'upcoming') return 'upcoming';
+      if (task.priority === 'medium') return 'follow-up';
+      
+      // Date-based categorization
+      if (isOverdue) return 'late';
+      if (isToday) return 'due-today';
+      
+      // Default for future dates
+      return 'upcoming';
+    } catch (error) {
+      console.error('Error in getTaskCategory:', error);
+      return 'due-today';
+    }
+  };
+
+  const filteredTasks = useMemo(() => {
+    if (!tasks || !Array.isArray(tasks)) return [];
+    return tasks.filter(task => {
+      const matchesSearch = task.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                           task.description.toLowerCase().includes(searchTerm.toLowerCase());
+      const taskCategory = getTaskCategory(task);
+      const matchesCategory = filterCategory === 'all' || taskCategory === filterCategory;
+      return matchesSearch && matchesCategory;
+    });
+  }, [tasks, searchTerm, filterCategory]);
 
   const handleEditTask = (task) => {
     console.log('Edit task:', task);
@@ -75,7 +105,9 @@ const Dashboard = ({ tasks, setTasks, onNavigate }) => {
           </div>
         </div>
 
-        <div className="stats-grid">
+        <div className="stats-section">
+          <h3 className="stats-heading">Task Overview</h3>
+          <div className="stats-grid">
           <div className="stat-card due-today">
             <div className="stat-icon"><FiCalendar /></div>
             <div className="stat-content">
@@ -112,7 +144,7 @@ const Dashboard = ({ tasks, setTasks, onNavigate }) => {
             </div>
           </div>
         </div>
-
+        </div>
 
         <div className="tasks-section">
           <div className="tasks-header">
@@ -129,16 +161,16 @@ const Dashboard = ({ tasks, setTasks, onNavigate }) => {
                 />
               </div>
               <select
-                value={filterPriority}
-                onChange={(e) => setFilterPriority(e.target.value)}
+                value={filterCategory}
+                onChange={(e) => setFilterCategory(e.target.value)}
                 className="filter-select"
               >
                 <option value="all">All Priorities</option>
-                <option value="low">Due Today Tasks</option>
-                <option value="medium">Follow-Ups Tasks</option>
-                <option value="high">Late Tasks</option>
+                <option value="due-today">Due Today Tasks</option>
+                <option value="follow-up">Follow-Ups Tasks</option>
+                <option value="late">Late Tasks</option>
                 <option value="upcoming">Upcoming Tasks</option>
-                <option value="urgent">High Priority Tasks</option>
+                <option value="high-priority">High Priority Tasks</option>
               </select>
               <button className="primary-btn" onClick={() => onNavigate && onNavigate('follow-up')}>
                 Follow-ups
@@ -151,6 +183,7 @@ const Dashboard = ({ tasks, setTasks, onNavigate }) => {
               <TaskCard
                 key={task.id}
                 task={task}
+                category={getTaskCategory(task)}
                 onEdit={handleEditTask}
                 onDelete={handleDeleteTask}
                 onView={handleViewTask}

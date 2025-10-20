@@ -2,7 +2,7 @@ import React from 'react';
 import { FiEye, FiEdit2, FiTrash2, FiCalendar as FiCalendarIcon, FiClock, FiRefreshCw, FiRepeat } from 'react-icons/fi';
 import './TaskCard.css';
 
-const TaskCard = ({ task, onEdit, onDelete, onView }) => {
+const TaskCard = ({ task, category = 'due-today', onEdit, onDelete, onView }) => {
   const getPriorityColor = (priority) => {
     const colors = {
       'low': '#28A745',      // Green (#28A745)
@@ -21,6 +21,17 @@ const TaskCard = ({ task, onEdit, onDelete, onView }) => {
       'urgent': 'URGENT'
     };
     return labels[priority] || 'LOW PRIORITY';
+  };
+
+  const getCategoryLabel = (category) => {
+    const labels = {
+      'due-today': 'Due Today',
+      'follow-up': 'Follow-Up',
+      'late': 'Late',
+      'upcoming': 'Upcoming',
+      'high-priority': 'High Priority'
+    };
+    return labels[category] || 'Due Today';
   };
 
   const formatDateTime = (dateTime) => {
@@ -74,16 +85,15 @@ const TaskCard = ({ task, onEdit, onDelete, onView }) => {
   const { date, time } = formatDateTime(task.dateTime);
   const priorityColor = getPriorityColor(task.priority);
   const repeatInfo = formatRepeatInfo(task.repeat, task.repeatDays, task.repeatMonths);
+  const categoryLabel = getCategoryLabel(category);
 
   return (
-    <div className={`task-card ${task.priority}`} style={{ borderLeftColor: priorityColor }}>
+    <div className={`task-card ${category}`}>
       <div className="task-header">
-        <div className="task-priority">
-          <div 
-            className="priority-indicator" 
-            style={{ backgroundColor: priorityColor }}
-          ></div>
-          <span className="priority-label">{getPriorityLabel(task.priority)}</span>
+        <div className="task-category">
+          <span className={`category-badge ${category}`}>
+            {categoryLabel}
+          </span>
         </div>
         <div className="task-actions">
           <button 
@@ -115,7 +125,7 @@ const TaskCard = ({ task, onEdit, onDelete, onView }) => {
         <p className="task-description">{task.description}</p>
       </div>
       
-      <div className="task-footer" style={{ borderTopColor: priorityColor }}>
+      <div className="task-footer">
         <div className="task-datetime">
           <div className="task-date">
             <span className="datetime-icon"><FiCalendarIcon size={16} /></span>

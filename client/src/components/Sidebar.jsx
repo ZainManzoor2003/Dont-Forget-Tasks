@@ -1,5 +1,5 @@
 import React from 'react';
-import { FiBarChart2, FiPlus, FiRepeat, FiCalendar, FiSettings, FiEdit3, FiVideo, FiClipboard, FiFileText, FiBookOpen, FiShield } from 'react-icons/fi';
+import { FiBarChart2, FiPlus, FiRepeat, FiCalendar, FiSettings, FiEdit3, FiVideo, FiClipboard, FiFileText, FiBookOpen, FiShield, FiBell } from 'react-icons/fi';
 import './Sidebar.css';
 
 const Sidebar = ({ activeSection, onSectionChange, isOpen, onClose, onToggle }) => {
@@ -7,6 +7,9 @@ const Sidebar = ({ activeSection, onSectionChange, isOpen, onClose, onToggle }) 
     { id: 'dashboard', label: 'Dashboard', icon: <FiBarChart2 /> },
     { id: 'add-task', label: 'Create a Task', icon: <FiPlus /> },
     { id: 'follow-up', label: 'Follow-Ups', icon: <FiRepeat /> },
+    // { id: 'reminders', label: 'Reminders', icon: <FiBell /> },
+    // { id: 'notifications', label: 'Notifications', icon: <FiBell /> },
+    // { id: 'analytics', label: 'Analytics', icon: <FiBarChart3 /> },
     { id: 'booking', label: 'Public Booking Page', icon: <FiCalendar /> },
     { id: 'settings', label: 'Settings', icon: <FiSettings /> },
     { id: 'meeting-templates', label: 'Communication Templates', icon: <FiFileText /> },

@@ -10,18 +10,46 @@
   overflow: hidden;
 }
 
-/* Light background tints per priority (matching left border color theme) */
-.task-card.upcoming { background: rgba(129, 199, 132, 0.10); }
-.task-card.due-today { background: rgba(255, 183, 77, 0.12); }
-.task-card.late { background: rgba(229, 115, 115, 0.12); }
-.task-card.follow-up { background: rgba(100, 181, 246, 0.12); }
-.task-card.high-priority { background: rgba(240, 98, 146, 0.12); }
+/* Category-based backgrounds matching Task Overview colors */
+.task-card.due-today { 
+  background: rgba(255, 183, 77, 0.12); /* Light beige/pale yellow */
+  border-left-color: #FFB74D;
+}
+.task-card.due-today .task-footer {
+  border-top-color: #FFB74D;
+}
 
-/* New priority-based backgrounds */
-.task-card.low { background: rgba(40, 167, 69, 0.10); }
-.task-card.medium { background: rgba(255, 193, 7, 0.12); }
-.task-card.high { background: rgba(220, 53, 69, 0.10); }
-.task-card.urgent { background: rgba(232, 62, 140, 0.12); }
+.task-card.follow-up { 
+  background: rgba(100, 181, 246, 0.20); /* Light blue/pale sky-blue */
+  border-left-color: #64B5F6;
+}
+.task-card.follow-up .task-footer {
+  border-top-color: #64B5F6;
+}
+
+.task-card.late { 
+  background: rgba(229, 115, 115, 0.12); /* Light pink/pale rose */
+  border-left-color: #E57373;
+}
+.task-card.late .task-footer {
+  border-top-color: #E57373;
+}
+
+.task-card.upcoming { 
+  background: rgba(129, 199, 132, 0.12); /* Light green/pale mint */
+  border-left-color: #81C784;
+}
+.task-card.upcoming .task-footer {
+  border-top-color: #81C784;
+}
+
+.task-card.high-priority { 
+  background: rgba(233, 30, 99, 0.15); /* Light pink/pale rose */
+  border-left-color: #E91E63;
+}
+.task-card.high-priority .task-footer {
+  border-top-color: #E91E63;
+}
 
 .task-card:hover {
   transform: translateY(-2px);
@@ -33,6 +61,51 @@
   justify-content: space-between;
   align-items: center;
   margin-bottom: 16px;
+}
+
+.task-category {
+  display: flex;
+  align-items: center;
+}
+
+.category-badge {
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border: 1px solid;
+}
+
+.category-badge.due-today {
+  background: rgba(255, 183, 77, 0.15);
+  color: #FF8F00;
+  border-color: rgba(255, 183, 77, 0.3);
+}
+
+.category-badge.follow-up {
+  background: rgba(100, 181, 246, 0.15);
+  color: #1976D2;
+  border-color: rgba(100, 181, 246, 0.3);
+}
+
+.category-badge.late {
+  background: rgba(229, 115, 115, 0.15);
+  color: #D32F2F;
+  border-color: rgba(229, 115, 115, 0.3);
+}
+
+.category-badge.upcoming {
+  background: rgba(129, 199, 132, 0.15);
+  color: #388E3C;
+  border-color: rgba(129, 199, 132, 0.3);
+}
+
+.category-badge.high-priority {
+  background: rgba(233, 30, 99, 0.15);
+  color: #C2185B;
+  border-color: rgba(233, 30, 99, 0.3);
 }
 
 .task-priority {
@@ -292,6 +365,11 @@
     font-size: 9px;
     padding: 2px 6px;
   }
+  
+  .category-badge {
+    font-size: 9px;
+    padding: 2px 8px;
+  }
 }
 
 @media (max-width: 480px) {
@@ -344,6 +422,11 @@
   .status-badge {
     font-size: 8px;
     padding: 1px 4px;
+  }
+  
+  .category-badge {
+    font-size: 8px;
+    padding: 1px 6px;
   }
 }
 

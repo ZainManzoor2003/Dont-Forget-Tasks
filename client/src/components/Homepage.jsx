@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { FiCalendar, FiCreditCard, FiMail, FiAlertCircle, FiBook, FiTrendingUp, FiBookOpen, FiUsers, FiGrid, FiLayers, FiShield, FiClock, FiTarget, FiArrowRight } from 'react-icons/fi';
+import { FiCalendar, FiCreditCard, FiMail, FiAlertCircle, FiBook, FiTrendingUp, FiBookOpen, FiUsers, FiGrid, FiLayers, FiShield, FiClock, FiTarget, FiArrowRight, FiCheckCircle, FiAlertTriangle, FiRefreshCw } from 'react-icons/fi';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Header from './Header';
@@ -19,6 +19,7 @@ const Homepage = () => {
   const heroContentRef = useRef(null);
   const whatIsRef = useRef(null);
   const featuresRef = useRef(null);
+  const followUpTasksRef = useRef(null);
   const audiencesRef = useRef(null);
   const ctaRef = useRef(null);
 
@@ -119,6 +120,23 @@ const Homepage = () => {
         }
       );
     });
+
+    // Follow-up Tasks Section Animation
+    gsap.fromTo(followUpTasksRef.current,
+      { opacity: 0, y: 60 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 1,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: followUpTasksRef.current,
+          start: "top 80%",
+          end: "bottom 20%",
+          toggleActions: "play none none reverse"
+        }
+      }
+    );
 
     // Audiences Section Animation
     gsap.fromTo(audiencesRef.current,
@@ -366,6 +384,80 @@ const Homepage = () => {
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="follow-up-tasks-section" ref={followUpTasksRef}>
+        <div className="follow-up-tasks-container">
+          <div className="follow-up-tasks-header">
+            <div className="follow-up-tasks-icon">
+              <FiRefreshCw />
+            </div>
+            <h2 className="follow-up-tasks-title">Stay on Top of Follow-ups</h2>
+            <p className="follow-up-tasks-subtitle">Never miss an important follow-up again. Here's how Don't Forget keeps you organized:</p>
+          </div>
+          
+          <div className="follow-up-tasks-grid">
+            <div className="follow-up-task-card follow-up-urgent">
+              <div className="task-header">
+                <span className="task-category-badge urgent">URGENT</span>
+                <span className="task-icon"><FiAlertTriangle /></span>
+              </div>
+              <h3 className="task-title">Client Proposal Follow-up</h3>
+              <p className="task-description">Follow up with ABC Corp about the Q1 marketing proposal. They requested additional details about our social media strategy.</p>
+              <div className="task-meta">
+                <span className="task-date"><FiClock /> Due: Jan 18, 2024</span>
+                <span className="task-status pending">Pending</span>
+              </div>
+            </div>
+
+            <div className="follow-up-task-card follow-up-high">
+              <div className="task-header">
+                <span className="task-category-badge high">HIGH PRIORITY</span>
+                <span className="task-icon"><FiCheckCircle /></span>
+              </div>
+              <h3 className="task-title">Team Meeting Follow-up</h3>
+              <p className="task-description">Send meeting notes and action items from yesterday's team standup. Include project timeline updates and resource allocation.</p>
+              <div className="task-meta">
+                <span className="task-date"><FiClock /> Due: Jan 17, 2024</span>
+                <span className="task-status in-progress">In Progress</span>
+              </div>
+            </div>
+
+            <div className="follow-up-task-card follow-up-medium">
+              <div className="task-header">
+                <span className="task-category-badge medium">FOLLOW-UP</span>
+                <span className="task-icon"><FiMail /></span>
+              </div>
+              <h3 className="task-title">Newsletter Subscriber Follow-up</h3>
+              <p className="task-description">Send welcome email sequence to new subscribers. Include onboarding resources and next steps for engagement.</p>
+              <div className="task-meta">
+                <span className="task-date"><FiClock /> Due: Jan 19, 2024</span>
+                <span className="task-status pending">Pending</span>
+              </div>
+            </div>
+
+            <div className="follow-up-task-card follow-up-low">
+              <div className="task-header">
+                <span className="task-category-badge low">UPCOMING</span>
+                <span className="task-icon"><FiCalendar /></span>
+              </div>
+              <h3 className="task-title">Quarterly Review Preparation</h3>
+              <p className="task-description">Prepare materials for Q1 quarterly review meeting. Gather performance metrics and prepare presentation slides.</p>
+              <div className="task-meta">
+                <span className="task-date"><FiClock /> Due: Jan 25, 2024</span>
+                <span className="task-status pending">Pending</span>
+              </div>
+            </div>
+          </div>
+
+          <div className="follow-up-tasks-cta">
+            <p className="cta-text">Ready to never miss a follow-up again?</p>
+            <button className="cta-button" onClick={handleSignup}>
+              Get Started Now
+              <FiArrowRight />
+            </button>
           </div>
         </div>
       </section>
