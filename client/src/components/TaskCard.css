@@ -44,11 +44,11 @@
 }
 
 .task-card.high-priority { 
-  background: rgba(233, 30, 99, 0.15); /* Light pink/pale rose */
-  border-left-color: #E91E63;
+  background: rgba(98, 0, 238, 0.15); /* Light Electric Violet */
+  border-left-color: #6200EE;
 }
 .task-card.high-priority .task-footer {
-  border-top-color: #E91E63;
+  border-top-color: #6200EE;
 }
 
 .task-card:hover {
@@ -103,9 +103,9 @@
 }
 
 .category-badge.high-priority {
-  background: rgba(233, 30, 99, 0.15);
-  color: #C2185B;
-  border-color: rgba(233, 30, 99, 0.3);
+  background: rgba(98, 0, 238, 0.15);
+  color: #6200EE;
+  border-color: rgba(98, 0, 238, 0.3);
 }
 
 .task-priority {

@@ -81,7 +81,7 @@ const AddTask = () => {
     repeatDays: [],
     repeatMonths: [],
     yearlyDates: [],
-    priority: 'Medium',
+    priority: '',
     tags: '',
     followUpLink: '',
     redirectUrl: '',
@@ -239,7 +239,7 @@ const AddTask = () => {
       repeatDays: [],
       repeatMonths: [],
       yearlyDates: [],
-      priority: 'Medium',
+      priority: '',
       tags: '',
       followUpLink: '',
       redirectUrl: '',
@@ -251,7 +251,7 @@ const AddTask = () => {
 
   const taskTypes = ['Regular', 'Video', 'Phone', 'Note'];
   const repeatOptions = ['None', 'Daily', 'Weekly', 'Monthly', 'Yearly'];
-  const priorityOptions = ['Low', 'Medium', 'High'];
+  const priorityOptions = ['', 'High'];
   const reminderOptions = ['5 minutes', '15 minutes', '30 minutes', '1 hour', '2 hours', '1 day'];
   
   // Days of the week for weekly repeat
@@ -483,7 +483,7 @@ const AddTask = () => {
 
         {/* Priority */}
         <div className="form-group">
-          <label className="form-label">Priority</label>
+          <label className="form-label">Priority (Optional)</label>
           <select
             name="priority"
             value={formData.priority}
@@ -491,7 +491,9 @@ const AddTask = () => {
             className="form-select"
           >
             {priorityOptions.map(option => (
-              <option key={option} value={option}>{option}</option>
+              <option key={option} value={option}>
+                {option === '' ? 'Select Priority (Optional)' : option}
+              </option>
             ))}
           </select>
         </div>

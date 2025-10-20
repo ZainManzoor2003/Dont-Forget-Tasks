@@ -159,8 +159,8 @@
 }
 
 .stat-card.high-priority {
-  border-left-color: #E91E63; /* Pink */
-  background: rgba(233, 30, 99, 0.15);
+  border-left-color: #6200EE; /* Electric Violet */
+  background: rgba(98, 0, 238, 0.15);
 }
 
 .stat-icon {

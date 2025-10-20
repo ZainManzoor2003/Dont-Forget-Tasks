@@ -279,3 +279,4 @@ const Analytics = ({ tasks }) => {
 };
 
 export default Analytics;
+

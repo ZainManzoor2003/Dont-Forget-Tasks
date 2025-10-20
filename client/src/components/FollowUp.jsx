@@ -33,8 +33,10 @@ const FollowUp = ({ tasks, setTasks, onNavigate }) => {
   }, [tasks, selectedType, taskQuery]);
 
   const taskTypes = useMemo(() => {
+    const allowedTypes = ['high'];
     const set = new Set(tasks.map(t => t.priority).filter(Boolean));
-    return ['all', ...Array.from(set)];
+    const filteredTypes = Array.from(set).filter(type => allowedTypes.includes(type));
+    return ['all', ...filteredTypes];
   }, [tasks]);
 
   const selectedTask = useMemo(() => {
@@ -96,7 +98,7 @@ const FollowUp = ({ tasks, setTasks, onNavigate }) => {
             >
               {taskTypes.map(type => (
                 <option key={type} value={type}>
-                  {type === 'all' ? 'All Task Types' : type.replace('-', ' ')}
+                  {type === 'all' ? 'All Task Types' : type === 'high' ? 'High Priority' : type.replace('-', ' ')}
                 </option>
               ))}
             </select>
