@@ -80,35 +80,35 @@ const Dashboard = ({ tasks, setTasks, onNavigate }) => {
             <div className="stat-icon"><FiCalendar /></div>
             <div className="stat-content">
               <div className="stat-number">{counts.dueToday}</div>
-              <div className="stat-label">Due Today</div>
+              <div className="stat-label">Due Today Tasks</div>
             </div>
           </div>
           <div className="stat-card follow-up">
             <div className="stat-icon"><FiClock /></div>
             <div className="stat-content">
               <div className="stat-number">{counts.followUp}</div>
-              <div className="stat-label">Follow Up</div>
+              <div className="stat-label">Follow-Ups Tasks</div>
             </div>
           </div>
           <div className="stat-card late">
             <div className="stat-icon"><FiAlertTriangle /></div>
             <div className="stat-content">
               <div className="stat-number">{counts.late}</div>
-              <div className="stat-label">Late</div>
+              <div className="stat-label">Late Tasks</div>
             </div>
           </div>
           <div className="stat-card upcoming">
             <div className="stat-icon"><FiRefreshCw /></div>
             <div className="stat-content">
               <div className="stat-number">{counts.upcoming}</div>
-              <div className="stat-label">Upcoming</div>
+              <div className="stat-label">Upcoming Tasks</div>
             </div>
           </div>
           <div className="stat-card high-priority">
             <div className="stat-icon"><FiAlertOctagon /></div>
             <div className="stat-content">
               <div className="stat-number">{counts.highPriority}</div>
-              <div className="stat-label">High Priority</div>
+              <div className="stat-label">High Priority Tasks</div>
             </div>
           </div>
         </div>
@@ -134,11 +134,11 @@ const Dashboard = ({ tasks, setTasks, onNavigate }) => {
                 className="filter-select"
               >
                 <option value="all">All Priorities</option>
-                <option value="low">Due Today</option>
-                <option value="medium">Follow Up</option>
-                <option value="high">Late</option>
-                <option value="upcoming">Upcoming</option>
-                <option value="urgent">High Priority</option>
+                <option value="low">Due Today Tasks</option>
+                <option value="medium">Follow-Ups Tasks</option>
+                <option value="high">Late Tasks</option>
+                <option value="upcoming">Upcoming Tasks</option>
+                <option value="urgent">High Priority Tasks</option>
               </select>
               <button className="primary-btn" onClick={() => onNavigate && onNavigate('follow-up')}>
                 Follow-ups
